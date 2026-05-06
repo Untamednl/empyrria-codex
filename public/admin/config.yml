@@ -1,0 +1,93 @@
+local_backend: true
+
+site_url: "http://localhost:4321"
+
+backend:
+  name: git-gateway
+
+media_folder: public/media/sigils
+public_folder: /media/sigils
+
+collections:
+  - name: sigils
+    label: Sigils
+    delete: false
+    files:
+      - label: Sigils
+        name: codex
+        file: src/data/sigils.json
+        format: json
+        preview_path: "sigils/{{fields.slug}}"
+        fields:
+          - label: Version
+            name: version
+            widget: string
+            required: true
+          - label: Sigils
+            name: sigils
+            widget: list
+            required: true
+            summary: "{{fields.name}} — {{fields.slug}}"
+            fields:
+              - { label: "Name", name: "name", widget: "string", required: true }
+              - label: "Slug (ID — do not change)"
+                name: "slug"
+                widget: "string"
+                required: true
+                hint: "Stable page ID. Avoid changing after publishing."
+              - label: "Live Preview"
+                name: "preview_link"
+                widget: "preview-link"
+                required: false
+                hint: "UI only — not saved"
+                pattern: ["^$", ""]
+              - label: "Doctrine"
+                name: "doctrine"
+                widget: "text"
+                required: true
+                hint: "Core doctrine / meaning shown on the sigil detail page."
+              - label: "Category"
+                name: "category"
+                widget: "string"
+                required: false
+                hint: "Broad category such as Core / Energy."
+              - label: "Status"
+                name: "status"
+                widget: "string"
+                required: false
+                hint: "Workflow state, for example Approved or Draft."
+              - label: "Facets / Categories"
+                name: facets
+                widget: list
+                required: false
+                hint: "Broad grouping tags."
+              - label: "Geometry Logic"
+                name: "geometry"
+                widget: "text"
+                required: false
+                hint: "Symbolic geometry logic."
+              - label: "Color Logic"
+                name: "color"
+                widget: "text"
+                required: false
+                hint: "Symbolic color logic."
+              - label: "Associated Terms"
+                name: terms
+                widget: list
+                required: false
+                hint: "Associated search / symbolic terms."
+              - label: "Usage Context"
+                name: "usage"
+                widget: "text"
+                required: false
+                hint: "Where or how this sigil is used."
+              - label: "Underlay / System Context"
+                name: "underlay"
+                widget: "text"
+                required: false
+                hint: "Narrative-only text. Leave empty if unused."
+              - label: "Image"
+                name: "image"
+                widget: "image"
+                required: false
+                hint: "Optional image path."

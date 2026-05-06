@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "empyrria-sigil-codex",
+  "title": "Empyrria Sigil Codex",
+  "type": "object",
+  "required": ["version", "sigils"],
+  "additionalProperties": false,
+  "properties": {
+    "$schema": { "type": "string" },
+    "version": { "type": "string" },
+    "sigils": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/sigil" }
+    }
+  },
+  "$defs": {
+    "sigil": {
+      "type": "object",
+      "required": ["slug", "name", "doctrine"],
+      "additionalProperties": false,
+      "properties": {
+        "slug": {
+          "type": "string",
+          "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+          "description": "Lowercase kebab-case, stable for URLs"
+        },
+        "name": { "type": "string", "minLength": 1 },
+        "doctrine": { "type": "string", "minLength": 1 },
+        "underlay": { "type": "string" },
+        "image": {
+          "type": "string",
+          "description": "Public URL to SVG, e.g. /media/sigils/<filename>.svg"
+        },
+        "facets": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "category": { "type": "string" },
+        "status": { "type": "string" },
+        "terms": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "geometry": { "type": "string" },
+        "color": { "type": "string" },
+        "usage": { "type": "string" }
+      }
+    }
+  }
+}

@@ -1,0 +1,57 @@
+---
+import type { Sigil } from '../types/sigil';
+import { sigilTitleColorClass } from '../lib/sigilIdentity';
+import SigilMeta from './SigilMeta.astro';
+
+interface Props {
+	sigil: Sigil;
+}
+
+function doctrinePreview(text: string, max = 160): string {
+	const t = text.trim();
+	if (t.length <= max) return t;
+	return `${t.slice(0, max).trimEnd()}…`;
+}
+
+const { sigil } = Astro.props;
+---
+
+<article
+	class="group rounded-xl border border-neutral-800/80 bg-neutral-900/35 p-6 shadow-sm shadow-black/30 transition-all duration-200 hover:-translate-y-px hover:border-neutral-700/80 hover:bg-neutral-900/55"
+>
+	<a
+		href={`/sigils/${sigil.slug}`}
+		class="block outline-none focus-visible:ring-2 focus-visible:ring-amber-500/35 focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-950"
+	>
+		{
+			sigil.image && (
+				<div class="mb-4">
+					<img
+						src={sigil.image}
+						alt=""
+						class="block h-auto max-h-16 w-auto max-w-[6rem] object-contain"
+						loading="lazy"
+						decoding="async"
+					/>
+				</div>
+			)
+		}
+		<h2
+			class:list={[
+				'text-2xl font-bold tracking-tight md:text-[1.65rem] md:leading-snug',
+				sigilTitleColorClass(sigil.slug),
+			]}
+		>
+			{sigil.name}
+		</h2>
+		<p
+			class="text-doctrine mt-5 text-[0.9375rem] leading-[1.8] text-amber-100/72 md:text-[1rem] md:leading-[1.82]"
+		>
+			{doctrinePreview(sigil.doctrine)}
+		</p>
+		<div class="mt-5 flex flex-wrap items-center justify-between gap-3 border-t border-neutral-800/60 pt-5">
+			<SigilMeta sigil={sigil} compact />
+			<span class="text-[11px] font-medium uppercase tracking-wide text-cyan-500/55">View</span>
+		</div>
+	</a>
+</article>

@@ -1,0 +1,195 @@
+---
+import codex from '../data/sigils.json';
+
+const sigils = codex.sigils;
+const hero = sigils[0];
+---
+
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<title>Empyrria Sigil Codex</title>
+
+		<style>
+			:root {
+				--accent: #8b5cf6;
+				--accent-soft: rgba(139, 92, 246, 0.15);
+			}
+
+			body {
+				margin: 0;
+				font-family: system-ui, -apple-system, sans-serif;
+				background: #0a0a0f;
+				color: #e5e7eb;
+				line-height: 1.6;
+			}
+
+			.container {
+				max-width: 1100px;
+				margin: 0 auto;
+				padding: 60px 24px;
+			}
+
+			.header {
+				margin-bottom: 40px;
+			}
+
+			.header h1 {
+				margin: 0 0 12px;
+				font-size: 38px;
+				letter-spacing: 0.5px;
+				background: linear-gradient(90deg, #e5e7eb, #a78bfa);
+				-webkit-background-clip: text;
+				background-clip: text;
+				-webkit-text-fill-color: transparent;
+			}
+
+			.header p {
+				opacity: 0.6;
+				max-width: 560px;
+			}
+
+			.codex-link {
+				display: inline-block;
+				margin-top: 16px;
+				font-size: 14px;
+				color: var(--accent);
+				text-decoration: none;
+				opacity: 0.8;
+			}
+
+			.codex-link:hover {
+				opacity: 1;
+			}
+
+			.hero {
+				margin-bottom: 70px;
+				padding: 44px;
+				border-radius: 18px;
+				background: linear-gradient(135deg, #111, #181825);
+				border: 1px solid #222;
+				box-shadow: 0 0 0 1px var(--accent-soft);
+			}
+
+			.hero h2 {
+				margin: 0 0 12px;
+				font-size: 30px;
+			}
+
+			.badge {
+				display: inline-block;
+				padding: 4px 10px;
+				border-radius: 6px;
+				font-size: 11px;
+				letter-spacing: 0.5px;
+				text-transform: uppercase;
+				background: #111;
+				border: 1px solid #333;
+				margin-bottom: 12px;
+				opacity: 0.7;
+			}
+
+			.hero p {
+				opacity: 0.75;
+				margin-bottom: 20px;
+				max-width: 600px;
+			}
+
+			.hero a {
+				color: var(--accent);
+				text-decoration: none;
+				font-weight: 500;
+			}
+
+			.hero a:hover {
+				opacity: 0.85;
+			}
+
+			.grid {
+				display: grid;
+				grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+				gap: 24px;
+			}
+
+			.card {
+				padding: 22px;
+				border-radius: 14px;
+				background: #111;
+				border: 1px solid #222;
+				transition: all 0.2s ease;
+			}
+
+			.card:hover {
+				border-color: var(--accent);
+				box-shadow: 0 6px 20px rgba(139, 92, 246, 0.15);
+				transform: translateY(-4px);
+			}
+
+			.card h3 {
+				margin: 0 0 8px;
+				font-size: 18px;
+			}
+
+			.meta {
+				font-size: 12px;
+				opacity: 0.5;
+				margin-bottom: 10px;
+			}
+
+			.card p {
+				opacity: 0.75;
+			}
+
+			.terms {
+				font-size: 12px;
+				opacity: 0.45;
+				margin-top: 12px;
+			}
+
+			a {
+				color: inherit;
+				text-decoration: none;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="container">
+			<div class="header">
+				<h1>Empyrria Sigil Codex</h1>
+				<p>
+					A structured system of symbolic identities, each representing a distinct state, function, or relational
+					pattern.
+				</p>
+				<a href="/codex/what-is-a-sigil" class="codex-link"> → What is a sigil </a>
+			</div>
+
+			<div class="hero">
+				<span class="badge">{hero.category}</span>
+				<h2>{hero.name}</h2>
+				<p>{hero.doctrine}</p>
+				<a href={`/sigils/${hero.slug}`}> → Explore this sigil </a>
+			</div>
+
+			<div class="grid">
+				{
+					sigils.map((sigil, i) => (
+						<a href={`/sigils/${sigil.slug}`}>
+							<div class="card" style={i === 0 ? 'border-color: var(--accent);' : undefined}>
+								<h3>{sigil.name}</h3>
+								<div class="meta">
+									{sigil.category} · {sigil.status}
+								</div>
+								<p>{sigil.doctrine.slice(0, 90)}...</p>
+
+								{sigil.terms && sigil.terms.length > 0 && (
+									<div class="terms">{sigil.terms.join(', ')}</div>
+								)}
+							</div>
+						</a>
+					))
+				}
+			</div>
+		</div>
+	</body>
+</html>

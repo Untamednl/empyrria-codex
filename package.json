@@ -1,0 +1,26 @@
+{
+  "name": "empyrria-codex",
+  "type": "module",
+  "version": "0.0.1",
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "overrides": {
+    "yaml": "^2.8.3"
+  },
+  "dependencies": {
+    "@astrojs/check": "^0.9.9",
+    "@tailwindcss/vite": "^4.2.4",
+    "astro": "^6.2.1",
+    "decap-cms-app": "^3.12.2",
+    "fuse.js": "^7.3.0",
+    "tailwindcss": "^4.2.4",
+    "typescript": "^5.9.3"
+  }
+}

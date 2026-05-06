@@ -1,0 +1,77 @@
+{
+  "$schema": "./sigils.schema.json",
+  "version": "2",
+  "sigils": [
+    {
+      "usage": "Character codification, identity pages, deeper Underlay resonance moments.",
+      "color": "Depends on character-specific resonance. Must remain identity-linked, not generic.",
+      "terms": [
+        "Soulflame"
+      ],
+      "doctrine": "Meaning / Function: Represents the Core of Being. Soulflame is not a state and not a phenomenon. It expresses the unchangeable inner identity of a person.",
+      "name": "Soulflame Sigil",
+      "slug": "soulflame-sigil",
+      "underlay": "  ",
+      "geometry": "Energy-oriented symbolic structure; should read as living continuity rather than mechanical command.",
+      "status": "Approved",
+      "facets": [
+        "Core / Energy"
+      ],
+      "category": "Core / Energy"
+    },
+    {
+      "usage": "State activation, perception, precision scenes.",
+      "color": "Supports clarity and controlled perception.",
+      "terms": [
+        "Top-Clear-Mind",
+        "Sha-ri om"
+      ],
+      "doctrine": "Meaning / Function: Cognitive clarity without emotional suppression. A mastery state, not a personality replacement.",
+      "name": "Top-Clear-Mind",
+      "slug": "top-clear-mind",
+      "underlay": "",
+      "geometry": "Radial symmetry, disciplined calm, internal clarity.",
+      "status": "Approved",
+      "facets": [
+        "State Sigil"
+      ],
+      "category": "State Sigil"
+    },
+    {
+      "usage": "Endurance, identity, consequence, grounding.",
+      "color": "Stability-supporting palette.",
+      "terms": [
+        "Sha-karys",
+        "Karys"
+      ],
+      "doctrine": "Meaning / Function: Structural stability of conscious existence under weight.",
+      "name": "Top-Solid-Anchor / Sha-karys",
+      "slug": "top-solid-anchor-sha-karys",
+      "underlay": "",
+      "geometry": "Load-bearing, grounded, stable structure.",
+      "status": "Approved",
+      "facets": [
+        "State Sigil"
+      ],
+      "category": "State Sigil"
+    },
+    {
+      "usage": "Alignment, connection, dual-state interaction.",
+      "color": "Magenta resonance association.",
+      "terms": [
+        "Zenga",
+        "Zellia"
+      ],
+      "doctrine": "Meaning / Function: Alignment or resonance between two entities.",
+      "name": "Zenga Zellia",
+      "slug": "zenga-zellia",
+      "underlay": "",
+      "geometry": "Dual structure / mirrored form.",
+      "status": "Approved",
+      "facets": [
+        "Relational Sigil"
+      ],
+      "category": "Relational Sigil"
+    }
+  ]
+}

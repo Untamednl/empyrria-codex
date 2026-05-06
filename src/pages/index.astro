@@ -1,0 +1,25 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { getAllSigils, getCodex } from '../lib/sigils';
+
+const { version } = getCodex();
+const sigils = getAllSigils();
+---
+
+<Layout>
+	<main class="mx-auto max-w-lg px-8 py-14 md:py-20">
+		<h1 class="text-3xl font-semibold tracking-tight text-neutral-50 md:text-[2rem]">
+			Empyrria Sigil Codex
+		</h1>
+		<p class="mt-4 text-sm leading-relaxed text-neutral-400">V1 — Sigils only · data v{version}</p>
+		<p class="mt-2 text-sm text-neutral-500">{sigils.length} sigil{sigils.length === 1 ? '' : 's'} indexed</p>
+		<p class="mt-12">
+			<a
+				href="/sigils"
+				class="inline-flex items-center justify-center rounded-md border border-amber-500/35 bg-amber-950/25 px-5 py-2.5 text-sm font-medium text-amber-200/90 transition-colors hover:border-amber-400/45 hover:bg-amber-950/40 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-500/45"
+			>
+				Browse sigils
+			</a>
+		</p>
+	</main>
+</Layout>

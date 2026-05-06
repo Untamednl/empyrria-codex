@@ -1,0 +1,14 @@
+@import "tailwindcss";
+
+/* Doctrine: readable serif stack (system fonts, no network requests) */
+@layer utilities {
+	.text-doctrine {
+		font-family:
+			Georgia,
+			"Cambria",
+			"Times New Roman",
+			Times,
+			serif;
+		font-feature-settings: "kern" 1;
+	}
+}

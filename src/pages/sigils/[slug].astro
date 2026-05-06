@@ -1,0 +1,135 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import SigilMeta from '../../components/SigilMeta.astro';
+import { sigilTitleColorClass } from '../../lib/sigilIdentity';
+import { getAllSigils, getSigilBySlug } from '../../lib/sigils';
+
+export function getStaticPaths() {
+	return getAllSigils().map((s) => ({
+		params: { slug: s.slug },
+	}));
+}
+
+const { slug } = Astro.params;
+const sigil = slug ? getSigilBySlug(slug) : undefined;
+
+if (!sigil) {
+	return new Response(null, { status: 404, statusText: 'Not Found' });
+}
+
+const underlayText = typeof sigil.underlay === 'string' ? sigil.underlay.trim() : '';
+const showUnderlay = underlayText.length > 0;
+
+/** Split at first ":" only; wording unchanged. Lines without ":" stay whole. */
+type UnderlayLine =
+	| { kind: 'pair'; label: string; value: string }
+	| { kind: 'plain'; text: string };
+
+function parseUnderlayLine(line: string): UnderlayLine {
+	const idx = line.indexOf(':');
+	if (idx === -1) {
+		return { kind: 'plain', text: line };
+	}
+	return {
+		kind: 'pair',
+		label: line.slice(0, idx + 1).trimEnd(),
+		value: line.slice(idx + 1).replace(/^\s+/, ''),
+	};
+}
+---
+
+<Layout title={`${sigil.name} · Empyrria Sigil Codex`}>
+	<main class="mx-auto max-w-2xl px-6 py-12 md:px-8 md:py-16">
+		<p class="text-[0.65rem] font-medium uppercase tracking-[0.2em] text-neutral-500">Sigil</p>
+		{
+			sigil.image && (
+				<div class="mt-5">
+					<img
+						src={sigil.image}
+						alt=""
+						class="block h-auto max-h-20 w-auto max-w-[7rem] object-contain md:max-h-24 md:max-w-[8rem]"
+						loading="eager"
+						decoding="async"
+					/>
+				</div>
+			)
+		}
+		<h1
+			class:list={[
+				sigil.image ? 'mt-6' : 'mt-5',
+				'text-[2.125rem] font-bold tracking-tight md:text-[2.75rem] md:leading-[1.08]',
+				sigilTitleColorClass(sigil.slug),
+			]}
+		>
+			{sigil.name}
+		</h1>
+
+		<div class="mt-10 border-b border-neutral-800/60 pb-12">
+			<SigilMeta sigil={sigil} />
+		</div>
+
+		<section class="mt-24" aria-labelledby="doctrine-heading">
+			<h2
+				id="doctrine-heading"
+				class="border-b border-neutral-800/35 pb-6 text-lg font-bold uppercase tracking-[0.14em] text-amber-200/88 md:text-xl"
+			>
+				Doctrine
+			</h2>
+			<p
+				class="text-doctrine mt-8 text-[1.0625rem] leading-[1.88] text-amber-100/78 sm:text-[1.0625rem]"
+			>
+				{sigil.doctrine}
+			</p>
+		</section>
+
+		{
+			showUnderlay && (
+				<section
+					class="mt-28 border-t border-neutral-800/45 pt-16"
+					aria-labelledby="underlay-heading"
+				>
+					<div class="rounded-lg border border-neutral-800/70 border-l-cyan-950/80 bg-neutral-900/25 px-5 py-8 md:px-6 md:py-9">
+						<div class="space-y-4 border-b border-neutral-800/40 pb-8">
+							<h2
+								id="underlay-heading"
+								class="text-lg font-bold uppercase tracking-[0.14em] text-cyan-300/82 md:text-xl"
+							>
+								Underlay
+							</h2>
+							<p class="text-sm font-bold uppercase tracking-[0.12em] text-neutral-400">
+								System context
+							</p>
+						</div>
+						<div class="mt-9 space-y-7 pt-2">
+							{underlayText
+								.split('\n')
+								.filter((line) => line.trim().length > 0)
+								.map((line) => {
+									const parsed = parseUnderlayLine(line);
+									return parsed.kind === 'pair' ? (
+										<p class="text-[1.0625rem] leading-[2.15]">
+											<span class="inline text-base font-bold text-cyan-400/72">{parsed.label}</span>
+											<span class="inline pl-1.5 text-[1.0625rem] font-normal leading-[2.15] text-cyan-200/52">
+												{parsed.value}
+											</span>
+										</p>
+									) : (
+										<p class="text-[1.0625rem] leading-[2.15] text-cyan-200/55">{parsed.text}</p>
+									);
+								})}
+						</div>
+					</div>
+				</section>
+			)
+		}
+
+		<p class="mt-20 border-t border-neutral-800/60 pt-10">
+			<a
+				href="/sigils"
+				class="text-sm text-neutral-400 underline-offset-4 transition-colors hover:text-cyan-400/80 hover:underline"
+			>
+				← All sigils
+			</a>
+		</p>
+	</main>
+</Layout>

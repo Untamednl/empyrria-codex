@@ -1,0 +1,175 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import SigilCard from '../../components/SigilCard.astro';
+import { getAllSigils } from '../../lib/sigils';
+
+const sigils = getAllSigils();
+const facetList = [...new Set(sigils.flatMap((s) => s.facets ?? []))].sort((a, b) =>
+	a.localeCompare(b),
+);
+---
+
+<Layout title="Sigils · Empyrria Sigil Codex">
+	<main class="mx-auto max-w-5xl px-6 py-12 md:px-8 md:py-16">
+		<pre id="sigil-data" class="hidden" aria-hidden="true">{JSON.stringify(sigils)}</pre>
+		<header class="mb-12 md:mb-14">
+			<p class="text-[0.65rem] font-medium uppercase tracking-[0.2em] text-neutral-500">Browse</p>
+			<h1 class="mt-3 text-4xl font-semibold tracking-tight text-neutral-50 md:text-[2.5rem]">
+				Sigils
+			</h1>
+			<p class="mt-4 max-w-2xl text-sm leading-relaxed text-neutral-400">
+				{sigils.length} entr{sigils.length === 1 ? 'y' : 'ies'} in the codex.
+			</p>
+		</header>
+
+		<div
+			class="mb-10 flex flex-col gap-5 sm:flex-row sm:flex-wrap sm:items-end sm:gap-x-6 sm:gap-y-4"
+		>
+			<label class="block w-full min-w-[12rem] flex-1 sm:max-w-md" for="sigil-search">
+				<span class="mb-1.5 block text-[11px] font-medium uppercase tracking-wide text-neutral-500">
+					Search
+				</span>
+				<input
+					type="search"
+					id="sigil-search"
+					name="q"
+					autocomplete="off"
+					placeholder="Name, doctrine, categories…"
+					class="w-full rounded-md border border-neutral-800/90 bg-neutral-900/50 px-3.5 py-2.5 text-sm text-neutral-200 placeholder:text-neutral-600 focus:border-neutral-600/90 focus:outline-none"
+				/>
+			</label>
+			<label class="block w-full min-w-[10rem] sm:w-48" for="sigil-filter">
+				<span class="mb-1.5 block text-[11px] font-medium uppercase tracking-wide text-neutral-500">
+					Category
+				</span>
+				<select
+					id="sigil-filter"
+					class="w-full rounded-md border border-neutral-800/90 bg-neutral-900/50 px-3.5 py-2.5 text-sm text-neutral-200 focus:border-neutral-600/90 focus:outline-none"
+				>
+					<option value="all">All</option>
+					{facetList.map((f) => (
+						<option value={f}>{f}</option>
+					))}
+				</select>
+			</label>
+			<label class="block w-full min-w-[10rem] sm:w-40" for="sigil-sort">
+				<span class="mb-1.5 block text-[11px] font-medium uppercase tracking-wide text-neutral-500">
+					Sort
+				</span>
+				<select
+					id="sigil-sort"
+					class="w-full rounded-md border border-neutral-800/90 bg-neutral-900/50 px-3.5 py-2.5 text-sm text-neutral-200 focus:border-neutral-600/90 focus:outline-none"
+				>
+					<option value="default">Original order</option>
+					<option value="az">A–Z (name)</option>
+					<option value="za">Z–A (name)</option>
+				</select>
+			</label>
+		</div>
+
+		<p id="sigil-empty" class="mb-8 hidden text-sm leading-relaxed text-neutral-500" role="status">
+			No sigils match your search.
+		</p>
+
+		<ul id="sigil-grid" class="grid list-none gap-8 sm:grid-cols-2 sm:gap-x-8 sm:gap-y-8">
+			{sigils.map((sigil) => (
+				<li data-slug={sigil.slug} id={`sigil-row-${sigil.slug}`}>
+					<SigilCard sigil={sigil} />
+				</li>
+			))}
+		</ul>
+
+		<p class="mt-16 text-center">
+			<a
+				href="/"
+				class="text-sm text-neutral-500 underline-offset-4 transition-colors hover:text-neutral-300 hover:underline"
+			>
+				← Home
+			</a>
+		</p>
+	</main>
+</Layout>
+
+<script>
+	// @ts-nocheck
+	import Fuse from 'fuse.js';
+
+	const raw = document.getElementById('sigil-data');
+	if (!raw?.textContent) throw new Error('Missing sigil data');
+	const sigils = JSON.parse(raw.textContent);
+
+	const fuse = new Fuse(sigils, {
+		keys: [
+			'name',
+			'doctrine',
+			{
+				name: 'facets',
+				getFn: (doc) => (doc.facets ?? []).join(' '),
+			},
+		],
+		threshold: 0.35,
+		ignoreLocation: true,
+		isCaseSensitive: false,
+	});
+
+	const originalOrder = new Map(sigils.map((s, i) => [s.slug, i]));
+
+	const searchEl = document.getElementById('sigil-search');
+	const filterEl = document.getElementById('sigil-filter');
+	const sortEl = document.getElementById('sigil-sort');
+	const grid = document.getElementById('sigil-grid');
+	const empty = document.getElementById('sigil-empty');
+
+	if (!searchEl || !filterEl || !sortEl || !grid || !empty) {
+		throw new Error('Missing browse controls');
+	}
+
+	function run() {
+		const q = searchEl.value.trim();
+		let items = q === '' ? [...sigils] : fuse.search(q).map((r) => r.item);
+
+		const facet = filterEl.value;
+		if (facet !== 'all') {
+			items = items.filter((s) => s.facets?.includes(facet));
+		}
+
+		const mode = sortEl.value;
+		if (mode === 'az') {
+			items = [...items].sort((a, b) => a.name.localeCompare(b.name));
+		} else if (mode === 'za') {
+			items = [...items].sort((a, b) => b.name.localeCompare(a.name));
+		} else {
+			items = [...items].sort(
+				(a, b) => (originalOrder.get(a.slug) ?? 0) - (originalOrder.get(b.slug) ?? 0),
+			);
+		}
+
+		if (items.length === 0) {
+			empty.classList.remove('hidden');
+			grid.classList.add('hidden');
+			return;
+		}
+
+		empty.classList.add('hidden');
+		grid.classList.remove('hidden');
+
+		const allowed = new Set(items.map((s) => s.slug));
+		for (const li of grid.querySelectorAll('li[data-slug]')) {
+			const slug = li.getAttribute('data-slug');
+			if (!slug) continue;
+			li.classList.toggle('hidden', !allowed.has(slug));
+		}
+
+		const frag = document.createDocumentFragment();
+		for (const s of items) {
+			const el = document.getElementById(`sigil-row-${s.slug}`);
+			if (el) frag.appendChild(el);
+		}
+		grid.appendChild(frag);
+	}
+
+	searchEl.addEventListener('input', run);
+	filterEl.addEventListener('change', run);
+	sortEl.addEventListener('change', run);
+	run();
+</script>
