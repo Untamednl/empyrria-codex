@@ -481,21 +481,21 @@ This codex **currently**:
 Infrastructure Hardening Phase
 
 **Current Step:**  
-STEP 2 — First Official Checkpoint (completed)
+STEP 5D — Infrastructure Hardening Checkpoint (completed)
 
 **Status:**  
 Stable / ready for feedback iteration
 
 **Next Step:**  
-STEP 3 — Rollback Runbook — LOCKED
+STEP 6 — Preview Deployment Governance
 
 ## STEPS (living)
 
 | Field | Value |
 | ----- | ----- |
-| **Last completed step** | Step 28 — Codex Back-Link Integration (**Locked step entries → Step 28**) |
-| **Current step** | STEP 2 — First Official Checkpoint (completed) |
-| **Next step** | STEP 3 — Rollback Runbook — LOCKED |
+| **Last completed step** | STEP 5D — Infrastructure Hardening Checkpoint (**Locked step entries → Step 5D**) |
+| **Current step** | STEP 5D — Infrastructure Hardening Checkpoint (completed) |
+| **Next step** | STEP 6 — Preview Deployment Governance |
 
 Recent locked entries (presentation + Codex layer):
 
@@ -648,6 +648,255 @@ Step 28 is fully validated locally and through Cloudflare and approved to procee
 
 **Next Step:**
 Step 29 — TBD (next Codex expansion placeholder).
+
+#### Step 3 — Rollback Runbook — LOCKED
+
+**Goal:**
+Define a formal Git-centered rollback process for recovering from broken deployments, content corruption, failed hardening steps, unstable architecture changes, or critical regressions.
+
+**Changes:**
+
+- `EMPYRRIA_MASTER.md` — added `ROLLBACK RUNBOOK — LOCKED` with purpose, triggers, authority, workflow, Git-centered execution, post-rollback validation, documentation rules, checkpoint relationship, constraints, and core principle.
+
+**Unchanged:**
+
+- source code
+- Astro pages
+- sigils.json
+- schema files
+- CMS config
+- preview widget
+- routes
+- styles
+
+**Checks:**
+
+- documentation-only change
+- reviewed for alignment with `CHECKPOINT SYSTEM — LOCKED`
+- no source/config/data changes made
+- no build required because no runtime files changed
+
+**Result:**
+Rollback governance now exists and is linked conceptually to official checkpoints. Recovery is defined as a controlled, validated, documented process instead of panic-driven fixing.
+
+**Next Step:**
+STEP 4 — Build-Time Content Validator
+
+#### Step 4A — Build-Time Content Validator Design Lock
+
+**Goal:**
+Define the architecture, scope, constraints, failure behavior, and governance role of the build-time content validator before implementation.
+
+**Changes:**
+
+- `EMPYRRIA_MASTER.md` — added `BUILD-TIME CONTENT VALIDATOR — LOCKED` with purpose, core principle, initial scope, non-goals, validator philosophy, failure behavior, governance relationship, expansion strategy, constraints, technical direction, and final locked principle.
+
+**Unchanged:**
+
+- source code
+- Astro pages
+- sigils.json
+- schema files
+- CMS config
+- preview widget
+- routes
+- styles
+
+**Checks:**
+
+- documentation-only change
+- reviewed for alignment with checkpoint and rollback governance
+- no source/config/data changes made
+- no build required because no runtime files changed
+
+**Result:**
+The validator system is now governed before implementation. The first implementation must remain minimal, deterministic, local, and focused on structural content integrity.
+
+**Next Step:**
+STEP 4B — Implement Minimal Build-Time Content Validator
+
+#### Step 4B — Implement Minimal Build-Time Content Validator
+
+**Goal:**
+Implement the first machine-enforced content integrity layer for sigils.
+
+**Changes:**
+
+- `scripts/validate-content.mjs` — added dependency-free local validator for sigils.json structure, required fields, slug format, slug uniqueness, optional facets/image shape, and image file existence.
+- `package.json` — added validate:content script and updated build to run validator before astro build.
+
+**Unchanged:**
+
+- Astro pages
+- sigils.json
+- schema files
+- CMS config
+- preview widget
+- routes
+- styles
+- EMPYRRIA_MASTER.md
+
+**Checks:**
+
+- `npm run validate:content` — pass
+- `npm run build` — pass; validator ran before Astro build
+- `npx astro check` — pass (0 errors, 0 warnings, 0 hints)
+
+**Result:**
+Build-time content validation is now active. Invalid sigil content can block the build before Astro runs.
+
+**Next Step:**
+STEP 4C — Validator Failure Test
+
+#### Step 4C — Validator Failure Test
+
+**Goal:**
+Prove that the build-time content validator fails correctly, blocks invalid content before Astro build, and restores cleanly after correction.
+
+**Changes:**
+
+- `src/data/sigils.json` — temporarily changed one slug from `soulflame-sigil` to `Soulflame Sigil` for controlled failure testing, then restored original value immediately.
+
+**Unchanged:**
+
+- validator implementation
+- package.json
+- Astro pages
+- schema files
+- CMS config
+- preview widget
+- routes
+- styles
+- EMPYRRIA_MASTER.md
+
+**Checks:**
+
+- `npm run validate:content` with invalid slug — failed correctly with `SLUG_FORMAT_INVALID`
+- `npm run build` with invalid slug — blocked before Astro build
+- restored slug to `soulflame-sigil`
+- `npm run validate:content` after restore — pass
+- `npm run build` after restore — pass
+- `npx astro check` after restore — pass (0 errors, 0 warnings, 0 hints)
+
+**Result:**
+Validator success path and failure path are both confirmed. Build-time content validation is trusted and active.
+
+**Next Step:**
+STEP 5 — Broken Link Detection
+
+#### Step 5B — Minimal Broken Link Detection
+
+**Goal:**
+Implement the first generated-output navigation integrity checker for the Codex.
+
+**Changes:**
+
+- `scripts/check-links.mjs` — added dependency-free local checker that scans generated HTML inside `dist/`, skips `dist/admin/`, extracts internal links/assets from HTML attributes and `srcset`, resolves root-relative and relative links against generated output, reports deterministic errors, and exits non-zero on broken links.
+- `package.json` — added `check:links` script without modifying build integration.
+
+**Unchanged:**
+
+- build script
+- Astro pages
+- `src/data/sigils.json`
+- schema files
+- CMS config
+- preview widget
+- routes
+- styles
+- `EMPYRRIA_MASTER.md`
+
+**Checks:**
+
+- `npm run build` — pass; content validator ran first
+- `npm run check:links` — pass; 10 pages scanned, 43 links checked, 0 ignored
+- `npx astro check` — pass (19 files, 0 errors, 0 warnings, 0 hints)
+
+**Result:**
+Broken link detection now exists as a manual post-build validation layer. Generated Codex output currently has zero broken internal links.
+
+**Implementation note:**
+The earlier suspected `/favicon.ico` issue did not fail because Astro emits `dist/favicon.ico` during build. This confirms the checker validates generated output, not source assumptions.
+
+**Next Step:**
+STEP 5C — Validator / Link Checker Failure Test
+
+#### Step 5C — Validator / Link Checker Failure Test
+
+**Goal:**
+Prove that the generated-output broken link checker fails correctly, reports broken navigation clearly, and restores cleanly after correction.
+
+**Changes:**
+
+- `src/pages/showcase.astro` — temporarily changed one href from `/codex/what-is-a-sigil` to `/codex/missing-test-page` for controlled failure testing, then restored original value immediately.
+
+**Unchanged:**
+
+- `scripts/check-links.mjs`
+- `scripts/validate-content.mjs`
+- `package.json`
+- `src/data/sigils.json`
+- schema files
+- CMS config
+- preview widget
+- routes
+- styles
+- `EMPYRRIA_MASTER.md`
+
+**Checks:**
+
+- `npm run build` with broken link — pass; content validator passed and Astro built 10 pages
+- `npm run check:links` with broken link — failed correctly with `BROKEN_PAGE_LINK`
+- `check:links` reported source file, broken href, resolver reason, and correction guidance
+- restored href to `/codex/what-is-a-sigil`
+- `npm run build` after restore — pass
+- `npm run check:links` after restore — pass; 10 pages scanned, 43 links checked, 0 ignored
+- `npx astro check` after restore — pass (19 files, 0 errors, 0 warnings, 0 hints)
+- `git status` confirmed `src/pages/showcase.astro` was restored and not left modified
+
+**Result:**
+Generated-output link checker success path, failure path, and recovery path are confirmed. Navigation integrity validation is trusted as a manual post-build layer.
+
+**Next Step:**
+STEP 5D — Infrastructure Hardening Checkpoint
+
+#### Step 5D — Infrastructure Hardening Checkpoint
+
+**Goal:**
+Create a governed recovery checkpoint after completing and validating the infrastructure hardening layer.
+
+**Changes:**
+
+- `EMPYRRIA_MASTER.md` — added official infrastructure hardening checkpoint entry (`checkpoint-2026-05-06-infrastructure-hardening`).
+- `EMPYRRIA_CODEX_MASTER.md` — logged checkpoint creation and workflow progression.
+
+**Unchanged:**
+
+- source code
+- Astro pages
+- `src/data/sigils.json`
+- schema files
+- `scripts/check-links.mjs`
+- `scripts/validate-content.mjs`
+- `package.json`
+- CMS config
+- preview widget
+- routes
+- styles
+
+**Checks:**
+
+- checkpoint linked to all infrastructure hardening steps (Step 3, 4A, 4B, 4C, 5B, 5C)
+- validator and link-checker systems already validated through success / failure / recovery paths
+- rollback governance already locked
+- deterministic validation workflow confirmed
+- no runtime/source modifications introduced during checkpoint creation
+
+**Result:**
+Infrastructure hardening layer is now checkpointed, recoverable, and approved as the stable base for deployment and preview-environment governance work.
+
+**Next Step:**
+STEP 6 — Preview Deployment Governance
 
 ## STEP 13B VALIDATION NOTES
 
@@ -1421,3 +1670,10 @@ Signal that the Codex is an expanding system, not a one-off essay page.
 - Step 28 manual validation passed locally and through Cloudflare; Codex navigation loop approved for Step 29.
 - DOC-4: Full alignment pass — CODEX `CURRENT STEP` / `STEPS (living)`, top NOTE, locked step titles 19–24; MASTER “Current system state” under project overview.
 - Created first official governed checkpoint: checkpoint-2026-05-06-step28-codex-loop (Milestone Checkpoint) after full Codex navigation validation and infrastructure hardening initialization.
+- Step 3: Added locked rollback runbook governance to EMPYRRIA_MASTER.md, defining rollback triggers, authority, execution, validation, documentation, and checkpoint relationship.
+- Step 4A: Added locked build-time content validator governance/design section to EMPYRRIA_MASTER.md before implementation.
+- Step 4B: Added dependency-free build-time content validator and wired npm run build to block invalid content before Astro build.
+- Step 4C: Validated failure path for build-time content validator using controlled temporary invalid slug; confirmed validator and build block invalid content, then restored clean state.
+- Step 5B: Added dependency-free generated-output broken link checker and manual `check:links` script; generated Codex output currently has zero broken internal links.
+- Step 5C: Validated failure path for generated-output broken link checker using controlled temporary missing Codex route; confirmed `check:links` blocks broken navigation and restores cleanly.
+- Step 5D: Created official infrastructure hardening checkpoint after validator, rollback, and generated-output link detection systems were fully validated through success, failure, and recovery paths.
