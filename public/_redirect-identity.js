@@ -25,6 +25,12 @@
 
       console.log("[identity] redirect target:", target);
 
+      window.__EMPYRRIA_IDENTITY_DEBUG_PAUSE__ = true;
+      if (window.__EMPYRRIA_IDENTITY_DEBUG_PAUSE__) {
+        console.log("[identity] DEBUG PAUSE active, not redirecting");
+        return;
+      }
+
       window.location.href = target;
     } catch (err) {
       console.error("[identity] redirect failure:", err);
