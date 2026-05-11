@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<!--
+  Empyrria Netlify Identity handler (invite / recovery / confirmation).
+
+  Purpose: complete Identity email flows (password setup, reset, confirm) in a
+  page that never loads Decap CMS.
+
+  Why Decap is bypassed: /admin loads Decap’s Git Gateway login UI, which can
+  race or mask Netlify Identity’s modal when the URL carries #invite_token,
+  #recovery_token, or #confirmation_token. This static page loads only the
+  Identity widget so those flows run cleanly.
+
+  Supported hash flows: invite_token, recovery_token, confirmation_token.
+-->
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Empyrria Admin — Identity</title>
+    <meta name="robots" content="noindex, nofollow" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+      }
+      body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: system-ui, sans-serif;
+        color: #333;
+        background: #fafafa;
+      }
+      #status {
+        max-width: 22rem;
+        padding: 1rem 1.25rem;
+        text-align: center;
+        line-height: 1.45;
+        font-size: 0.95rem;
+      }
+    </style>
+  </head>
+  <body>
+    <p id="status">Loading…</p>
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+    <script>
+      (function () {
+        var statusEl = document.getElementById("status");
+        function setStatus(msg) {
+          if (statusEl) statusEl.textContent = msg;
+        }
+
+        // invite + email confirmation → signup tab; recovery → login tab (reset in modal)
+        function hashType(hash) {
+          if (hash.indexOf("invite_token=") !== -1) return "invite";
+          if (hash.indexOf("confirmation_token=") !== -1) return "confirmation";
+          if (hash.indexOf("recovery_token=") !== -1) return "recovery";
+          return "";
+        }
+
+        function afterAuth() {
+          window.location.replace("https://empyrria-codex.netlify.app/admin/");
+        }
+
+        function start() {
+          var identity = window.netlifyIdentity;
+          if (!identity) {
+            setStatus("Identity widget failed to load. Check the network and try again.");
+            return;
+          }
+
+          try {
+            identity.init();
+          } catch (e) {
+            setStatus("Could not start Netlify Identity.");
+            return;
+          }
+
+          identity.on("login", afterAuth);
+
+          var hash = String(window.location.hash || "");
+          var kind = hashType(hash);
+
+          if (!kind) {
+            setStatus(
+              "No invite or recovery token in this URL. Open the link from your Netlify Identity email, or ask for a new invite."
+            );
+            return;
+          }
+
+          setStatus("Opening Netlify Identity…");
+
+          if (kind === "recovery") {
+            identity.open("login");
+          } else {
+            identity.open("signup");
+          }
+        }
+
+        if (document.readyState === "loading") {
+          document.addEventListener("DOMContentLoaded", start);
+        } else {
+          start();
+        }
+      })();
+    </script>
+  </body>
+</html>
