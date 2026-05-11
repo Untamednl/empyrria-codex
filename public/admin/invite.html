@@ -11,6 +11,9 @@
   Identity widget so those flows run cleanly.
 
   Supported hash flows: invite_token, recovery_token, confirmation_token.
+  Capture window.location.hash before identity.init() — the widget clears the
+  hash during init when it handles tokens; we still need the raw fragment for
+  branching and explicit acceptInvite(token).
 -->
 <html lang="en">
   <head>
@@ -51,7 +54,17 @@
           if (statusEl) statusEl.textContent = msg;
         }
 
-        // invite + email confirmation → signup tab; recovery → login tab (reset in modal)
+        /** Parse invite_token value from hash fragment; do not mutate location.hash here. */
+        function parseInviteTokenFromHash(hash) {
+          var m = String(hash || "").match(/invite_token=([^&]+)/);
+          if (!m) return null;
+          try {
+            return decodeURIComponent(m[1].replace(/\+/g, " "));
+          } catch (e) {
+            return m[1];
+          }
+        }
+
         function hashType(hash) {
           if (hash.indexOf("invite_token=") !== -1) return "invite";
           if (hash.indexOf("confirmation_token=") !== -1) return "confirmation";
@@ -64,6 +77,9 @@
         }
 
         function start() {
+          var rawHash = String(window.location.hash || "");
+          console.log("[invite] raw hash (before init):", rawHash);
+
           var identity = window.netlifyIdentity;
           if (!identity) {
             setStatus("Identity widget failed to load. Check the network and try again.");
@@ -73,14 +89,17 @@
           try {
             identity.init();
           } catch (e) {
+            console.error("[invite] init failure:", e);
             setStatus("Could not start Netlify Identity.");
             return;
           }
 
           identity.on("login", afterAuth);
+          identity.on("error", function (err) {
+            console.error("[invite] identity error:", err);
+          });
 
-          var hash = String(window.location.hash || "");
-          var kind = hashType(hash);
+          var kind = hashType(rawHash);
 
           if (!kind) {
             setStatus(
@@ -91,9 +110,31 @@
 
           setStatus("Opening Netlify Identity…");
 
+          if (kind === "invite") {
+            var inviteToken = parseInviteTokenFromHash(rawHash);
+            console.log("[invite] parsed invite_token length:", inviteToken ? inviteToken.length : 0);
+
+            if (inviteToken && typeof identity.acceptInvite === "function") {
+              try {
+                identity.acceptInvite(inviteToken);
+                console.log("[invite] acceptInvite(token) called OK");
+              } catch (err) {
+                console.error("[invite] acceptInvite(token) threw:", err);
+              }
+            } else {
+              console.log("[invite] acceptInvite not on widget API; signup modal only");
+            }
+
+            identity.open("signup");
+            return;
+          }
+
           if (kind === "recovery") {
             identity.open("login");
-          } else {
+            return;
+          }
+
+          if (kind === "confirmation") {
             identity.open("signup");
           }
         }
