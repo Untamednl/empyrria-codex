@@ -1,15 +1,39 @@
-/* Netlify Identity: any page → /admin/invite.html when hash carries Identity tokens. */
 (function () {
-  console.log("identity redirect script loaded");
-  var h = window.location.hash || "";
-  if (
-    h.indexOf("invite_token=") === -1 &&
-    h.indexOf("recovery_token=") === -1 &&
-    h.indexOf("confirmation_token=") === -1
-  ) {
-    return;
+  function redirectIdentityToken() {
+    try {
+      const href = window.location.href || "";
+      const hashIndex = href.indexOf("#");
+      let rawHash = hashIndex >= 0 ? href.slice(hashIndex) : "";
+      if (!rawHash) {
+        rawHash = window.location.hash || "";
+      }
+
+      console.log("[identity] href (source):", href);
+      console.log("[identity] raw hash:", rawHash);
+
+      if (
+        !rawHash ||
+        (!rawHash.includes("invite_token=") &&
+          !rawHash.includes("recovery_token=") &&
+          !rawHash.includes("confirmation_token="))
+      ) {
+        return;
+      }
+
+      const target =
+        window.location.origin + "/admin/invite.html" + rawHash;
+
+      console.log("[identity] redirect target:", target);
+
+      window.location.href = target;
+    } catch (err) {
+      console.error("[identity] redirect failure:", err);
+    }
   }
-  const target = new URL("/admin/invite.html" + h, window.location.origin).toString();
-  console.log("identity token detected", target);
-  window.location.replace(target);
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", redirectIdentityToken);
+  } else {
+    redirectIdentityToken();
+  }
 })();
