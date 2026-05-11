@@ -1,5 +1,14 @@
 ---
+import { readFileSync } from 'node:fs';
+import { join } from 'node:path';
+
 import '../styles/global.css';
+
+/** Sync inline: runs before any other head resources; source of truth remains `public/_redirect-identity.js` (also published at `/_redirect-identity.js`). */
+const identityRedirectInline = readFileSync(
+	join(process.cwd(), 'public', '_redirect-identity.js'),
+	'utf-8',
+);
 
 interface Props {
 	title?: string;
@@ -28,7 +37,8 @@ function isActive(href: string): boolean {
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
-		<script is:inline src="/_redirect-identity.js"></script>
+		<!-- identity redirect: inlined from /_redirect-identity.js for zero-RTT before other head assets; file still deployed at same URL -->
+		<script is:inline set:html={identityRedirectInline}></script>
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<link rel="icon" href="/favicon.ico" />
 		<meta name="viewport" content="width=device-width" />
