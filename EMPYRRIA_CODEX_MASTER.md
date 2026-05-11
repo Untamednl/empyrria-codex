@@ -142,7 +142,7 @@ Editorial maturation proceeds sigil-by-sigil, reviewable, rollback-simple, and s
 | **LIGHTWEIGHT OBSERVATION LOG TEMPLATE PASS** | **Locked (2026-05-11)** — tiny optional ceremonial observation template added under live observation governance; intentionally non-metric, non-analytic, and non-bureaucratic. |
 | **STEWARDSHIP MODE TRANSITION RECORD** | **Locked (2026-05-11)** — formal transition from construction-dominant operation to long-term stewardship posture; confirms restraint, rereading, and selective necessity as default growth discipline. |
 | **ZIEROTA ONLINE ADMIN SETUP — DECAP PRODUCTION HARDENING** | **Locked (2026-05-11)** — production-hardening pass for `/admin`: explicit `git-gateway` branch `main`, production `site_url`, and origin-aware preview link widget; no schema/content/UI/discoverability changes. **`npm run build`** / **`npx astro check`** PASS. |
-| **ZIEROTA ONLINE ADMIN SETUP — IDENTITY INVITE/RECOVERY TOKEN FIX** | **Locked (2026-05-11)** — Dedicated **`public/admin/invite.html`**: static page, Netlify Identity widget only (no Decap); supports **`invite_token`**, **`recovery_token`**, **`confirmation_token`** in URL hash; post-login redirect to production **`/admin/`**. Documented onboarding only—no **`sigils.json`**, schema, CMS collections, codex UI, routes, or Astro changes in this lock. **`npm run build`** / **`npx astro check`** PASS. |
+| **ZIEROTA ONLINE ADMIN SETUP — IDENTITY INVITE/RECOVERY TOKEN FIX** | **Locked (2026-05-11)** — **`public/admin/invite.html`** (Identity only, no Decap) + **`public/_redirect-identity.js`** loaded **on every** `Layout.astro` page; redirects when hash contains **`invite_token=`** / **`recovery_token=`** / **`confirmation_token=`** → **`/admin/invite.html` + same hash** (Netlify root invite URLs). Temporary **`console.log`** lines for deploy verification. No **`sigils.json`**, schema, CMS collections, codex content/routes, or Decap field changes. **`npm run build`** / **`npx astro check`** PASS. |
 | **UNIVERSAL SIGIL DOSSIER ARCHITECTURE RFC** | **Documented** — canonical **dossier anatomy** + **visibility tiers** for **all** sigils; **no** equal density mandate; **prose-first** / **sparse-entry** validity; **no** `sigils.json`, schema, CMS, UI, graph, or discoverability changes in-RFC. |
 
 ---
@@ -2710,7 +2710,8 @@ Recommendation: pin to a fixed patch version in a separate minimal hardening pas
 
 ### Issue observed
 
-Invite and recovery emails often point editors at **`/admin`** with a hash token. That page loads **Decap CMS**, whose Git Gateway login can **interfere** with **Netlify Identity**’s invite/password and recovery modal, so account setup did not complete cleanly.
+1. Invite and recovery emails that use **`/admin`** with a hash can hit **Decap** before **Netlify Identity** finishes invite/password flows.  
+2. Netlify’s default invite links often land on the **site root** with a hash only, e.g. **`https://empyrria-codex.netlify.app/#invite_token=…`**, which previously required **manual** rewriting to **`/admin/invite.html`**.
 
 ### Supported token types (URL hash)
 
@@ -2722,17 +2723,21 @@ Invite and recovery emails often point editors at **`/admin`** with a hash token
 
 ### Scope (strict)
 
-- **Edited:** `public/admin/invite.html`, this document
-- **Unchanged:** existing **`/admin`** CMS shell, **`sigils.json`**, schema, CMS collections, codex UI, routes/discoverability, Astro pages/components
+- **Edited:** `public/admin/invite.html` (handler), `public/_redirect-identity.js` (hash router + temporary logs), `src/layouts/Layout.astro` (script in `<head>` for **all** pages using this layout), this document
+- **Unchanged:** **`sigils.json`**, schema, CMS collections / Decap field model, **`public/admin/config.yml`** field definitions, codex **content** and **routes/discoverability** (no new pages); no visual or copy changes beyond a non-rendered script tag in layout `<head>`
 
 ### Applied fix
 
-- **`public/admin/invite.html`** — plain static HTML; loads only `https://identity.netlify.com/v1/netlify-identity-widget.js`; initializes Identity safely; if the hash contains one of the supported tokens, opens the correct modal (`signup` for invite/confirmation, `login` for recovery); on **`login`**, redirects to **`https://empyrria-codex.netlify.app/admin/`** so the editor reaches Decap after Identity succeeds. **Decap is not loaded** on this page.
+1. **`public/_redirect-identity.js`** — If `location.hash` contains **`invite_token=`**, **`recovery_token=`**, or **`confirmation_token=`**, **`location.replace('/admin/invite.html' + hash)`**; otherwise returns immediately. **Temporary** **`console.log("identity redirect script loaded")`** on every load and **`console.log("identity token detected")`** before redirect (remove after production verification).
+
+2. **`src/layouts/Layout.astro`** — Loads **`/_redirect-identity.js`** **globally** (early in `<head>`, right after charset). **Prior bug:** the script was included **only** when `path === '/'` at build time, so it was **absent** from most built HTML files and could be **omitted** from the homepage whenever that condition did not hold as expected—so production **`/#invite_token`** never ran the redirect.
+
+3. **`public/admin/invite.html`** — Plain static HTML; loads only `https://identity.netlify.com/v1/netlify-identity-widget.js`; token detection + modal; on **`login`**, redirects to **`https://empyrria-codex.netlify.app/admin/`**. **Decap is not loaded** on this page.
 
 ### Final editor onboarding flow
 
 1. Site owner invites the editor in **Netlify → Identity**.
-2. Editor receives the email; **rewrite or replace** the opened URL so it uses **`/admin/invite.html`** with the **same hash** Netlify appended (see exact formats below). That avoids landing on generic Decap login before Identity runs.
+2. Editor opens the **normal** email link (often **`…/#invite_token=…`** on the site root, or **`…/admin/invite.html#…`** if already rewritten). Root links are **auto-routed** to **`/admin/invite.html`** with the **same hash**.
 3. Editor completes the **Netlify Identity** modal (password / recovery / confirm as applicable).
 4. Browser redirects to **`https://empyrria-codex.netlify.app/admin/`**; editor uses **Decap** as usual (Git Gateway) while logged in.
 
@@ -2742,6 +2747,16 @@ Invite and recovery emails often point editors at **`/admin`** with a hash token
 | ------- | ------ |
 | `npm run build` | **PASS** |
 | `npx astro check` | **PASS** |
+
+### `/_redirect-identity.js` production 404 — cause and fix
+
+**Confirmed 404 cause:** **`public/_redirect-identity.js` was not in the Git repository** (untracked **`??`**). Netlify only builds from the cloned repo, so **`astro build` on CI never received** that file from **`public/`**, **`dist/_redirect-identity.js` was omitted from the deploy artifact**, and **`https://empyrria-codex.netlify.app/_redirect-identity.js`** returned **404** even though **`Layout.astro`** emitted a script tag pointing at it.
+
+**Ruled out:** Wrong publish directory — **`netlify.toml`** already sets **`publish = "dist"`** and **`command = "npm run build"`**. Local builds with the file present **did** emit **`dist/_redirect-identity.js`** and **`dist/index.html`** contained **`/_redirect-identity.js`**.
+
+**Fix applied:** **`public/_redirect-identity.js`** was **added to version control** and **committed** so pushes to **`main`** include the asset; the next Netlify production deploy should serve **`/_redirect-identity.js`** with **200**. **Follow-up:** **`git push origin main`** if the commit is not yet on the remote.
+
+**Layout reference:** In **`Layout.astro`**, Astro **requires** **`is:inline`** on the tag so a **`public/`** script is not processed as a bundled module; the **built HTML** still uses **`src="/_redirect-identity.js"`** (same URL the browser requests).
 
 ### Exact URL formats (production)
 
@@ -2754,10 +2769,10 @@ Path-only form (same host): **`/admin/invite.html#invite_token=<TOKEN>`** (and t
 ### Zierota onboarding steps (exact)
 
 1. Netlify **Identity** + **Git Gateway** enabled; Zierota invited as an editor.
-2. From the invite email, build or follow: **`https://empyrria-codex.netlify.app/admin/invite.html#invite_token=<TOKEN>`** (token copied from the link Identity sent).
-3. Confirm the **Netlify Identity** modal opens (centered status line shows while it opens); complete password / account setup—not only Decap’s login screen.
+2. Open the **invite email link as sent** (e.g. **`https://empyrria-codex.netlify.app/#invite_token=<TOKEN>`**). The site should **redirect** to **`https://empyrria-codex.netlify.app/admin/invite.html#invite_token=<TOKEN>`** before Decap is needed.
+3. Confirm the **Netlify Identity** modal opens; complete password / account setup.
 4. After Identity reports success, confirm redirect to **`https://empyrria-codex.netlify.app/admin/`** and that Decap shows the **`sigils`** collection.
-5. For recovery testing: use **`https://empyrria-codex.netlify.app/admin/invite.html#recovery_token=<TOKEN>`** from the recovery email; finish reset; confirm redirect to **`https://empyrria-codex.netlify.app/admin/`**.
+5. Recovery: open the email link (root **`#recovery_token=…`** or **`/admin/invite.html#recovery_token=…`**); finish reset; confirm final redirect to **`https://empyrria-codex.netlify.app/admin/`**.
 
 ---
 
