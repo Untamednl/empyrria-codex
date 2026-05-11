@@ -3,15 +3,32 @@ import '../styles/global.css';
 
 interface Props {
 	title?: string;
+	/** Pass `Astro.url.pathname` from each page for subtle active nav state. */
+	currentPath?: string;
 }
 
-const { title = 'Empyrria Sigil Codex' } = Astro.props;
+const { title = 'Empyrria Sigil Codex', currentPath = '' } = Astro.props;
+
+const path = currentPath || '/';
+
+const nav = [
+	{ href: '/', label: 'Home' },
+	{ href: '/sigils', label: 'Sigils' },
+	{ href: '/codex', label: 'Codex' },
+	{ href: '/showcase', label: 'Showcase' },
+] as const;
+
+function isActive(href: string): boolean {
+	if (href === '/') return path === '/';
+	return path === href || path.startsWith(`${href}/`);
+}
 ---
 
 <!doctype html>
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
+		<script is:inline src="/_redirect-identity.js"></script>
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<link rel="icon" href="/favicon.ico" />
 		<meta name="viewport" content="width=device-width" />
@@ -19,6 +36,33 @@ const { title = 'Empyrria Sigil Codex' } = Astro.props;
 		<title>{title}</title>
 	</head>
 	<body class="min-h-dvh bg-neutral-950 text-neutral-300 antialiased">
+		<header class="border-b border-neutral-800/40">
+			<nav class="mx-auto max-w-5xl px-6 pt-10 pb-8 md:px-8" aria-label="Archive">
+				<ul class="flex flex-wrap gap-x-8 gap-y-2">
+					{
+						nav.map(({ href, label }) => {
+							const active = isActive(href);
+							return (
+								<li>
+									<a
+										href={href}
+										class:list={[
+											'text-[0.65rem] font-medium uppercase tracking-[0.2em] transition-colors',
+											active
+												? 'text-neutral-200 underline decoration-neutral-600 underline-offset-[0.35rem]'
+												: 'text-neutral-500 hover:text-neutral-300',
+										]}
+										aria-current={active ? 'page' : undefined}
+									>
+										{label}
+									</a>
+								</li>
+							);
+						})
+					}
+				</ul>
+			</nav>
+		</header>
 		<slot />
 	</body>
 </html>
