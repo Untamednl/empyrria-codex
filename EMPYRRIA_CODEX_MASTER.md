@@ -142,7 +142,7 @@ Editorial maturation proceeds sigil-by-sigil, reviewable, rollback-simple, and s
 | **LIGHTWEIGHT OBSERVATION LOG TEMPLATE PASS** | **Locked (2026-05-11)** — tiny optional ceremonial observation template added under live observation governance; intentionally non-metric, non-analytic, and non-bureaucratic. |
 | **STEWARDSHIP MODE TRANSITION RECORD** | **Locked (2026-05-11)** — formal transition from construction-dominant operation to long-term stewardship posture; confirms restraint, rereading, and selective necessity as default growth discipline. |
 | **ZIEROTA ONLINE ADMIN SETUP — DECAP PRODUCTION HARDENING** | **Locked (2026-05-11)** — production-hardening pass for `/admin`: explicit `git-gateway` branch `main`, production `site_url`, and origin-aware preview link widget; no schema/content/UI/discoverability changes. **`npm run build`** / **`npx astro check`** PASS. |
-| **ZIEROTA ONLINE ADMIN SETUP — IDENTITY INVITE/RECOVERY TOKEN FIX** | **Locked (2026-05-11)** — **`public/admin/invite.html`** (Identity only, no Decap) + **`public/_redirect-identity.js`** loaded **on every** `Layout.astro` page; redirects when hash contains **`invite_token=`** / **`recovery_token=`** / **`confirmation_token=`** → **`/admin/invite.html` + same hash** (Netlify root invite URLs). Temporary **`console.log`** lines for deploy verification. No **`sigils.json`**, schema, CMS collections, codex content/routes, or Decap field changes. **`npm run build`** / **`npx astro check`** PASS. |
+| **ZIEROTA ONLINE ADMIN SETUP — IDENTITY INVITE/RECOVERY TOKEN FIX** | **Locked (2026-05-11)** — **`public/admin/invite.html`** (Identity only, no Decap) + **`public/_redirect-identity.js`** on every `Layout.astro` page; token hash → **`new URL("/admin/invite.html" + hash, origin)`** same-origin redirect (fixes Firefox treating **`admin`** as hostname). Temporary **`console.log`** for verification. No **`sigils.json`**, schema, CMS collections, codex content/routes, or Decap field changes. **`npm run build`** / **`npx astro check`** PASS. |
 | **UNIVERSAL SIGIL DOSSIER ARCHITECTURE RFC** | **Documented** — canonical **dossier anatomy** + **visibility tiers** for **all** sigils; **no** equal density mandate; **prose-first** / **sparse-entry** validity; **no** `sigils.json`, schema, CMS, UI, graph, or discoverability changes in-RFC. |
 
 ---
@@ -2728,7 +2728,7 @@ Recommendation: pin to a fixed patch version in a separate minimal hardening pas
 
 ### Applied fix
 
-1. **`public/_redirect-identity.js`** — If `location.hash` contains **`invite_token=`**, **`recovery_token=`**, or **`confirmation_token=`**, **`location.replace('/admin/invite.html' + hash)`**; otherwise returns immediately. **Temporary** **`console.log("identity redirect script loaded")`** on every load and **`console.log("identity token detected")`** before redirect (remove after production verification).
+1. **`public/_redirect-identity.js`** — If `location.hash` contains **`invite_token=`**, **`recovery_token=`**, or **`confirmation_token=`**, builds an explicit same-origin URL with **`new URL("/admin/invite.html" + hash, window.location.origin).toString()`** then **`location.replace(target)`** (avoids malformed relative navigation where **`admin`** was interpreted as a **hostname** in some environments). **Temporary** **`console.log("identity redirect script loaded")`** on every load and **`console.log("identity token detected", target)`** before redirect (remove after production verification).
 
 2. **`src/layouts/Layout.astro`** — Loads **`/_redirect-identity.js`** **globally** (early in `<head>`, right after charset). **Prior bug:** the script was included **only** when `path === '/'` at build time, so it was **absent** from most built HTML files and could be **omitted** from the homepage whenever that condition did not hold as expected—so production **`/#invite_token`** never ran the redirect.
 
@@ -2757,6 +2757,8 @@ Recommendation: pin to a fixed patch version in a separate minimal hardening pas
 **Fix applied:** **`public/_redirect-identity.js`** was **added to version control** and **committed** so pushes to **`main`** include the asset; the next Netlify production deploy should serve **`/_redirect-identity.js`** with **200**. **Follow-up:** **`git push origin main`** if the commit is not yet on the remote.
 
 **Layout reference:** In **`Layout.astro`**, Astro **requires** **`is:inline`** on the tag so a **`public/`** script is not processed as a bundled module; the **built HTML** still uses **`src="/_redirect-identity.js"`** (same URL the browser requests).
+
+**Malformed redirect target (confirmed, fixed):** Using **`location.replace("/admin/invite.html" + hash)`** led Firefox to treat the navigation as a **bad URL** and resolve **`admin`** as a **host** (“Server Not Found” for host **`admin`**). **Fix:** resolve with **`new URL("/admin/invite.html" + hash, window.location.origin)`** so the redirect is always a **full same-origin HTTPS URL** (e.g. **`https://empyrria-codex.netlify.app/admin/invite.html#invite_token=…`**).
 
 ### Exact URL formats (production)
 

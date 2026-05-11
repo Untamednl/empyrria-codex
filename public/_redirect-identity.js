@@ -9,6 +9,7 @@
   ) {
     return;
   }
-  console.log("identity token detected");
-  window.location.replace("/admin/invite.html" + h);
+  const target = new URL("/admin/invite.html" + h, window.location.origin).toString();
+  console.log("identity token detected", target);
+  window.location.replace(target);
 })();
