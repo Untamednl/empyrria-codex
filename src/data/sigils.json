@@ -3,150 +3,149 @@
   "version": "10",
   "sigils": [
     {
-      "title": "Soulflame · Core of Being",
-      "meaning": "Foundational inward identity—not passing state nor outward display. ",
-      "facets": [
-        "Core / Energy"
-      ],
+      "usage": "Character codification, identity pages, Underlay cues where foundational self—not passing mood—is the operative referent.",
+      "color": "Bound to portrayed identity—not interchangeable or purely ornamental palette.",
       "terms": [
         "Soulflame"
       ],
-      "slug": "soulflame-sigil",
-      "name": "Soulflame Sigil",
-      "layer": "Core · Layer 1",
-      "category": "Core / Energy",
       "doctrine": "Meaning / Function: Represents the Core of Being. Soulflame is not a transient state nor outward phenomenon. It names foundational identity as inward continuity—stable presence of self that does not reduce to circumstance or mood.",
-      "usage": "Character codification, identity pages, Underlay cues where foundational self—not passing mood—is the operative referent.",
+      "name": "Soulflame Sigil",
+      "title": "Soulflame · Core of Being",
+      "meaning": "Foundational inward identity—not passing state nor outward display.",
+      "layer": "Core · Layer 1",
+      "slug": "soulflame-sigil",
+      "underlay": "",
       "geometry": "Continuity-bearing symbolic form; inward settlement rather than kinetic command geometry or ornamental outward thrust.",
-      "color": "Bound to portrayed identity—not interchangeable or purely ornamental palette.",
-      "image": "/media/sigils/soulflame.svg",
       "status": "provisional",
       "visibility": "marked_public",
-      "lastCanonReview": "2026-05-12"
+      "facets": [
+        "Core / Energy"
+      ],
+      "category": "Core / Energy",
+      "image": "/media/sigils/soulflame.svg"
     },
     {
-      "facets": [
-        "State Sigil"
-      ],
+      "usage": "State designation; narrative moments of precise perception, reduced misread, and sustained discriminative judgment—not wellness framing, productivity-plot conceits, nor didactic coaching rhythm.",
+      "color": "Contrast and separation tuned for legible distinction—clear seeing without sentimental wash or decorative blur.",
       "terms": [
         "Top-Clear-Mind",
         "Sha-ri om"
       ],
-      "slug": "top-clear-mind",
-      "name": "Top-Clear-Mind",
-      "category": "State Sigil",
       "doctrine": "Meaning / Function: Cognitive clarity without emotional suppression. Names unobstructed cognition—interpretive order, distortion checked, judgment legible—not euphoria, not identity substitution, nor narrowed trance attention.",
-      "usage": "State designation; narrative moments of precise perception, reduced misread, and sustained discriminative judgment—not wellness framing, productivity-plot conceits, nor didactic coaching rhythm.",
+      "name": "Top-Clear-Mind",
+      "slug": "top-clear-mind",
+      "underlay": "",
       "geometry": "Radial symmetry; structural balance read as stable cognitive reference—clarity embodied as ordered form, not restful mood or ornamental softness.",
-      "color": "Contrast and separation tuned for legible distinction—clear seeing without sentimental wash or decorative blur.",
-      "image": "/media/sigils/top-clear-mind.svg",
       "status": "provisional",
       "visibility": "marked_public",
-      "lastCanonReview": "2026-05-12"
-    },
-    {
-      "title": "Top-Solid-Anchor / Sha-karys · Bearing Foundation",
-      "meaning": "Load-bearing continuity—stable holding without spectacle or force display.",
       "facets": [
         "State Sigil"
       ],
+      "category": "State Sigil",
+      "image": "/media/sigils/top-clear-mind.svg"
+    },
+    {
+      "usage": "Structural-support contexts: carrying consequence without collapse, preserving positional integrity, and holding continuity under sustained load—without spectacle.",
+      "color": "Muted earth-steel range signaling dependable footing and steady load-bearing presence; no triumphal saturation.",
       "terms": [
         "Sha-karys",
         "Karys"
       ],
-      "slug": "top-solid-anchor-sha-karys",
-      "name": "Top-Solid-Anchor / Sha-karys",
-      "layer": "State · Layer 2",
-      "category": "State Sigil",
       "doctrine": "Meaning / Function: Structural support of conscious existence under weight. Marks the capacity to hold position, continuity, and form under sustained load—without escalation, spectacle, or dominance display.",
-      "usage": "Structural-support contexts: carrying consequence without collapse, preserving positional integrity, and holding continuity under sustained load—without spectacle.",
+      "name": "Top-Solid-Anchor / Sha-karys",
+      "title": "Top-Solid-Anchor / Sha-karys · Bearing Foundation",
+      "meaning": "Load-bearing continuity—stable holding without spectacle or force display.",
+      "layer": "State · Layer 2",
+      "slug": "top-solid-anchor-sha-karys",
+      "underlay": "",
       "geometry": "Anchored load-bearing structure with grounded footing and stable vertical support; form reads as positional integrity rather than directional aggression.",
-      "color": "Muted earth-steel range signaling dependable footing and steady load-bearing presence; no triumphal saturation.",
       "status": "provisional",
       "visibility": "marked_public",
-      "lastCanonReview": "2026-05-12"
+      "facets": [
+        "State Sigil"
+      ],
+      "category": "State Sigil"
     },
     {
-      "title": "Zenga Zellia · Reciprocal Resonance",
-      "meaning": "Aligned recognition in mirrored relation—proximity without fusion.",
-      "facets": [
-        "Relational Sigil"
-      ],
+      "usage": "Relational alignment scenes: reciprocal attunement, reduced misread, and stable mutual orientation between beings—without social-drama framing.",
+      "color": "Magenta-led contrast as relational signal; quiet magnetic distinction without sentimental wash.",
       "terms": [
         "Zenga",
         "Zellia"
       ],
-      "slug": "zenga-zellia",
-      "name": "Zenga Zellia",
-      "layer": "Relational · Layer 2",
-      "category": "Relational Sigil",
       "doctrine": "Meaning / Function: Relational resonance as structured alignment between two beings. Marks reciprocal recognition held in meaningful proximity—neither fusion nor sentimental overflow; preserves tension, distinction, and coherent relation.",
-      "usage": "Relational alignment scenes: reciprocal attunement, reduced misread, and stable mutual orientation between beings—without social-drama framing.",
+      "name": "Zenga Zellia",
+      "title": "Zenga Zellia · Reciprocal Resonance",
+      "meaning": "Aligned recognition in mirrored relation—proximity without fusion.",
+      "layer": "Relational · Layer 2",
+      "slug": "zenga-zellia",
+      "underlay": "",
       "geometry": "Dual mirrored structure with reciprocal orientation; relational tension carried by balanced opposition rather than merged symmetry.",
-      "color": "Magenta-led contrast as relational signal; quiet magnetic distinction without sentimental wash.",
-      "image": "/media/sigils/zenga-zellia.svg",
       "status": "provisional",
       "visibility": "marked_public",
-      "lastCanonReview": "2026-05-12"
+      "facets": [
+        "Relational Sigil"
+      ],
+      "category": "Relational Sigil",
+      "image": "/media/sigils/zenga-zellia.svg"
     },
     {
-      "title": "IAH-VEA · Declared Structure",
-      "meaning": "Doctrine at rest as legible form—witness, not cultivation.",
-      "facets": [
-        "Doctrine Sigil"
-      ],
+      "usage": "Publication and fixation of doctrine—marking what is formally held true and witnessing declared order. Operates as record and designation; not channel, enhancement, nor force projection.",
+      "color": "Stone, ash, inscribed metal on neutral ground; restrained contrast; archival, not ceremonial saturation.",
       "terms": [
         "IAH-VEA"
       ],
-      "slug": "iah-vea",
-      "name": "IAH-VEA",
-      "layer": "Doctrine · Layer 2",
-      "category": "Doctrine Sigil",
       "doctrine": "Meaning / Function: Inscription of declared structure—not felt, not trained. States what doctrine has already fixed as form—open, stable, and formally witnessed. Carries no implication of attainment, rehearsal, or affective cultivation.",
-      "usage": "Publication and fixation of doctrine—marking what is formally held true and witnessing declared order. Operates as record and designation; not channel, enhancement, nor force projection.",
+      "name": "IAH-VEA",
+      "title": "IAH-VEA · Declared Structure",
+      "meaning": "Doctrine at rest as legible form—witness, not cultivation.",
+      "layer": "Doctrine · Layer 2",
+      "slug": "iah-vea",
+      "underlay": "",
       "geometry": "Vertical pillar read as primary bearer of declared order; doctrinal spacing and inscriptional rhythm (steady interval, ruled bands); frontal seal- or tablet-surface posture—declarative layout, shallow subordinate top lintel only (thin inset stroke; not a full fascia or baseline), minimal lateral flourish.",
-      "color": "Stone, ash, inscribed metal on neutral ground; restrained contrast; archival, not ceremonial saturation.",
-      "image": "/media/sigils/iah-vea.svg",
       "status": "provisional",
       "visibility": "marked_public",
-      "lastCanonReview": "2026-05-12"
+      "facets": [
+        "Doctrine Sigil"
+      ],
+      "category": "Doctrine Sigil",
+      "image": "/media/sigils/iah-vea.svg"
     },
     {
+      "slug": "top-iron-endurance",
+      "name": "Top-Iron-Endurance",
       "title": "Top-Iron-Endurance · Bearing Under Load",
       "meaning": "Presence under weight—continuance without dissolution into relief or spectacle.",
+      "layer": "State · Layer 2",
+      "category": "State Sigil",
       "facets": [
         "State Sigil"
       ],
-      "terms": [
-        "Top-Iron-Endurance",
-        "Endurance"
-      ],
-      "slug": "top-iron-endurance",
-      "name": "Top-Iron-Endurance",
-      "layer": "State · Layer 2",
-      "category": "State Sigil",
+      "status": "provisional",
+      "visibility": "marked_public",
+      "image": "/media/sigils/top-iron-endurance.svg",
       "doctrine": "Meaning / Function: Names continuance of conscious presence under load—endurance read as bearing, not spectacle. The sigil designates inner structure sustained when conditions stay difficult; it is not celebration, mandatory optimism, nor instruction to seek relief at the expense of integrity.",
       "usage": "Marks sustained effort through difficulty—identity held under consequence. Teaching and narrative framing; not packaged as activation choreography.",
       "geometry": "Vertical bearer resting on grounded cross-footing; restrained proportion; dashed interior suggesting sustained span held—load-bearing symbolism without ornament.",
       "color": "Iron and muted cool neutral—low saturation, patient weight.",
-      "image": "/media/sigils/top-iron-endurance.svg",
-      "status": "provisional",
-      "visibility": "marked_public",
-      "lastCanonReview": "2026-05-12",
+      "terms": [
+        "Top-Iron-Endurance",
+        "Endurance"
+      ],
       "underlay": "Lore context (secondary to doctrine): Readers meet this motif where a character refuses the easy dissolution of self when exits appear. Narrative explanatory layer only—distinct from operative doctrine blocks above.\n---\nRelations preview: Nearby to grounding-and-weight language used by Top-Solid-Anchor / Sha-karys; not interchangeable doctrine—shared vocabulary of stability, different symbolic stance."
     },
     {
-      "facets": [
-        "Internal Test"
-      ],
-      "slug": "internal-test-fixture",
-      "name": "Internal Test Fixture",
-      "category": "Internal Test",
       "doctrine": "Internal testing fixture only. This entry is non-public, non-canon, and exists solely to verify discovery visibility boundaries.",
+      "name": "Internal Test Fixture",
+      "slug": "internal-test-fixture",
+      "underlay": "",
       "geometry": "Non-public test structure; not production narrative content.",
       "status": "provisional",
       "visibility": "internal",
-      "lastCanonReview": "2026-05-12"
+      "facets": [
+        "Internal Test"
+      ],
+      "category": "Internal Test"
     }
   ]
 }
