@@ -5,9 +5,14 @@ const ROOT = process.cwd();
 const DATA_RELATIVE = "src/data/sigils.json";
 const DATA_PATH = path.join(ROOT, DATA_RELATIVE);
 const SLUG_PATTERN = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
+const ISO_DATE_PATTERN = /^\d{4}-\d{2}-\d{2}$/;
 
 function makeError(index, code, entity, field, reason, recommendation) {
   return `[E${String(index).padStart(3, "0")}] ${code} | ${entity} | ${field} | ${reason} | fix: ${recommendation}`;
+}
+
+function makeWarning(index, code, entity, field, reason, recommendation) {
+  return `[W${String(index).padStart(3, "0")}] ${code} | ${entity} | ${field} | ${reason} | fix: ${recommendation}`;
 }
 
 async function fileExists(targetPath) {
@@ -25,6 +30,7 @@ function toNonEmptyString(value) {
 
 async function validate() {
   const errors = [];
+  const warnings = [];
 
   if (!(await fileExists(DATA_PATH))) {
     errors.push(
@@ -37,7 +43,7 @@ async function validate() {
         "create src/data/sigils.json"
       )
     );
-    return errors;
+    return { errors, warnings };
   }
 
   let rawText = "";
@@ -54,7 +60,7 @@ async function validate() {
         "verify file permissions and path"
       )
     );
-    return errors;
+    return { errors, warnings };
   }
 
   let payload;
@@ -71,7 +77,7 @@ async function validate() {
         "fix JSON syntax in src/data/sigils.json"
       )
     );
-    return errors;
+    return { errors, warnings };
   }
 
   if (!payload || typeof payload !== "object" || Array.isArray(payload)) {
@@ -85,7 +91,7 @@ async function validate() {
         "ensure top-level JSON is an object with version and sigils"
       )
     );
-    return errors;
+    return { errors, warnings };
   }
 
   if (!("version" in payload)) {
@@ -112,7 +118,7 @@ async function validate() {
         "add a top-level sigils array"
       )
     );
-    return errors;
+    return { errors, warnings };
   }
 
   if (!Array.isArray(payload.sigils)) {
@@ -126,7 +132,7 @@ async function validate() {
         "set sigils to an array of sigil objects"
       )
     );
-    return errors;
+    return { errors, warnings };
   }
 
   const seenSlugs = new Map();
@@ -147,6 +153,11 @@ async function validate() {
       );
       continue;
     }
+
+    const sigilLabel =
+      typeof sigil.slug === "string" && sigil.slug.trim().length > 0
+        ? `${entity} (${sigil.slug})`
+        : entity;
 
     for (const fieldName of ["name", "slug", "doctrine"]) {
       if (!(fieldName in sigil)) {
@@ -201,6 +212,101 @@ async function validate() {
           "facets",
           "facets must be an array when present",
           "set facets to an array or remove it"
+        )
+      );
+    }
+
+    if (sigil.status === "deprecated" && !toNonEmptyString(sigil.deprecatedReason)) {
+      errors.push(
+        makeError(
+          errors.length + 1,
+          "CANON_DEPRECATED_REASON_MISSING",
+          sigilLabel,
+          "deprecatedReason",
+          "status is deprecated but deprecatedReason is missing or empty",
+          "add a non-empty deprecatedReason"
+        )
+      );
+    }
+
+    if (sigil.status === "archived" && !toNonEmptyString(sigil.archivedReason)) {
+      errors.push(
+        makeError(
+          errors.length + 1,
+          "CANON_ARCHIVED_REASON_MISSING",
+          sigilLabel,
+          "archivedReason",
+          "status is archived but archivedReason is missing or empty",
+          "add a non-empty archivedReason"
+        )
+      );
+    }
+
+    if (sigil.status === "draft" && sigil.visibility === "public") {
+      errors.push(
+        makeError(
+          errors.length + 1,
+          "CANON_VISIBILITY_INVALID",
+          sigilLabel,
+          "visibility",
+          "draft content must not use public visibility",
+          "set visibility to hidden or internal"
+        )
+      );
+    }
+
+    if (sigil.status === "archived" && sigil.visibility === "public") {
+      errors.push(
+        makeError(
+          errors.length + 1,
+          "CANON_VISIBILITY_INVALID",
+          sigilLabel,
+          "visibility",
+          "archived content must not use public visibility",
+          "set visibility to archive_only or hidden"
+        )
+      );
+    }
+
+    if (sigil.status === "provisional" && sigil.visibility === "public") {
+      warnings.push(
+        makeWarning(
+          warnings.length + 1,
+          "CANON_VISIBILITY_REVIEW",
+          sigilLabel,
+          "visibility",
+          "provisional public content should be explicitly marked",
+          "use marked_public unless this is intentionally unmarked"
+        )
+      );
+    }
+
+    if (sigil.status === "approved" && sigil.visibility === "hidden") {
+      warnings.push(
+        makeWarning(
+          warnings.length + 1,
+          "CANON_VISIBILITY_REVIEW",
+          sigilLabel,
+          "visibility",
+          "approved canon is hidden from public visibility",
+          "confirm this is intentional and documented"
+        )
+      );
+    }
+
+    if (
+      typeof sigil.lastCanonReview === "string" &&
+      sigil.lastCanonReview.trim().length > 0 &&
+      !ISO_DATE_PATTERN.test(sigil.lastCanonReview)
+    ) {
+      errors.push(
+        makeError(
+          errors.length + 1,
+          "CANON_REVIEW_DATE_INVALID",
+          sigilLabel,
+          "lastCanonReview",
+          "lastCanonReview must use YYYY-MM-DD format when present",
+          "set lastCanonReview to an ISO date such as 2026-05-08"
         )
       );
     }
@@ -283,14 +389,17 @@ async function validate() {
     }
   }
 
-  return errors;
+  return { errors, warnings };
 }
 
 async function main() {
   try {
-    const errors = await validate();
+    const { errors, warnings } = await validate();
 
     if (errors.length === 0) {
+      for (const warningLine of warnings) {
+        console.warn(warningLine);
+      }
       console.log("[validate:content] PASS");
       process.exit(0);
     }
@@ -298,6 +407,9 @@ async function main() {
     console.error(`[validate:content] FAILED (${errors.length} errors)`);
     for (const errorLine of errors) {
       console.error(errorLine);
+    }
+    for (const warningLine of warnings) {
+      console.warn(warningLine);
     }
     process.exit(1);
   } catch (error) {

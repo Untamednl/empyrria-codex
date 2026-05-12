@@ -1,191 +1,101 @@
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>System Architecture — Empyrria Codex</title>
+---
+import Layout from '../../layouts/Layout.astro';
 
-    <style>
-      body {
-        margin: 0;
-        font-family: system-ui, sans-serif;
-        background: #0a0a0f;
-        color: #e5e7eb;
-        line-height: 1.7;
-      }
+const hSystem =
+	'border-b border-neutral-800/35 pb-6 text-lg font-bold uppercase tracking-[0.14em] text-cyan-300/82 md:text-xl';
+const pBody = 'mt-8 text-sm leading-relaxed text-neutral-400';
+---
 
-      .container {
-        max-width: 760px;
-        margin: 0 auto;
-        padding: 80px 24px;
-      }
+<Layout title="System Architecture · Empyrria Sigil Codex" currentPath={Astro.url.pathname}>
+	<main class="mx-auto max-w-2xl px-6 py-12 md:px-8 md:py-16">
+		<p class="text-[0.65rem] font-medium uppercase tracking-[0.2em] text-neutral-500">Codex</p>
+		<h1
+			class="mt-3 text-[2.125rem] font-semibold tracking-tight text-neutral-50 md:text-[2.75rem] md:leading-[1.08]"
+		>
+			System Architecture
+		</h1>
 
-      .title {
-        font-size: 40px;
-        margin-bottom: 20px;
-        background: linear-gradient(90deg, #e5e7eb, #8b5cf6);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-      }
+		<p class="mt-4 max-w-2xl text-base leading-relaxed text-neutral-400 md:text-[1.0625rem]">
+			Empyrria is not a collection of symbols. It is a structured system where each element has a defined role.
+		</p>
 
-      .intro {
-        font-size: 18px;
-        opacity: 0.8;
-        margin-bottom: 40px;
-      }
+		<section class="mt-12 space-y-12 md:mt-14" aria-label="Layers">
+			<div>
+				<h2 class={hSystem}>Core of Being</h2>
+				<p class={pBody}>The Core defines identity. It does not change. It cannot be replaced.</p>
+				<p class="mt-3 text-sm leading-relaxed text-neutral-400">
+					It determines resonance, direction, and the fundamental reason an entity acts.
+				</p>
+			</div>
 
-      .section {
-        margin-bottom: 40px;
-      }
+			<div>
+				<h2 class={hSystem}>Doctrine</h2>
+				<p class={pBody}>Doctrine defines structure and truth. It exists independently of individuals.</p>
+				<p class="mt-3 text-sm leading-relaxed text-neutral-400">
+					It acts as a stabilizing layer that gives meaning direction and limits.
+				</p>
+			</div>
 
-      .section h2 {
-        font-size: 20px;
-        margin-bottom: 10px;
-        opacity: 0.9;
-      }
+			<div>
+				<h2 class={hSystem}>State</h2>
+				<p class={pBody}>
+					A state is an alignment condition. It is trainable, temporary, and dependent on discipline.
+				</p>
+				<p class="mt-3 text-sm leading-relaxed text-neutral-400">
+					It determines how power is applied, not what that power is.
+				</p>
+			</div>
 
-      .section p {
-        opacity: 0.75;
-        margin-bottom: 10px;
-      }
+			<div>
+				<h2 class={hSystem}>Discipline</h2>
+				<p class={pBody}>Discipline defines execution. It is the learned method through which actions are performed.</p>
+			</div>
 
-      .block {
-        margin-top: 20px;
-        padding: 16px;
-        border-left: 2px solid #8b5cf6;
-        background: rgba(139, 92, 246, 0.05);
-        opacity: 0.85;
-      }
+			<div>
+				<h2 class={hSystem}>Phenomenon</h2>
+				<p class={pBody}>Phenomena are system events. They are not chosen, but experienced.</p>
+			</div>
 
-      .back {
-        margin-top: 60px;
-        display: inline-block;
-        opacity: 0.6;
-        text-decoration: none;
-        color: inherit;
-      }
+			<div>
+				<h2 class={hSystem}>Sigil</h2>
+				<p class={pBody}>A sigil is the symbolic layer. It represents and stabilizes elements of the system.</p>
+			</div>
 
-      .back:hover {
-        opacity: 1;
-      }
+			<div>
+				<h2 class={hSystem}>Command / War</h2>
+				<p class={pBody}>Command aligns multiple entities under a shared intent.</p>
+				<p class="mt-3 text-sm leading-relaxed text-neutral-400">
+					It transforms individual alignment into collective action.
+				</p>
+			</div>
+		</section>
 
-      .showcase {
-        margin-top: 16px;
-        display: inline-block;
-        opacity: 0.6;
-        text-decoration: none;
-        color: inherit;
-      }
+		<div
+			class="mt-12 rounded-lg border border-neutral-800/70 border-l-cyan-950/80 bg-neutral-900/25 px-5 py-6 text-sm leading-relaxed text-cyan-200/55 md:px-6"
+		>
+			The system only works when these layers remain aligned. Power without alignment leads to collapse. Alignment
+			allows power to remain stable.
+		</div>
 
-      .showcase:hover {
-        opacity: 1;
-      }
-
-      .hub {
-        margin-top: 20px;
-        display: inline-block;
-        opacity: 0.7;
-        text-decoration: none;
-        color: #8b5cf6;
-      }
-
-      .hub:hover {
-        opacity: 1;
-      }
-    </style>
-  </head>
-
-  <body>
-    <div class="container">
-      <div class="title">System Architecture</div>
-
-      <div class="intro">
-        Empyrria is not a collection of symbols.  
-        It is a structured system where each element has a defined role.
-      </div>
-
-      <div class="section">
-        <h2>Core of Being</h2>
-        <p>
-          The Core defines identity.  
-          It does not change. It cannot be replaced.
-        </p>
-        <p>
-          It determines resonance, direction, and the fundamental reason an entity acts.
-        </p>
-      </div>
-
-      <div class="section">
-        <h2>Doctrine</h2>
-        <p>
-          Doctrine defines structure and truth.  
-          It exists independently of individuals.
-        </p>
-        <p>
-          It acts as a stabilizing layer that gives meaning direction and limits.
-        </p>
-      </div>
-
-      <div class="section">
-        <h2>State</h2>
-        <p>
-          A state is an alignment condition.  
-          It is trainable, temporary, and dependent on discipline.
-        </p>
-        <p>
-          It determines how power is applied, not what that power is.
-        </p>
-      </div>
-
-      <div class="section">
-        <h2>Discipline</h2>
-        <p>
-          Discipline defines execution.  
-          It is the learned method through which actions are performed.
-        </p>
-      </div>
-
-      <div class="section">
-        <h2>Phenomenon</h2>
-        <p>
-          Phenomena are system events.  
-          They are not chosen, but experienced.
-        </p>
-      </div>
-
-      <div class="section">
-        <h2>Sigil</h2>
-        <p>
-          A sigil is the symbolic layer.  
-          It represents and stabilizes elements of the system.
-        </p>
-      </div>
-
-      <div class="section">
-        <h2>Command / War</h2>
-        <p>
-          Command aligns multiple entities under a shared intent.
-        </p>
-        <p>
-          It transforms individual alignment into collective action.
-        </p>
-      </div>
-
-      <div class="block">
-        The system only works when these layers remain aligned.  
-        Power without alignment leads to collapse.  
-        Alignment allows power to remain stable.
-      </div>
-
-      <a href="/codex" class="hub">
-        ← Back to Codex
-      </a>
-
-      <a href="/codex/what-is-a-sigil" class="back">
-        ← Back to Codex
-      </a>
-
-      <a href="/showcase" class="showcase">
-        ← Back to Showcase
-      </a>
-    </div>
-  </body>
-</html>
+		<nav class="mt-10 flex flex-col gap-4 border-t border-neutral-800/60 pt-10 text-sm" aria-label="Continue">
+			<a
+				href="/codex"
+				class="text-neutral-400 underline-offset-4 transition-colors hover:text-neutral-200 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-neutral-500/40"
+			>
+				← Codex hub
+			</a>
+			<a
+				href="/codex/what-is-a-sigil"
+				class="text-neutral-400 underline-offset-4 transition-colors hover:text-amber-200/90 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-500/35"
+			>
+				← What is a Sigil
+			</a>
+			<a
+				href="/showcase"
+				class="text-neutral-400 underline-offset-4 transition-colors hover:text-neutral-200 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-neutral-500/40"
+			>
+				→ Showcase
+			</a>
+		</nav>
+	</main>
+</Layout>

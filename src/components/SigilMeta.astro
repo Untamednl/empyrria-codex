@@ -4,33 +4,41 @@ import type { Sigil } from '../types/sigil';
 interface Props {
 	sigil: Sigil;
 	compact?: boolean;
+	/** Detail page: inline engraved line — avoids chip/SaaS energy. Default chip for cards. */
+	variant?: 'chip' | 'archival';
 }
 
-const { sigil, compact = false } = Astro.props;
+const { sigil, compact = false, variant = 'chip' } = Astro.props;
 const facets = sigil.facets ?? [];
+const archivalLine = facets.join(' · ');
 ---
 
 {
-	facets.length > 0 && (
-		<ul
-			class:list={[
-				'flex flex-wrap gap-2',
-				compact ? 'gap-1.5' : undefined,
-			]}
-			aria-label="Categories"
-		>
-			{facets.map((facet) => (
-				<li>
-					<span
-						class:list={[
-							'inline-block rounded border border-neutral-800/90 bg-neutral-900/50 font-medium text-neutral-500',
-							compact ? 'px-2 py-0.5 text-[11px]' : 'px-2.5 py-1 text-xs',
-						]}
-					>
-						{facet}
-					</span>
-				</li>
-			))}
-		</ul>
-	)
+	facets.length > 0 &&
+		(variant === 'archival' ? (
+			<p class="max-w-prose text-[0.6875rem] font-medium uppercase tracking-[0.2em] text-neutral-500/72" aria-label="Categories">
+				{archivalLine}
+			</p>
+		) : (
+			<ul
+				class:list={[
+					'flex flex-wrap gap-2',
+					compact ? 'gap-1.5' : undefined,
+				]}
+				aria-label="Categories"
+			>
+				{facets.map((facet) => (
+					<li>
+						<span
+							class:list={[
+								'inline-block rounded border border-neutral-800/90 bg-neutral-900/50 font-medium text-neutral-500',
+								compact ? 'px-2 py-0.5 text-[11px]' : 'px-2.5 py-1 text-xs',
+							]}
+						>
+							{facet}
+						</span>
+					</li>
+				))}
+			</ul>
+		))
 }

@@ -1,174 +1,105 @@
 ---
+import Layout from '../../layouts/Layout.astro';
+
+/** Meaning / principle sections — aligned with Doctrine heading on sigil detail */
+const hMeaning =
+	'border-b border-neutral-800/35 pb-6 text-lg font-bold uppercase tracking-[0.14em] text-amber-200/88 md:text-xl';
+/** System role — aligned with Underlay heading on sigil detail */
+const hSystem =
+	'border-b border-neutral-800/35 pb-6 text-lg font-bold uppercase tracking-[0.14em] text-cyan-300/82 md:text-xl';
+const pBody = 'mt-8 text-sm leading-relaxed text-neutral-400';
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<title>What is a Sigil — Empyrria Codex</title>
+<Layout title="What is a Sigil · Empyrria Sigil Codex" currentPath={Astro.url.pathname}>
+	<main class="mx-auto max-w-2xl px-6 py-12 md:px-8 md:py-16">
+		<p class="text-[0.65rem] font-medium uppercase tracking-[0.2em] text-neutral-500">Codex</p>
+		<h1
+			class="mt-3 text-[2.125rem] font-semibold tracking-tight text-neutral-50 md:text-[2.75rem] md:leading-[1.08]"
+		>
+			What is a Sigil
+		</h1>
 
-		<style>
-			body {
-				margin: 0;
-				font-family: system-ui, sans-serif;
-				background: #0a0a0f;
-				color: #e5e7eb;
-				line-height: 1.7;
-			}
-
-			.container {
-				max-width: 760px;
-				margin: 0 auto;
-				padding: 80px 24px;
-			}
-
-			.title {
-				font-size: 42px;
-				margin-bottom: 20px;
-				letter-spacing: 0.5px;
-				background: linear-gradient(90deg, #e5e7eb, #8b5cf6);
-				-webkit-background-clip: text;
-				background-clip: text;
-				-webkit-text-fill-color: transparent;
-			}
-
-			.intro {
-				font-size: 18px;
-				opacity: 0.8;
-				margin-bottom: 40px;
-				white-space: pre-line;
-			}
-
-			.section {
-				margin-bottom: 50px;
-			}
-
-			.section h2 {
-				font-size: 20px;
-				margin-bottom: 12px;
-				opacity: 0.9;
-			}
-
-			.section p {
-				opacity: 0.75;
-				margin-bottom: 12px;
-			}
-
-			.rule {
-				margin-top: 20px;
-				padding: 16px;
-				border-left: 2px solid #8b5cf6;
-				background: rgba(139, 92, 246, 0.05);
-				font-style: italic;
-				opacity: 0.85;
-				white-space: pre-line;
-			}
-
-			.next {
-				margin-top: 40px;
-				font-size: 14px;
-				opacity: 0.5;
-			}
-
-			.back {
-				margin-top: 60px;
-				display: inline-block;
-				opacity: 0.6;
-				text-decoration: none;
-				color: inherit;
-			}
-
-			.back:hover {
-				opacity: 1;
-			}
-
-			.forward {
-				margin-top: 20px;
-				display: inline-block;
-				opacity: 0.7;
-				text-decoration: none;
-				color: #8b5cf6;
-			}
-
-			.forward:hover {
-				opacity: 1;
-			}
-
-			.hub {
-				margin-top: 20px;
-				display: inline-block;
-				opacity: 0.7;
-				text-decoration: none;
-				color: #8b5cf6;
-			}
-
-			.hub:hover {
-				opacity: 1;
-			}
-		</style>
-	</head>
-
-	<body>
-		<div class="container">
-			<div class="title">What is a Sigil</div>
-
-			<div class="intro">
-				{`A sigil is not decoration.
+		<div class="intro whitespace-pre-line mt-4 text-base leading-relaxed text-neutral-400 md:text-[1.0625rem]">
+			{`A sigil is not decoration.
 It is not a symbol added for style.
 It is a form of meaning made visible.`}
-			</div>
+		</div>
 
-			<div class="section">
-				<h2>Definition</h2>
-				<p>
+		<section class="mt-12 space-y-12 md:mt-14" aria-label="Article">
+			<div>
+				<h2 class={hMeaning}>Definition</h2>
+				<p class={pBody}>
 					Within Empyrria, a sigil is a symbolic codification of a system element: a doctrine, a state, a core of
 					being, or a relation between entities.
 				</p>
-				<p>
+				<p class="mt-3 text-sm leading-relaxed text-neutral-400">
 					It does not represent something loosely.<br />
 					It defines it, stabilizes it, and allows it to be recognized.
 				</p>
 			</div>
 
-			<div class="section">
-				<h2>Function</h2>
-				<p>A sigil always does something. It may align, stabilize, warn, connect, or activate.</p>
-				<p>It is not passive imagery. It is a functional element within a larger system.</p>
+			<div>
+				<h2 class={hMeaning}>Function</h2>
+				<p class={pBody}>
+					A sigil always does something. It may align, stabilize, warn, connect, or activate.
+				</p>
+				<p class="mt-3 text-sm leading-relaxed text-neutral-400">
+					It is not passive imagery. It is a functional element within a larger system.
+				</p>
 			</div>
 
-			<div class="section">
-				<h2>System Role</h2>
-				<p>
+			<div>
+				<h2 class={hSystem}>System Role</h2>
+				<p class={pBody}>
 					Sigils exist inside a structured architecture. Core defines identity. Doctrine defines direction. State
 					defines alignment. Relation defines interaction. Command defines action.
 				</p>
 			</div>
 
-			<div class="section">
-				<h2>Design Principle</h2>
-				<p>
+			<div>
+				<h2 class={hMeaning}>Design Principle</h2>
+				<p class={pBody}>
 					A sigil must be readable at a glance. Its structure must feel intentional. Every line, axis, and form must
 					belong to the same internal logic.
 				</p>
-
-				<div class="rule">
+				<div
+					class="mt-6 border-l border-amber-500/30 bg-amber-950/10 px-4 py-4 text-sm italic leading-relaxed text-neutral-400 whitespace-pre-line"
+				>
 					{`Meaning comes before detail.
 Clarity comes before decoration.`}
 				</div>
 			</div>
 
-			<div class="section">
-				<h2>Presence</h2>
-				<p>A strong sigil does not look created. It looks recognized.</p>
-				<p>It carries weight. It holds position. It feels like it belongs to a system larger than itself.</p>
+			<div>
+				<h2 class={hMeaning}>Presence</h2>
+				<p class={pBody}>A strong sigil does not look created. It looks recognized.</p>
+				<p class="mt-3 text-sm leading-relaxed text-neutral-400">
+					It carries weight. It holds position. It feels like it belongs to a system larger than itself.
+				</p>
 			</div>
+		</section>
 
-			<div class="next">More entries will be added as the system expands.</div>
+		<p class="mt-14 text-sm text-neutral-500 md:mt-16">More entries will be added as the system expands.</p>
 
-			<a href="/codex" class="hub">← Back to Codex</a>
-
-			<a href="/codex/system-architecture" class="forward">→ Continue to System Architecture</a>
-
-			<a href="/showcase" class="back">← Back to Codex</a>
-		</div>
-	</body>
-</html>
+		<nav class="mt-10 flex flex-col gap-4 border-t border-neutral-800/60 pt-10 text-sm" aria-label="Continue">
+			<a
+				href="/codex"
+				class="text-neutral-400 underline-offset-4 transition-colors hover:text-neutral-200 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-neutral-500/40"
+			>
+				← Codex hub
+			</a>
+			<a
+				href="/codex/system-architecture"
+				class="text-neutral-400 underline-offset-4 transition-colors hover:text-cyan-300/85 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-500/30"
+			>
+				→ System Architecture
+			</a>
+			<a
+				href="/showcase"
+				class="text-neutral-400 underline-offset-4 transition-colors hover:text-neutral-200 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-neutral-500/40"
+			>
+				→ Showcase
+			</a>
+		</nav>
+	</main>
+</Layout>

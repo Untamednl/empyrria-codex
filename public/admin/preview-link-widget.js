@@ -1,4 +1,11 @@
 (function () {
+  function getBaseOrigin() {
+    if (typeof window !== "undefined" && window.location && window.location.origin) {
+      return String(window.location.origin).replace(/\/+$/, "");
+    }
+    return "http://localhost:4321";
+  }
+
   function getSlugFromDom(forID) {
     if (typeof document === "undefined") return "";
     var el = document.getElementById(forID);
@@ -46,7 +53,8 @@
           slug = getSlugFromDom(forID);
         }
 
-        var url = slug ? "http://localhost:4321/sigils/" + slug : "";
+        var baseOrigin = getBaseOrigin();
+        var url = slug ? baseOrigin + "/sigils/" + slug : "";
 
         return h(
           "div",

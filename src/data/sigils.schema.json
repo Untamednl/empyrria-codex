@@ -25,7 +25,19 @@
           "description": "Lowercase kebab-case, stable for URLs"
         },
         "name": { "type": "string", "minLength": 1 },
+        "title": {
+          "type": "string",
+          "description": "Optional display title; falls back to name in adapter when absent."
+        },
         "doctrine": { "type": "string", "minLength": 1 },
+        "meaning": {
+          "type": "string",
+          "description": "Optional short meaning line; adapter falls back to doctrine heuristic when absent."
+        },
+        "layer": {
+          "type": "string",
+          "description": "Optional archive / system layer label for organization."
+        },
         "underlay": { "type": "string" },
         "image": {
           "type": "string",
@@ -36,7 +48,21 @@
           "items": { "type": "string" }
         },
         "category": { "type": "string" },
-        "status": { "type": "string" },
+        "status": {
+          "type": "string",
+          "enum": ["draft", "provisional", "approved", "deprecated", "archived"]
+        },
+        "visibility": {
+          "type": "string",
+          "enum": ["public", "marked_public", "hidden", "archive_only", "internal"]
+        },
+        "reviewReference": { "type": "string" },
+        "deprecatedReason": { "type": "string" },
+        "archivedReason": { "type": "string" },
+        "lastCanonReview": {
+          "type": "string",
+          "format": "date"
+        },
         "terms": {
           "type": "array",
           "items": { "type": "string" }

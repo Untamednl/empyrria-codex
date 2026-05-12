@@ -1,9 +1,10 @@
 local_backend: true
 
-site_url: "http://localhost:4321"
+site_url: "https://empyrria-codex.netlify.app"
 
 backend:
   name: git-gateway
+  branch: main
 
 media_folder: public/media/sigils
 public_folder: /media/sigils
@@ -30,6 +31,11 @@ collections:
             summary: "{{fields.name}} — {{fields.slug}}"
             fields:
               - { label: "Name", name: "name", widget: "string", required: true }
+              - label: "Title"
+                name: "title"
+                widget: "string"
+                required: false
+                hint: "Optional short display override for ceremonial headings. Omit to use Name on site."
               - label: "Slug (ID — do not change)"
                 name: "slug"
                 widget: "string"
@@ -46,6 +52,16 @@ collections:
                 widget: "text"
                 required: true
                 hint: "Core doctrine / meaning shown on the sigil detail page."
+              - label: "Meaning"
+                name: "meaning"
+                widget: "text"
+                required: false
+                hint: "Optional short doctrine-adjacent summary. Omit when unused."
+              - label: "Layer"
+                name: "layer"
+                widget: "string"
+                required: false
+                hint: "Optional restrained archive layer label. Omit when unused."
               - label: "Category"
                 name: "category"
                 widget: "string"
@@ -53,9 +69,46 @@ collections:
                 hint: "Broad category such as Core / Energy."
               - label: "Status"
                 name: "status"
+                widget: "select"
+                required: false
+                options:
+                  - draft
+                  - provisional
+                  - approved
+                  - deprecated
+                  - archived
+                hint: "Canon status is governance-controlled. Approved requires final canon authority."
+              - label: "Visibility"
+                name: "visibility"
+                widget: "select"
+                required: false
+                options:
+                  - public
+                  - marked_public
+                  - hidden
+                  - archive_only
+                  - internal
+                hint: "Visibility controls exposure only. Public does not mean approved canon."
+              - label: "Review Reference"
+                name: "reviewReference"
                 widget: "string"
                 required: false
-                hint: "Workflow state, for example Approved or Draft."
+                hint: "Optional reference to a documented canon review decision."
+              - label: "Deprecated Reason"
+                name: "deprecatedReason"
+                widget: "text"
+                required: false
+                hint: "Required later when status is deprecated."
+              - label: "Archived Reason"
+                name: "archivedReason"
+                widget: "text"
+                required: false
+                hint: "Required later when status is archived."
+              - label: "Last Canon Review"
+                name: "lastCanonReview"
+                widget: "string"
+                required: false
+                hint: "ISO date of latest canon review, for example 2026-05-08."
               - label: "Facets / Categories"
                 name: facets
                 widget: list

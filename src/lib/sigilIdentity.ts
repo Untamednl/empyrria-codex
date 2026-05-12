@@ -11,6 +11,10 @@ export function sigilTitleColorClass(slug: string): string {
 			return 'text-stone-400/95';
 		case 'zenga-zellia':
 			return 'text-fuchsia-200/82';
+		case 'iah-vea':
+			return 'text-stone-200/90';
+		case 'top-iron-endurance':
+			return 'text-neutral-300/92';
 		default:
 			return 'text-amber-50/90';
 	}

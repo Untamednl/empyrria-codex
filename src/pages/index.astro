@@ -1,12 +1,12 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import { getAllSigils, getCodex } from '../lib/sigils';
+import { getCodex, getPubliclyDiscoverableSigils } from '../lib/sigils';
 
 const { version } = getCodex();
-const sigils = getAllSigils();
+const sigils = getPubliclyDiscoverableSigils();
 ---
 
-<Layout>
+<Layout currentPath={Astro.url.pathname}>
 	<main class="mx-auto max-w-lg px-8 py-14 md:py-20">
 		<h1 class="text-3xl font-semibold tracking-tight text-neutral-50 md:text-[2rem]">
 			Empyrria Sigil Codex
