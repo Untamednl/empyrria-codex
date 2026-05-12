@@ -74,22 +74,33 @@ content:
             required: false
             options:
               values:
-                - draft
-                - provisional
-                - approved
-                - deprecated
-                - archived
+                # Exact `name` strings must match JSON + schema (round-trip).
+                - name: provisional
+                  label: Provisional
+                - name: draft
+                  label: Draft
+                - name: approved
+                  label: Approved
+                - name: deprecated
+                  label: Deprecated
+                - name: archived
+                  label: Archived
           - name: visibility
             label: Visibility
             type: select
             required: false
             options:
               values:
-                - public
-                - marked_public
-                - hidden
-                - archive_only
-                - internal
+                - name: marked_public
+                  label: Marked public
+                - name: internal
+                  label: Internal
+                - name: public
+                  label: Public
+                - name: hidden
+                  label: Hidden
+                - name: archive_only
+                  label: Archive only
           - name: reviewReference
             label: Review Reference
             type: string
