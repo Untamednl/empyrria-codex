@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none" aria-hidden="true">
+  <!-- Top-Iron-Endurance Phase A prototype plate: load-bearing vertical with grounded cross-base; archive-neutral strokes. -->
+  <rect x="44" y="18" width="12" height="52" rx="2" stroke="#a8a29e" stroke-width="2.25" />
+  <path d="M28 74h44" stroke="#a8a29e" stroke-width="2.25" stroke-linecap="round" />
+  <path d="M36 74v10M64 74v10" stroke="#78716c" stroke-width="2" stroke-linecap="round" />
+  <path d="M50 34v26" stroke="#78716c" stroke-width="1.55" stroke-linecap="round" stroke-dasharray="3 5" opacity="0.85" />
+</svg>
