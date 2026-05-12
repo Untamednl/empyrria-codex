@@ -74,16 +74,26 @@ content:
             required: false
             options:
               values:
-                # Exact `name` strings must match JSON + schema (round-trip).
+                # Repo JSON uses schema lowercase. Pages CMS may save title-cased status (e.g. Approved).
                 - name: provisional
-                  label: Provisional
+                  label: provisional
                 - name: draft
-                  label: Draft
+                  label: draft
                 - name: approved
-                  label: Approved
+                  label: approved
                 - name: deprecated
-                  label: Deprecated
+                  label: deprecated
                 - name: archived
+                  label: archived
+                - name: Provisional
+                  label: Provisional
+                - name: Draft
+                  label: Draft
+                - name: Approved
+                  label: Approved
+                - name: Deprecated
+                  label: Deprecated
+                - name: Archived
                   label: Archived
           - name: visibility
             label: Visibility
