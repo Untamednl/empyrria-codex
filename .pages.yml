@@ -1,0 +1,139 @@
+# Pages CMS prototype — Empyrria Sigil Codex (branch: pages-cms-prototype)
+# Does not replace Decap; add-only for GitHub-based editing trials.
+# Docs: https://pagescms.org/docs/configuration
+
+media:
+  input: public/media/sigils
+  output: /media/sigils
+
+content:
+  - name: codex
+    label: Sigils codex
+    type: file
+    path: src/data/sigils.json
+    format: json
+    operations:
+      delete: false
+    fields:
+      - name: "$schema"
+        label: JSON Schema
+        type: string
+        required: false
+        description: "Preserve ./sigils.schema.json — verify round-trip after first save."
+
+      - name: version
+        label: Version
+        type: string
+        required: true
+
+      - name: sigils
+        label: Sigils
+        type: object
+        required: true
+        list:
+          min: 1
+          collapsible:
+            collapsed: false
+            summary: "{name} — {slug}"
+        fields:
+          - name: name
+            label: Name
+            type: string
+            required: true
+          - name: title
+            label: Title
+            type: string
+            required: false
+            description: "Optional display override; omit when unused."
+          - name: slug
+            label: Slug (ID — do not change)
+            type: string
+            required: true
+            pattern:
+              regex: "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+              message: "Lowercase kebab-case only."
+          - name: doctrine
+            label: Doctrine
+            type: text
+            required: true
+          - name: meaning
+            label: Meaning
+            type: text
+            required: false
+          - name: layer
+            label: Layer
+            type: string
+            required: false
+          - name: category
+            label: Category
+            type: string
+            required: false
+          - name: status
+            label: Status
+            type: select
+            required: false
+            options:
+              values:
+                - draft
+                - provisional
+                - approved
+                - deprecated
+                - archived
+          - name: visibility
+            label: Visibility
+            type: select
+            required: false
+            options:
+              values:
+                - public
+                - marked_public
+                - hidden
+                - archive_only
+                - internal
+          - name: reviewReference
+            label: Review Reference
+            type: string
+            required: false
+          - name: deprecatedReason
+            label: Deprecated Reason
+            type: text
+            required: false
+          - name: archivedReason
+            label: Archived Reason
+            type: text
+            required: false
+          - name: lastCanonReview
+            label: Last Canon Review
+            type: date
+            required: false
+          - name: facets
+            label: Facets / Categories
+            type: string
+            list: true
+            required: false
+          - name: geometry
+            label: Geometry Logic
+            type: text
+            required: false
+          - name: color
+            label: Color Logic
+            type: text
+            required: false
+          - name: usage
+            label: Usage Context
+            type: text
+            required: false
+          - name: underlay
+            label: Underlay / System Context
+            type: text
+            required: false
+          - name: image
+            label: Image
+            type: image
+            required: false
+            description: "Public path under /media/sigils/…"
+          - name: terms
+            label: Associated Terms
+            type: string
+            list: true
+            required: false
