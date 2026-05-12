@@ -1,5 +1,5 @@
-# Pages CMS prototype — Empyrria Sigil Codex (branch: pages-cms-prototype)
-# Does not replace Decap; add-only for GitHub-based editing trials.
+# Pages CMS — Empyrria Sigil Codex (governance-hardened Zierota profile)
+# Canon posture, identity, doctrine blocks, media path, and governance dates are readonly.
 # Docs: https://pagescms.org/docs/configuration
 
 media:
@@ -13,18 +13,22 @@ content:
     path: src/data/sigils.json
     format: json
     operations:
+      create: false
       delete: false
     fields:
       - name: "$schema"
         label: JSON Schema
         type: string
         required: false
-        description: "Preserve ./sigils.schema.json — verify round-trip after first save."
+        readonly: true
+        description: "Preserved from repo; not edited in Pages."
 
       - name: version
         label: Version
         type: string
         required: true
+        readonly: true
+        description: "Corpus version; governance / release change only."
 
       - name: sigils
         label: Sigils
@@ -36,69 +40,112 @@ content:
             collapsed: false
             summary: "{name} — {slug}"
         fields:
-          - name: name
-            label: Name
-            type: string
-            required: true
+          # --- Zierota-editable (safe surface) ---
           - name: title
             label: Title
             type: string
             required: false
             description: "Optional display override; omit when unused."
-          - name: slug
-            label: Slug (ID — do not change)
-            type: string
-            required: true
-            pattern:
-              regex: "^[a-z0-9]+(?:-[a-z0-9]+)*$"
-              message: "Lowercase kebab-case only."
-          - name: doctrine
-            label: Doctrine
-            type: text
-            required: true
+
           - name: meaning
             label: Meaning
             type: text
             required: false
+
+          - name: facets
+            label: Facets / Categories
+            type: string
+            list: true
+            required: false
+
+          - name: terms
+            label: Associated Terms
+            type: string
+            list: true
+            required: false
+
+          # --- Readonly (canon + identity + governance) ---
+          - name: slug
+            label: Slug (ID — do not change)
+            type: string
+            required: true
+            readonly: true
+            pattern:
+              regex: "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+              message: "Lowercase kebab-case only."
+
+          - name: name
+            label: Name
+            type: string
+            required: true
+            readonly: true
+
           - name: layer
             label: Layer
             type: string
             required: false
+            readonly: true
+
           - name: category
             label: Category
             type: string
             required: false
+            readonly: true
+
+          - name: doctrine
+            label: Doctrine
+            type: text
+            required: true
+            readonly: true
+
+          - name: usage
+            label: Usage Context
+            type: text
+            required: false
+            readonly: true
+
+          - name: geometry
+            label: Geometry Logic
+            type: text
+            required: false
+            readonly: true
+
+          - name: color
+            label: Color Logic
+            type: text
+            required: false
+            readonly: true
+
+          - name: image
+            label: Image
+            type: image
+            required: false
+            readonly: true
+            description: "Public path under /media/sigils/…"
+
           - name: status
             label: Status
             type: select
             required: false
+            readonly: true
             options:
               values:
-                # Repo JSON uses schema lowercase. Pages CMS may save title-cased status (e.g. Approved).
-                - name: provisional
-                  label: provisional
                 - name: draft
                   label: draft
+                - name: provisional
+                  label: provisional
                 - name: approved
                   label: approved
                 - name: deprecated
                   label: deprecated
                 - name: archived
                   label: archived
-                - name: Provisional
-                  label: Provisional
-                - name: Draft
-                  label: Draft
-                - name: Approved
-                  label: Approved
-                - name: Deprecated
-                  label: Deprecated
-                - name: Archived
-                  label: Archived
+
           - name: visibility
             label: Visibility
             type: select
             required: false
+            readonly: true
             options:
               values:
                 - name: marked_public
@@ -111,50 +158,33 @@ content:
                   label: Hidden
                 - name: archive_only
                   label: Archive only
+
           - name: reviewReference
             label: Review Reference
             type: string
             required: false
+            readonly: true
+
           - name: deprecatedReason
             label: Deprecated Reason
             type: text
             required: false
+            readonly: true
+
           - name: archivedReason
             label: Archived Reason
             type: text
             required: false
+            readonly: true
+
           - name: lastCanonReview
             label: Last Canon Review
             type: date
             required: false
-          - name: facets
-            label: Facets / Categories
-            type: string
-            list: true
-            required: false
-          - name: geometry
-            label: Geometry Logic
-            type: text
-            required: false
-          - name: color
-            label: Color Logic
-            type: text
-            required: false
-          - name: usage
-            label: Usage Context
-            type: text
-            required: false
+            readonly: true
+
           - name: underlay
             label: Underlay / System Context
             type: text
             required: false
-          - name: image
-            label: Image
-            type: image
-            required: false
-            description: "Public path under /media/sigils/…"
-          - name: terms
-            label: Associated Terms
-            type: string
-            list: true
-            required: false
+            readonly: true
