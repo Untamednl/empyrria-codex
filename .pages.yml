@@ -63,6 +63,7 @@ content:
             type: string
             list: true
             required: false
+            hidden: true
 
           - name: characterLink
             label: Character Link
@@ -140,6 +141,7 @@ content:
             type: text
             required: false
             readonly: true
+            hidden: true
 
           - name: image
             label: Image
@@ -189,18 +191,21 @@ content:
             type: string
             required: false
             readonly: true
+            hidden: true
 
           - name: deprecatedReason
             label: Deprecated Reason
             type: text
             required: false
             readonly: true
+            hidden: true
 
           - name: archivedReason
             label: Archived Reason
             type: text
             required: false
             readonly: true
+            hidden: true
 
           - name: lastCanonReview
             label: Last Canon Review
