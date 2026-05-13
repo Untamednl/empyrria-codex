@@ -4,11 +4,8 @@
  */
 import type { Sigil } from '../types/sigil';
 
-/** Sigil row as stored in JSON plus pipeline fields not on core Sigil interface. */
-export type SigilRecord = Sigil & {
-	status?: string;
-	visibility?: string;
-};
+/** Sigil row as stored in JSON (includes optional governance + editorial fields). */
+export type SigilRecord = Sigil;
 
 export interface SigilDisplayItem {
 	title: string;
@@ -121,14 +118,14 @@ export function toSigilDisplayItem(sigil: SigilRecord): SigilDisplayItem {
 
 	return {
 		title,
-		empyrriaans: firstAlternateEmpyrriaans(name, sigil.terms),
+		empyrriaans: firstAlternateEmpyrriaans(name, undefined),
 		type,
 		category,
 		meaning,
 		description,
 		layer,
 		status: formatPublicationDisplayStatus(sigil),
-		tags: mergeTags(sigil.facets, sigil.terms),
+		tags: mergeTags(sigil.facets, undefined),
 		image: img,
 		version: DISPLAY_VERSION,
 	};

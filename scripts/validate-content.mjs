@@ -216,6 +216,50 @@ async function validate() {
       );
     }
 
+    if ("sigilRelationships" in sigil && !Array.isArray(sigil.sigilRelationships)) {
+      errors.push(
+        makeError(
+          errors.length + 1,
+          "FIELD_TYPE_INVALID",
+          entity,
+          "sigilRelationships",
+          "sigilRelationships must be an array when present",
+          "set sigilRelationships to an array of strings or remove it"
+        )
+      );
+    } else if (Array.isArray(sigil.sigilRelationships)) {
+      for (let j = 0; j < sigil.sigilRelationships.length; j += 1) {
+        const rel = sigil.sigilRelationships[j];
+        if (typeof rel !== "string" || !toNonEmptyString(rel)) {
+          errors.push(
+            makeError(
+              errors.length + 1,
+              "FIELD_TYPE_INVALID",
+              entity,
+              `sigilRelationships[${j}]`,
+              "each relationship entry must be a non-empty string",
+              "use non-empty strings only (declared labels, no objects)"
+            )
+          );
+        }
+      }
+    }
+
+    for (const opt of ["characterLink", "loreContext", "placeOfOrigin"]) {
+      if (opt in sigil && typeof sigil[opt] !== "string") {
+        errors.push(
+          makeError(
+            errors.length + 1,
+            "FIELD_TYPE_INVALID",
+            entity,
+            opt,
+            `${opt} must be a string when present`,
+            `set ${opt} to a string or remove it`
+          )
+        );
+      }
+    }
+
     if (sigil.status === "deprecated" && !toNonEmptyString(sigil.deprecatedReason)) {
       errors.push(
         makeError(

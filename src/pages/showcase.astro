@@ -163,11 +163,6 @@ function doctrinePreview(text: string, max = 100): string {
 								<p class="text-doctrine mt-4 text-[0.9375rem] leading-[1.8] text-amber-100/72 md:text-[1rem] md:leading-[1.82]">
 									{doctrinePreview(display.description)}
 								</p>
-								{
-									sigil.terms && sigil.terms.length > 0 && (
-										<p class="mt-4 text-xs leading-relaxed text-neutral-500">{sigil.terms.join(', ')}</p>
-									)
-								}
 							</a>
 						</li>
 					);

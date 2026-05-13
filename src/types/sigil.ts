@@ -24,9 +24,26 @@ export interface Sigil {
 	/** Structured catalogue fields — display only when present in data */
 	geometry?: string;
 	usage?: string;
+	/** Symbolic colour logic — retained in data; not shown on public detail (Phase 1). */
 	color?: string;
+	/** Associated terms — retained in data/CMS; not shown as public weak metadata (Phase 1). */
 	terms?: string[];
 	category?: string;
+	/** Optional editorial: character or persona link (plain text, no graph). */
+	characterLink?: string;
+	/** Optional editorial: lore context (prose; not a substitute for doctrine). */
+	loreContext?: string;
+	/** Optional editorial: declared relationship labels only (strings; no inference engine). */
+	sigilRelationships?: string[];
+	/** Optional editorial: symbolic or narrative place of origin. */
+	placeOfOrigin?: string;
+	/** Governance — not rendered on public detail surfaces (Phase 1). */
+	status?: string;
+	visibility?: string;
+	reviewReference?: string;
+	deprecatedReason?: string;
+	archivedReason?: string;
+	lastCanonReview?: string;
 }
 
 export interface SigilCodexData {

@@ -69,7 +69,24 @@
         },
         "geometry": { "type": "string" },
         "color": { "type": "string" },
-        "usage": { "type": "string" }
+        "usage": { "type": "string" },
+        "characterLink": {
+          "type": "string",
+          "description": "Optional editorial: character or persona association (plain text)."
+        },
+        "loreContext": {
+          "type": "string",
+          "description": "Optional editorial: supplementary lore context (prose)."
+        },
+        "sigilRelationships": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 },
+          "description": "Optional editorial: declared relationship labels (strings only; no graph)."
+        },
+        "placeOfOrigin": {
+          "type": "string",
+          "description": "Optional editorial: place or provenance-of-symbol register."
+        }
       }
     }
   }

@@ -16,7 +16,7 @@ This master file is maintained in seven governance bands:
 1. **PROJECT IDENTITY** — purpose, archive philosophy, ceremonial doctrine/atmosphere constraints.
 2. **GOVERNANCE LAYER** — documentation discipline, canon governance, editorial governance, **content lifecycle vocabulary** (**CONTENT GOVERNANCE MATURITY — PHASE 1**), **canon transition process** (**CANON TRANSITION GOVERNANCE — PHASE 1**), **canon evidence & review epistemology** (**CANON EVIDENCE & REVIEW GOVERNANCE — PHASE 1**), **canon annotation & commentary** (**CANON ANNOTATION & COMMENTARY GOVERNANCE — PHASE 1**), **canon entity relationships** (**CANON ENTITY RELATIONSHIP GOVERNANCE — PHASE 1**), **governance evolution & amendment** (**GOVERNANCE EVOLUTION & AMENDMENT GOVERNANCE — PHASE 1**), **governance consolidation & constitutional index** (**GOVERNANCE CONSOLIDATION & CONSTITUTIONAL INDEX — PHASE 1**), **selective maturation pause + observational stability** (**SELECTIVE MATURATION PAUSE + OBSERVATIONAL STABILITY WINDOW**), **operational editorial pressure logging** (**ZIEROTA EDITORIAL PRESSURE LOG — PHASE 1**), rollout rules.
 3. **CORE ARCHITECTURE** — entity/dossier/template RFCs, mapping plans, visibility-tier model, adapter philosophy.
-4. **IMPLEMENTATION LAYER** — Top-Iron Phase A system, layout/wireframe/atmosphere/detail governance, **full entry prototype planning** (**FULL ENTRY PROTOTYPE — PHASE 1**), **full entry visual mockup governance** (**FULL ENTRY VISUAL MOCKUP — PHASE 1**), **specimen entry wireframe governance** (**SPECIMEN ENTRY WIREFRAME — PHASE 1**), **text rendering + display headline ergonomics** (**TEXT RENDERING & DISPLAY ERGONOMICS — PHASE 1**).
+4. **IMPLEMENTATION LAYER** — Top-Iron Phase A system, layout/wireframe/atmosphere/detail governance, **full entry prototype planning** (**FULL ENTRY PROTOTYPE — PHASE 1**), **full entry visual mockup governance** (**FULL ENTRY VISUAL MOCKUP — PHASE 1**), **specimen entry wireframe governance** (**SPECIMEN ENTRY WIREFRAME — PHASE 1**), **text rendering + display headline ergonomics** (**TEXT RENDERING & DISPLAY ERGONOMICS — PHASE 1**), **editorial field evolution (PATH A + schema additive)** (**EDITORIAL FIELD EVOLUTION — PHASE 1**).
 5. **EDITORIAL EXECUTIONS** — selective enrichment passes (IAH-VEA, Soulflame, Top-Clear-Mind).
 6. **FUTURE / DEFERRED SYSTEMS** — Phase B, structured entity model, graph-level and advanced CMS expansions.
 7. **OPERATIONAL STATE** — current next step, active priorities, release/validation guardrails, warnings.
@@ -153,6 +153,7 @@ Editorial maturation proceeds sigil-by-sigil, reviewable, rollback-simple, and s
 | **ZIEROTA ADMIN ACCESS — PHASE 1** | **Locked (2026-05-12)** — **Documentation + implementation audit only** (**no** Decap/Identity/**`public/admin`**, redirect, schema, data, visibility, or CMS **removal**/**migration**). **Canonical Zierota PATH A login:** **Pages CMS** + **GitHub** on **`pages-cms-prototype`** (repo **`.pages.yml`**). **Fallback / higher-authority:** **Decap** **`/admin`** on **Netlify** origin + **Netlify Identity** + **Git Gateway** (**`public/admin/config.yml`**). **No-retirement** boundary and **no-behavior-change** restated. Full section **ZIEROTA ADMIN ACCESS — PHASE 1** below. |
 | **ZIEROTA EDITORIAL PRESSURE LOG — PHASE 1** | **Locked (2026-05-14)** — **Operational pressure observation + classification + governance framing only** (**no** **`.pages.yml`**, schema, runtime, UI, rendering fixes, field removals, relationship engine, image upload system, admin redesign, discoverability implementation). First **validated** **PATH A** usage feedback from **Zierota**: editorial expansion, field, display/UX, and cleanup **pressures** logged and **prioritized**; **pressure ≠ approval**; aligns **SELECTIVE MATURATION PAUSE + OBSERVATIONAL STABILITY WINDOW**. Full section **ZIEROTA EDITORIAL PRESSURE LOG — PHASE 1** below. |
 | **TEXT RENDERING & DISPLAY ERGONOMICS — PHASE 1** | **Locked (2026-05-14)** — **Scoped Astro presentation execution** (**no** **`sigils.json`** / Type schema edits, **no** **`.pages.yml`**, **no** routing, **no** **`getPubliclyDiscoverableSigils`** / visibility, **no** field removals, **no** relationship/image/new-sigil/CMS authority expansion). **`displayHeadline`**: **`title`** → **`name`** → **`slug`** for detail **`<h1>`**, document **`<title>`**, **`SigilCard`**, and **`toSigilDisplayItem`**; optional muted **registry `name`** when it differs from headline. Long prose: Tailwind **`whitespace-pre-wrap break-words`** on detail + showcase hero; browse/showcase doctrine previews collapse whitespace to one line. **`npm run build`** / **`npx astro check`** gate. Full section **TEXT RENDERING & DISPLAY ERGONOMICS — PHASE 1** below. |
+| **EDITORIAL FIELD EVOLUTION — PHASE 1** | **Locked (2026-05-14)** — **Additive optional JSON fields** + **PATH A** / **Decap** exposure + **public display** cleanup (**no** data deletion, **no** routing/visibility/canon-transition changes, **no** graph engine, **no** image upload, **no** new-sigil creation, **no** doctrine **PATH A** expansion). New keys: **`characterLink`**, **`loreContext`**, **`sigilRelationships`** (string array), **`placeOfOrigin`**. Public detail: new sections when populated; **hide** **`reviewReference`**, **`deprecatedReason`**, **`archivedReason`**, **Colour logic**, **Associated terms** from public surfaces (data retained; governance fields were never public; classification colour/terms removed). **`toSigilDisplayItem`**: **`tags`** = **facets only**. Corpus **`version`** **11**. **`npm run build`** / **`npx astro check`** gate. Full section **EDITORIAL FIELD EVOLUTION — PHASE 1** below. |
 | **CONTENT GOVERNANCE MATURITY — PHASE 1** | **Locked (2026-05-11)** — **Lifecycle + governance-definition phase only** (**no** **`sigils.json`**, schema, routes, search/filter, CMS, admin, package, migration, or archive moves). Formal **taxonomy** of content **states** and **canon stability tiers**; **review / maturation** flow concepts; **archive** and **deprecation** philosophy (**preserve**, not erase); **public vs internal** separation intent; **editorial responsibility** layers tied to **PATH A**; **governance principles**; **platform-independent** model (tooling may change; rules survive). Full section **CONTENT GOVERNANCE MATURITY — PHASE 1** below. |
 | **CANON TRANSITION GOVERNANCE — PHASE 1** | **Locked (2026-05-11)** — **Transition mechanics + authority + process only** (**no** data edits, **no** status remapping, **no** visibility/discoverability changes, **no** CMS/schema/deploy, **no** workflow automation). Builds on **CONTENT GOVERNANCE MATURITY — PHASE 1** (definitions). **Authority matrix** (who proposes vs approves); **allowed** lifecycle moves; **promotion** and **locked-canon** gates; **deprecation/archive** procedure expectations; **contradiction** handling; **escalation** ladder; **traceability**; **future tooling** must not replace governance authority. Full section **CANON TRANSITION GOVERNANCE — PHASE 1** below. |
 | **CANON EVIDENCE & REVIEW GOVERNANCE — PHASE 1** | **Locked (2026-05-11)** — **Evidence standards + review epistemology only** (**no** **`sigils.json`**, schema, **status**, visibility, discoverability, CMS, deploy, automation). Defines **what counts as evidence**, **sufficient review**, **canon confidence**, **declaration vs interpretation**, **conflicting evidence**; **review confidence levels**; **historical** evidence philosophy; **stability epistemology** (visibility ≠ certainty); **review traceability**; **future** tooling may **surface** evidence but **not** **determine** canon. Full section **CANON EVIDENCE & REVIEW GOVERNANCE — PHASE 1** below. |
@@ -3414,7 +3415,7 @@ Classifications are **primary** tags; many rows **touch** secondary domains (not
 | **`meaning`** (explicit) | **`whitespace-pre-wrap break-words`** on detail. |
 | **`doctrine`** | **`whitespace-pre-wrap break-words`** on detail; hero showcase; cards/showcase grid previews unchanged except **whitespace collapse** for truncation. |
 | **`layer`** (explicit) | **`whitespace-pre-wrap break-words`** on detail. |
-| **`usage`**, **`geometry`**, **`color`**, **`category`** | **`whitespace-pre-wrap break-words`** in **Classification** / **Function** where rendered as prose. |
+| **`usage`**, **`geometry`**, **`category`** | **`whitespace-pre-wrap break-words`** on detail. **`color`** was listed here originally; **public** Classification **colour** row **removed** in **EDITORIAL FIELD EVOLUTION — PHASE 1** (data retained). |
 | **Underlay** (legacy line split + prototype lore/relations) | **Value** and **plain** lines: **`pre-wrap`** on spans/paragraphs so embedded newlines in a line survive. |
 | **`relationsPreview`** | **`pre-wrap`**. |
 
@@ -3437,7 +3438,7 @@ Classifications are **primary** tags; many rows **touch** secondary domains (not
 - **No canon authority change** — doctrine text is unchanged; only **how** it **wraps** changes.  
 - **No routing change** — **`getStaticPaths`** and **`slug`** params unchanged.  
 - **No visibility / discoverability change** — **`getPubliclyDiscoverableSigils`** / filters untouched.  
-- **No schema explosion** — **no** new JSON keys; **optional** fields unchanged in data model.
+- **No schema explosion** — **no** new JSON keys in **TEXT RENDERING** phase; **subsequent** optional keys added only under **EDITORIAL FIELD EVOLUTION — PHASE 1** with additive schema + types.
 
 ---
 
@@ -3452,6 +3453,86 @@ Classifications are **primary** tags; many rows **touch** secondary domains (not
 - **`pre-wrap`** on **Underlay** may alter vertical rhythm vs old single-line chunks for values with many newlines — **acceptable** trade for fidelity; revisit under a **layout** lock if needed.  
 - **Layer** field with **`uppercase` tracking** + multiple lines is rare; if awkward, a **future** micro-pass may relax typography for multi-line **`layer`**.  
 - **Decap** list views (if any) are **unchanged** — only **site** rendering.
+
+---
+
+### 7. Amendment (EDITORIAL FIELD EVOLUTION — PHASE 1)
+
+**Classification public surface:** **`color`** and **`terms`** are **no longer rendered** on **`/sigils/[slug]`** (see **EDITORIAL FIELD EVOLUTION — PHASE 1**). **`TEXT RENDERING`** **pre-wrap** rules for **`usage`** / **`geometry`** / **`category`** remain.
+
+---
+
+## EDITORIAL FIELD EVOLUTION — PHASE 1
+
+**Status:** **LOCKED (2026-05-14)** — **controlled additive field evolution** + **public presentation cleanup** in service of **ZIEROTA EDITORIAL PRESSURE LOG — PHASE 1** medium-priority items, without **graph** tooling, **routing**/**visibility** changes, or **data deletion**.
+
+**MASTER summary:** **`EMPYRRIA_MASTER.md`** → **EDITORIAL FIELD EVOLUTION — PHASE 1**.
+
+---
+
+### 1. Proposal record (pre-implementation design)
+
+| Zierota label | Internal JSON key | Type | Public detail placement | PATH A editable | Decap |
+| --- | --- | --- | --- | --- | --- |
+| Character Link | **`characterLink`** | string (textarea in CMS) | Section **Character link** after **Doctrine** (and other new blocks) | **Yes** | **Yes** (matching widget) |
+| Lore Context | **`loreContext`** | string (textarea) | Section **Lore context** | **Yes** | **Yes** |
+| Sigil Relationships | **`sigilRelationships`** | array of non-empty strings | Section **Sigil relationships** (bulleted; disclaimer line: declared labels only) | **Yes** | **Yes** (`list`) |
+| Place of Origin | **`placeOfOrigin`** | string | Section **Place of origin** | **Yes** | **Yes** |
+
+**Not done:** automatic inference, edges, graph UI, image upload, **`create: true`** for new sigils, doctrine unlocked on **PATH A**.
+
+---
+
+### 2. Schema and data
+
+- **`src/types/sigil.ts`**: optional **`characterLink`**, **`loreContext`**, **`sigilRelationships`**, **`placeOfOrigin`**; governance keys (**`reviewReference`**, **`deprecatedReason`**, **`archivedReason`**, **`status`**, **`visibility`**, **`lastCanonReview`**) typed as optional on **`Sigil`** for JSON honesty.  
+- **`src/data/sigils.schema.json`**: same keys added under **`$defs.sigil.properties`** (`additionalProperties: false` preserved).  
+- **`src/data/sigils.json`**: corpus **`version`** bumped to **`11`**; **no** row keys deleted; new fields **omitted** until editorial use (additive).
+
+---
+
+### 3. Pages CMS (PATH A)
+
+- **`.pages.yml`**: four new fields in the **Zierota-editable** band (with descriptions). **Readonly** governance fields unchanged.
+
+---
+
+### 4. Decap
+
+- **`public/admin/config.yml`**: four widgets added to the sigil list (same semantics as **PATH A**). **No** removal of **`reviewReference`** / reason fields from admin (maintainers still need them).
+
+---
+
+### 5. Public display (`/sigils/[slug]`, showcase)
+
+- **New:** render **`loreContext`**, **`characterLink`**, **`placeOfOrigin`**, **`sigilRelationships`** when non-empty; **`whitespace-pre-wrap break-words`** on prose fields.  
+- **Hidden (public only):** **Colour logic** row and **Terms** row removed from **Classification**; **Indexing terms** disclosure removed for **top-iron-endurance**.  
+- **`Lore (underlay)`** heading renamed from **“Lore context”** for the **underlay-split** prototype block to disambiguate from the **`loreContext`** field section.  
+- **`reviewReference`**, **`deprecatedReason`**, **`archivedReason`**: were **never** rendered on public pages; remain **internal**/CMS only.  
+- **`src/pages/showcase.astro`**: removed **Associated terms** line from grid cards.  
+- **`src/lib/sigilDisplay.ts`**: **`toSigilDisplayItem().tags`** uses **`mergeTags(facets, undefined)`** so **terms** do not surface through the display adapter; **`empyrriaans`** no longer derives from **terms**.
+
+---
+
+### 6. Validation
+
+- **`scripts/validate-content.mjs`**: type checks for new optional fields; **`sigilRelationships`** entries must be non-empty strings.
+
+---
+
+### 7. Explicit non-goals
+
+- **No** field **deletion** from JSON rows.  
+- **No** **`getPubliclyDiscoverableSigils`** / **`internal-test-fixture`** behavior change.  
+- **No** canon transition automation.  
+- **No** relationship **engine**.
+
+---
+
+### 8. Risks / follow-ups
+
+- **`sigilRelationships`** is **presentation-only** — editors must treat entries as **labels**, not URLs, until a **future** linking lock.  
+- **Duplicate lore** risk if both **`loreContext`** and underlay-split lore exist — acceptable; ordering is **Doctrine → editorial `loreContext` → … → underlay lore**.
 
 ---
 
@@ -4311,7 +4392,7 @@ Relationships are **contextual** — **not** all links imply **canon equality**;
 | **Entity relationships (conceptual)** | **CANON ENTITY RELATIONSHIP GOVERNANCE — PHASE 1** | **CANON EVIDENCE**; **CANON ANNOTATION**; **CANON TRANSITION** |
 | **Governance evolution + amendment** | **GOVERNANCE EVOLUTION & AMENDMENT GOVERNANCE — PHASE 1** | **DOCUMENTATION DISCIPLINE — LOCKED**; all domain locks |
 | **Archive + deprecation philosophy (content)** | **CONTENT GOVERNANCE MATURITY — PHASE 1** (archive bands) + **`EMPYRRIA_PHILOSOPHY_ARCHIVE.md`** | **CANON TRANSITION**; **GOVERNANCE EVOLUTION** |
-| **Operational + editorial (tooling)** | **EDITORIAL SCOPE DECISION — LOCK** (**PATH A**); **ZIEROTA ADMIN ACCESS — PHASE 1**; **ZIEROTA EDITORIAL PRESSURE LOG — PHASE 1**; **PAGES CMS VALIDATION AUDIT — LOCK**; **POST-MIGRATION LEGACY SYSTEM AUDIT — LOCK** | **CONTENT**; **CANON TRANSITION**; **SELECTIVE MATURATION PAUSE** (pressure observation) |
+| **Operational + editorial (tooling)** | **EDITORIAL SCOPE DECISION — LOCK** (**PATH A**); **ZIEROTA ADMIN ACCESS — PHASE 1**; **ZIEROTA EDITORIAL PRESSURE LOG — PHASE 1**; **TEXT RENDERING & DISPLAY ERGONOMICS — PHASE 1**; **EDITORIAL FIELD EVOLUTION — PHASE 1**; **PAGES CMS VALIDATION AUDIT — LOCK**; **POST-MIGRATION LEGACY SYSTEM AUDIT — LOCK** | **CONTENT**; **CANON TRANSITION**; **SELECTIVE MATURATION PAUSE** (pressure observation) |
 | **Doctrine / atmosphere roots** | **AUTHORITATIVE POLICY ROOTS — STABLE** (CODEX) | Editorial execution RFCs and audits |
 | **Stabilization + observational window** | **SELECTIVE MATURATION PAUSE + OBSERVATIONAL STABILITY WINDOW** | **GOVERNANCE CONSOLIDATION**; all domain locks; **CONTENT** review triggers; **ZIEROTA EDITORIAL PRESSURE LOG — PHASE 1** (classified PATH A friction) |
 | **Full entry prototype (planning)** | **FULL ENTRY PROTOTYPE — PHASE 1** | **CANON ANNOTATION**; **CANON ENTITY**; **CANON EVIDENCE**; **TOP-IRON-ENDURANCE PHASE A IMPLEMENTATION** (live specimen); **SELECTIVE MATURATION PAUSE** |

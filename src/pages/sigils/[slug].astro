@@ -65,19 +65,23 @@ function nonEmptyTrimmed(value: string | undefined): string | undefined {
 
 const geometry = nonEmptyTrimmed(sigil.geometry);
 const usage = nonEmptyTrimmed(sigil.usage);
-const colorLogic = nonEmptyTrimmed(sigil.color);
 const category = nonEmptyTrimmed(sigil.category);
-const terms = (sigil.terms ?? [])
-	.map((t) => (typeof t === 'string' ? t.trim() : ''))
-	.filter((t) => t.length > 0);
 const showFunctionStrip = Boolean(usage);
 
 const classificationGeometry = geometry;
-const classificationColor = colorLogic;
-/** Phase A tertiary: bury term chips behind disclosure on prototype slug to reduce wiki density. */
-const showTermsOnPage = !(isFullLayoutPrototype && terms.length > 0);
-const showClassification =
-	Boolean(classificationGeometry || classificationColor || category || (showTermsOnPage && terms.length > 0));
+/** Classification shows geometry + category only on public detail (colour + terms hidden Phase 1). */
+const showClassification = Boolean(classificationGeometry || category);
+
+const loreContextText = nonEmptyTrimmed(sigil.loreContext);
+const characterLinkText = nonEmptyTrimmed(sigil.characterLink);
+const placeOfOriginText = nonEmptyTrimmed(sigil.placeOfOrigin);
+const relationshipLines = (sigil.sigilRelationships ?? [])
+	.map((s) => (typeof s === 'string' ? s.trim() : ''))
+	.filter((s) => s.length > 0);
+const showEditorialLoreContext = Boolean(loreContextText);
+const showCharacterLink = Boolean(characterLinkText);
+const showPlaceOfOrigin = Boolean(placeOfOriginText);
+const showSigilRelationships = relationshipLines.length > 0;
 
 const display = toSigilDisplayItem(sigil as SigilRecord);
 const explicitMeaning = nonEmptyTrimmed(sigil.meaning);
@@ -180,6 +184,87 @@ const showDoctrineLead = explicitMeaning !== undefined || explicitLayer !== unde
 		</section>
 
 		{
+			showEditorialLoreContext && loreContextText && (
+				<section
+					class="mt-[3.25rem] border-t border-neutral-800/32 pt-10 md:mt-[3.5rem] md:pt-11"
+					aria-labelledby="lore-context-field-heading"
+				>
+					<h2
+						id="lore-context-field-heading"
+						class="border-b border-neutral-800/30 pb-4 text-[0.7rem] font-bold uppercase tracking-[0.14em] text-neutral-400/90 md:text-[0.75rem]"
+					>
+						Lore context
+					</h2>
+					<p class="mt-6 max-w-prose whitespace-pre-wrap break-words text-[1rem] leading-[1.85] text-neutral-400/82 md:text-[1.0625rem]">
+						{loreContextText}
+					</p>
+				</section>
+			)
+		}
+
+		{
+			showCharacterLink && characterLinkText && (
+				<section
+					class="mt-[3.25rem] border-t border-neutral-800/32 pt-10 md:mt-[3.5rem] md:pt-11"
+					aria-labelledby="character-link-heading"
+				>
+					<h2
+						id="character-link-heading"
+						class="border-b border-neutral-800/30 pb-4 text-[0.7rem] font-bold uppercase tracking-[0.14em] text-neutral-400/90 md:text-[0.75rem]"
+					>
+						Character link
+					</h2>
+					<p class="mt-6 max-w-prose whitespace-pre-wrap break-words text-[1rem] leading-[1.85] text-neutral-400/82 md:text-[1.0625rem]">
+						{characterLinkText}
+					</p>
+				</section>
+			)
+		}
+
+		{
+			showPlaceOfOrigin && placeOfOriginText && (
+				<section
+					class="mt-[3.25rem] border-t border-neutral-800/32 pt-10 md:mt-[3.5rem] md:pt-11"
+					aria-labelledby="place-of-origin-heading"
+				>
+					<h2
+						id="place-of-origin-heading"
+						class="border-b border-neutral-800/30 pb-4 text-[0.7rem] font-bold uppercase tracking-[0.14em] text-neutral-400/90 md:text-[0.75rem]"
+					>
+						Place of origin
+					</h2>
+					<p class="mt-6 max-w-prose whitespace-pre-wrap break-words text-[1rem] leading-[1.85] text-neutral-400/82 md:text-[1.0625rem]">
+						{placeOfOriginText}
+					</p>
+				</section>
+			)
+		}
+
+		{
+			showSigilRelationships && (
+				<section
+					class="mt-[3.25rem] border-t border-neutral-800/32 pt-10 md:mt-[3.5rem] md:pt-11"
+					aria-labelledby="sigil-relationships-heading"
+				>
+					<h2
+						id="sigil-relationships-heading"
+						class="border-b border-neutral-800/30 pb-4 text-[0.7rem] font-bold uppercase tracking-[0.14em] text-neutral-400/90 md:text-[0.75rem]"
+					>
+						Sigil relationships
+					</h2>
+					<p class="mt-4 max-w-prose text-[0.75rem] leading-relaxed text-neutral-500/85">
+						Declared labels only — editorial strings, not automatic links or graph edges.
+					</p>
+					<ul class="mt-6 list-none space-y-3 text-[1rem] leading-[1.75] text-neutral-400/88 md:text-[1.0625rem]">
+						{relationshipLines.map((line) => (
+							<li class="border-l border-neutral-800/55 pl-4 whitespace-pre-wrap break-words">{line}</li>
+						))}
+					</ul>
+				</section>
+			)
+		}
+
+		{
 			showPrototypeLoreSection && loreFromUnderlay && (
 				<section
 					class="mt-[3.25rem] border-t border-neutral-800/32 pt-10 md:mt-[3.5rem] md:pt-11"
@@ -189,7 +274,7 @@ const showDoctrineLead = explicitMeaning !== undefined || explicitLayer !== unde
 						id="lore-heading"
 						class="border-b border-neutral-800/30 pb-4 text-[0.7rem] font-bold uppercase tracking-[0.14em] text-neutral-400/90 md:text-[0.75rem]"
 					>
-						Lore context
+						Lore (underlay)
 					</h2>
 					<p class="mt-6 max-w-prose whitespace-pre-wrap break-words text-[1rem] leading-[1.85] text-neutral-400/82 md:text-[1.0625rem]">
 						{loreFromUnderlay}
@@ -243,32 +328,6 @@ const showDoctrineLead = explicitMeaning !== undefined || explicitLayer !== unde
 							)
 						}
 						{
-							classificationColor && (
-								<div>
-									<dt class="text-[0.62rem] font-medium uppercase tracking-[0.2em] text-neutral-500/78">
-										Color logic
-									</dt>
-									<dd class="mt-2.5 whitespace-pre-wrap break-words text-sm leading-[1.72] text-neutral-300/86">
-										{classificationColor}
-									</dd>
-								</div>
-							)
-						}
-						{
-							showTermsOnPage && terms.length > 0 && (
-								<div>
-									<dt class="text-[0.62rem] font-medium uppercase tracking-[0.2em] text-neutral-500/78">
-										Terms
-									</dt>
-									<dd class="mt-2.5">
-										<p class="max-w-prose text-sm leading-[1.72] tracking-tight text-neutral-400/80" aria-label="Terms">
-											{terms.join(' · ')}
-										</p>
-									</dd>
-								</div>
-							)
-						}
-						{
 							category && (
 								<div>
 									<dt class="text-[0.62rem] font-medium uppercase tracking-[0.2em] text-neutral-500/78">
@@ -282,21 +341,6 @@ const showDoctrineLead = explicitMeaning !== undefined || explicitLayer !== unde
 						}
 					</dl>
 				</section>
-			)
-		}
-
-		{
-			isFullLayoutPrototype && terms.length > 0 && (
-				<div class="mt-10 border-t border-neutral-800/28 pt-7 md:mt-11 md:pt-8">
-					<details class="group">
-						<summary class="cursor-pointer text-[0.62rem] font-medium uppercase tracking-[0.18em] text-neutral-500/75 transition-colors hover:text-neutral-400/88">
-							Indexing terms
-						</summary>
-						<p class="mt-3 max-w-prose text-[0.8125rem] leading-[1.72] tracking-tight text-neutral-400/78" aria-label="Terms">
-							{terms.join(' · ')}
-						</p>
-					</details>
-				</div>
 			)
 		}
 

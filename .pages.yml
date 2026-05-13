@@ -64,6 +64,31 @@ content:
             list: true
             required: false
 
+          - name: characterLink
+            label: Character Link
+            type: text
+            required: false
+            description: "Optional editorial — character or persona association (plain text)."
+
+          - name: loreContext
+            label: Lore Context
+            type: text
+            required: false
+            description: "Optional editorial lore; does not replace doctrine."
+
+          - name: sigilRelationships
+            label: Sigil Relationships
+            type: string
+            list: true
+            required: false
+            description: "Declared relationship labels only (strings). No automatic links."
+
+          - name: placeOfOrigin
+            label: Place of Origin
+            type: string
+            required: false
+            description: "Optional symbolic or narrative origin."
+
           # --- Readonly (canon + identity + governance) ---
           - name: slug
             label: Slug (ID — do not change)

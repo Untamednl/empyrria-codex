@@ -129,6 +129,26 @@ collections:
                 widget: list
                 required: false
                 hint: "Associated search / symbolic terms."
+              - label: "Character Link"
+                name: "characterLink"
+                widget: "text"
+                required: false
+                hint: "Optional editorial — character or persona (plain text, no graph)."
+              - label: "Lore Context"
+                name: "loreContext"
+                widget: "text"
+                required: false
+                hint: "Optional supplementary lore; not a substitute for doctrine."
+              - label: "Sigil Relationships"
+                name: "sigilRelationships"
+                widget: list
+                required: false
+                hint: "Declared relationship labels (strings only). No automatic inference or linking."
+              - label: "Place of Origin"
+                name: "placeOfOrigin"
+                widget: "string"
+                required: false
+                hint: "Optional symbolic or narrative place of origin."
               - label: "Usage Context"
                 name: "usage"
                 widget: "text"
