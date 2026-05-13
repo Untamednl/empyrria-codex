@@ -12,6 +12,9 @@
         "Soul Flame"
       ],
       "characterLink": "Zierota",
+      "sigilRelationships": [
+        "Flame Heart"
+      ],
       "placeOfOrigin": "The Obelisk Warden",
       "slug": "soulflame-sigil",
       "name": "Soulflame Sigil",
