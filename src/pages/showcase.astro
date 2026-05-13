@@ -16,7 +16,7 @@ function canonStatusLabel(status?: string): string | undefined {
 
 /** Preview for grid cards: ellipsis only when truncated; prefer word boundary. */
 function doctrinePreview(text: string, max = 100): string {
-	const t = text.trim();
+	const t = text.replace(/\s+/g, ' ').trim();
 	if (t.length <= max) return t;
 	let cut = t.slice(0, max).trimEnd();
 	const lastSpace = cut.lastIndexOf(' ');
@@ -90,7 +90,7 @@ function doctrinePreview(text: string, max = 100): string {
 					>
 						{heroDisplay.title}
 					</h2>
-					<p class="text-doctrine mt-6 max-w-2xl text-[1.0625rem] leading-[1.85] text-amber-100/78">
+					<p class="text-doctrine mt-6 max-w-2xl whitespace-pre-wrap break-words text-[1.0625rem] leading-[1.85] text-amber-100/78">
 						{heroDisplay.description}
 					</p>
 					<p class="mt-8">

@@ -26,6 +26,19 @@ export interface SigilDisplayItem {
 
 const DISPLAY_VERSION = 'v1';
 
+/**
+ * Public headline for cards, detail `<h1>`, and page `<title>`: optional `title`, then registry `name`, then `slug`.
+ * Does not change JSON keys, routing, or slug identity — presentation only.
+ */
+export function displayHeadline(sigil: Pick<SigilRecord, 'title' | 'name' | 'slug'>): string {
+	const explicit = typeof sigil.title === 'string' ? sigil.title.trim() : '';
+	if (explicit.length > 0) return explicit;
+	const n = typeof sigil.name === 'string' ? sigil.name.trim() : '';
+	if (n.length > 0) return n;
+	const s = typeof sigil.slug === 'string' ? sigil.slug.trim() : '';
+	return s;
+}
+
 /** Unique merge of facets then terms (facets first), preserving first-seen order. */
 export function mergeTags(facets: string[] | undefined, terms: string[] | undefined): string[] {
 	const seen = new Set<string>();
@@ -87,8 +100,7 @@ export function formatPublicationDisplayStatus(sigil: SigilRecord): string {
 
 export function toSigilDisplayItem(sigil: SigilRecord): SigilDisplayItem {
 	const name = sigil.name.trim();
-	const explicitTitle = typeof sigil.title === 'string' ? sigil.title.trim() : '';
-	const title = explicitTitle.length > 0 ? explicitTitle : name;
+	const title = displayHeadline(sigil);
 
 	const facets = sigil.facets ?? [];
 	const categoryRaw = typeof sigil.category === 'string' ? sigil.category.trim() : '';

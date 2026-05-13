@@ -1,5 +1,6 @@
 ---
 import type { Sigil } from '../types/sigil';
+import { displayHeadline } from '../lib/sigilDisplay';
 import { sigilTitleColorClass } from '../lib/sigilIdentity';
 import SigilMeta from './SigilMeta.astro';
 
@@ -8,12 +9,13 @@ interface Props {
 }
 
 function doctrinePreview(text: string, max = 160): string {
-	const t = text.trim();
+	const t = text.replace(/\s+/g, ' ').trim();
 	if (t.length <= max) return t;
 	return `${t.slice(0, max).trimEnd()}…`;
 }
 
 const { sigil } = Astro.props;
+const headline = displayHeadline(sigil);
 const canonMeta = sigil as Sigil & { status?: string; visibility?: string };
 const showProvisionalLabel = canonMeta.status === 'provisional';
 ---
@@ -46,7 +48,7 @@ const showProvisionalLabel = canonMeta.status === 'provisional';
 				sigilTitleColorClass(sigil.slug),
 			]}
 		>
-			{sigil.name}
+			{headline}
 		</h2>
 		{
 			showProvisionalLabel && (
