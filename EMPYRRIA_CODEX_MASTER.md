@@ -154,7 +154,7 @@ Editorial maturation proceeds sigil-by-sigil, reviewable, rollback-simple, and s
 | **ZIEROTA EDITORIAL PRESSURE LOG — PHASE 1** | **Locked (2026-05-14)** — **Operational pressure observation + classification + governance framing only** (**no** **`.pages.yml`**, schema, runtime, UI, rendering fixes, field removals, relationship engine, image upload system, admin redesign, discoverability implementation). First **validated** **PATH A** usage feedback from **Zierota**: editorial expansion, field, display/UX, and cleanup **pressures** logged and **prioritized**; **pressure ≠ approval**; aligns **SELECTIVE MATURATION PAUSE + OBSERVATIONAL STABILITY WINDOW**. Full section **ZIEROTA EDITORIAL PRESSURE LOG — PHASE 1** below. |
 | **TEXT RENDERING & DISPLAY ERGONOMICS — PHASE 1** | **Locked (2026-05-14)** — **Scoped Astro presentation execution** (**no** **`sigils.json`** / Type schema edits, **no** **`.pages.yml`**, **no** routing, **no** **`getPubliclyDiscoverableSigils`** / visibility, **no** field removals, **no** relationship/image/new-sigil/CMS authority expansion). **`displayHeadline`**: **`title`** → **`name`** → **`slug`** for detail **`<h1>`**, document **`<title>`**, **`SigilCard`**, and **`toSigilDisplayItem`**; optional muted **registry `name`** when it differs from headline. Long prose: Tailwind **`whitespace-pre-wrap break-words`** on detail + showcase hero; browse/showcase doctrine previews collapse whitespace to one line. **`npm run build`** / **`npx astro check`** gate. Full section **TEXT RENDERING & DISPLAY ERGONOMICS — PHASE 1** below. |
 | **EDITORIAL FIELD EVOLUTION — PHASE 1** | **Locked (2026-05-14)** — **Additive optional JSON fields** + **PATH A** / **Decap** exposure + **public display** cleanup (**no** data deletion, **no** routing/visibility/canon-transition changes, **no** graph engine, **no** image upload, **no** new-sigil creation, **no** doctrine **PATH A** expansion). New keys: **`characterLink`**, **`loreContext`**, **`sigilRelationships`** (string array), **`placeOfOrigin`**. Public detail: new sections when populated; **hide** **`reviewReference`**, **`deprecatedReason`**, **`archivedReason`**, **Colour logic**, **Associated terms** from public surfaces (data retained; governance fields were never public; classification colour/terms removed). **`toSigilDisplayItem`**: **`tags`** = **facets only**. Corpus **`version`** **11**. **`npm run build`** / **`npx astro check`** gate. Full section **EDITORIAL FIELD EVOLUTION — PHASE 1** below. |
-| **PATH A GOVERNANCE FIELD HIDING — PHASE 1** | **Locked (2026-05-14)** — **`.pages.yml` only:** **`hidden: true`** on **`terms`**, **`color`**, **`reviewReference`**, **`deprecatedReason`**, **`archivedReason`** under **`content.codex.fields.sigils.fields`** (definitions retained; **no** name/type/readonly/options/pattern/description changes). **No** **`sigils.json`**, **schema**, **Decap**, **validator**, **Astro**/public UI, routing, or visibility edits. **Purpose:** reduce **PATH A** editor clutter; preserve keys in JSON and **Decap**/**git** paths. **Required validation:** **`npm run build`**; after first **Pages** save in production, **diff** JSON to confirm keys not stripped. **Rollback:** revert **`.pages.yml`**. Full section **PATH A GOVERNANCE FIELD HIDING — PHASE 1** below. |
+| **PATH A GOVERNANCE FIELD HIDING — PHASE 1** | **Locked (2026-05-14)** — **`.pages.yml` only:** **`hidden: true`** on **`terms`**, **`color`**, **`reviewReference`**, **`deprecatedReason`**, **`archivedReason`** under **`content.codex.fields.sigils.fields`** (definitions retained; **no** name/type/readonly/options/pattern/description changes). **No** **`sigils.json`**, **schema**, **Decap**, **validator**, **Astro**/public UI, routing, or visibility edits in the hiding commit. **Purpose:** reduce **PATH A** editor clutter; preserve keys in JSON and **Decap**/**git** paths. **Required validation:** **`npm run build`**; **LIVE ROUND-TRIP VALIDATED PASS** (**2026-05-14**): first Pages save after **`657ec94`** = commit **`2b699cf`**; hidden keys preserved (**CODEX** §8). **Rollback:** revert **`.pages.yml`**. Full section **PATH A GOVERNANCE FIELD HIDING — PHASE 1** below. |
 | **CONTENT GOVERNANCE MATURITY — PHASE 1** | **Locked (2026-05-11)** — **Lifecycle + governance-definition phase only** (**no** **`sigils.json`**, schema, routes, search/filter, CMS, admin, package, migration, or archive moves). Formal **taxonomy** of content **states** and **canon stability tiers**; **review / maturation** flow concepts; **archive** and **deprecation** philosophy (**preserve**, not erase); **public vs internal** separation intent; **editorial responsibility** layers tied to **PATH A**; **governance principles**; **platform-independent** model (tooling may change; rules survive). Full section **CONTENT GOVERNANCE MATURITY — PHASE 1** below. |
 | **CANON TRANSITION GOVERNANCE — PHASE 1** | **Locked (2026-05-11)** — **Transition mechanics + authority + process only** (**no** data edits, **no** status remapping, **no** visibility/discoverability changes, **no** CMS/schema/deploy, **no** workflow automation). Builds on **CONTENT GOVERNANCE MATURITY — PHASE 1** (definitions). **Authority matrix** (who proposes vs approves); **allowed** lifecycle moves; **promotion** and **locked-canon** gates; **deprecation/archive** procedure expectations; **contradiction** handling; **escalation** ladder; **traceability**; **future tooling** must not replace governance authority. Full section **CANON TRANSITION GOVERNANCE — PHASE 1** below. |
 | **CANON EVIDENCE & REVIEW GOVERNANCE — PHASE 1** | **Locked (2026-05-11)** — **Evidence standards + review epistemology only** (**no** **`sigils.json`**, schema, **status**, visibility, discoverability, CMS, deploy, automation). Defines **what counts as evidence**, **sufficient review**, **canon confidence**, **declaration vs interpretation**, **conflicting evidence**; **review confidence levels**; **historical** evidence philosophy; **stability epistemology** (visibility ≠ certainty); **review traceability**; **future** tooling may **surface** evidence but **not** **determine** canon. Full section **CANON EVIDENCE & REVIEW GOVERNANCE — PHASE 1** below. |
@@ -3588,7 +3588,7 @@ Each field block is **unchanged** except for the single added line **`hidden: tr
 ### 5. Required validation
 
 - **`npm run build`** (repo gate; **no** **`sigils.json`** shape change expected from this phase alone).  
-- **Operational (post-deploy):** after the first **Pages CMS** save on a real sigil, **`git diff src/data/sigils.json`** (or PR diff) must show **no accidental removal** of the five keys’ values. If keys are stripped, **revert** **`.pages.yml`** and treat as **CMS round-trip** incident (see **Rollback**).
+- **Operational (post-deploy):** after the first **Pages CMS** save on a real sigil, **`git diff src/data/sigils.json`** (or PR diff) must show **no accidental removal** of the five keys’ values. If keys are stripped, **revert** **`.pages.yml`** and treat as **CMS round-trip** incident (see **Rollback**). **Recorded PASS:** see **§8 — LIVE ROUND-TRIP VALIDATED PASS** (commits **`657ec94`**, **`2b699cf`**).
 
 ---
 
@@ -3603,6 +3603,32 @@ Revert the commit that adds **`hidden: true`** to **`.pages.yml`** (and master d
 - **PATH A:** five fields **no longer appear** in the Pages CMS editor UI (per [Pages CMS field `hidden`](https://pagescms.org/docs/configuration/content/fields/)).  
 - **Data / governance continuity:** keys remain in **`sigils.json`** and **schema**; **Decap** still lists the same widgets; **validator** rules unchanged.  
 - **Public site:** unchanged (this phase is **CMS profile** only).
+
+---
+
+### 8. PATH A GOVERNANCE FIELD HIDING — PHASE 1 — LIVE ROUND-TRIP VALIDATED PASS
+
+**Status:** **RECORDED (2026-05-14)** — **operational evidence only** (no new code in this documentation sub-step beyond masters).
+
+| Item | Detail |
+| --- | --- |
+| **Commit under test (hidden fields in `.pages.yml`)** | **`657ec94`** — `chore(pages-cms): PATH A hide governance fields in .pages.yml only` |
+| **Pages CMS save commit** | **`2b699cf`** — *Update src/data/sigils.json (via Pages CMS)* (Zierota) |
+| **Edited sigil** | **`soulflame-sigil`** |
+| **Intended visible JSON change** | Added **`sigilRelationships`**: **`["Flame Heart"]`** |
+| **`git diff` summary (`src/data/sigils.json`)** | **3 lines added**, **0 lines removed**; corpus row count **7** unchanged |
+
+**Hidden field preservation check (PASS):** Compared **`HEAD~1`** vs **`HEAD`** at **`2b699cf`** for **every** sigil row, for **`terms`**, **`color`**, **`reviewReference`**, **`deprecatedReason`**, **`archivedReason`**:
+
+- **Slug order** matched across the array.  
+- Each hidden key: **same presence** and **`JSON.stringify`** equality as before the save.  
+- **No** stripping, **no** nulling, **no** unexpected emptying, **no** mass JSON shape drift on those keys.
+
+**Verdict:** **PASS** — **PASS condition** from the validation brief is met for this live save.
+
+**Future rule:** On future **Pages CMS** commits that touch **`sigils.json`**, **skim the diff** (or PR) for unexpected loss or mutation of the five hidden keys (and other governance keys).
+
+**Failure rule:** If hidden fields are **ever** stripped or corrupted by a Pages round-trip, **do not** patch **`sigils.json`** manually in panic; **revert or fix** **`.pages.yml`** (remove **`hidden`** / escalate with Pages CMS product) and **restore** **`sigils.json`** from **git** history; treat as **CMS round-trip** incident per **§6 Rollback**.
 
 ---
 
