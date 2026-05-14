@@ -41,7 +41,11 @@
         "underlay": { "type": "string" },
         "image": {
           "type": "string",
-          "description": "Public URL to SVG, e.g. /media/sigils/<filename>.svg"
+          "description": "Small overview / card image — public URL under /media/sigils/, e.g. /media/sigils/<filename>.svg"
+        },
+        "mainImage": {
+          "type": "string",
+          "description": "Optional large detail-page image under /media/sigils/; public detail uses mainImage when set, else falls back to image."
         },
         "facets": {
           "type": "array",

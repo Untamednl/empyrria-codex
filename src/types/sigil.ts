@@ -17,8 +17,10 @@ export interface Sigil {
 	layer?: string;
 	/** Underlay — structural / cipher layer; omit if not applicable */
 	underlay?: string;
-	/** Public URL path to SVG under `public/media/sigils/`, e.g. `/media/sigils/slug.svg` */
+	/** Small overview / card image — public URL under `public/media/sigils/`, e.g. `/media/sigils/slug.svg` */
 	image?: string;
+	/** Optional large detail-page image (same path rules as `image`); detail UI uses this when set, else `image`. */
+	mainImage?: string;
 	/** Optional grouping for filters; values must come from Zierota’s system only */
 	facets?: string[];
 	/** Structured catalogue fields — display only when present in data */

@@ -159,8 +159,13 @@ collections:
                 widget: "text"
                 required: false
                 hint: "Narrative-only text. Leave empty if unused."
-              - label: "Image"
+              - label: "Small sigil image (overview / card)"
                 name: "image"
                 widget: "image"
                 required: false
-                hint: "Optional image path."
+                hint: "Browse, SigilCard, and showcase thumbnails. Path under /media/sigils/."
+              - label: "Main sigil image (detail page)"
+                name: "mainImage"
+                widget: "image"
+                required: false
+                hint: "Large image on sigil detail page. Optional — if empty, detail uses the small image."

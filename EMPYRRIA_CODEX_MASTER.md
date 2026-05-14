@@ -25,7 +25,7 @@ Operational implementation companion for the **Empyrria Sigil & Doctrine Library
 
 - **Operator** — **`## OPERATIONAL STATE — CURRENT LIVE CODEX`**, **`## Library MVP — requirements`**, **`## Current data structure`**, **`## Current routes (pages)`**, **`## Key components / scripts`**, **`## Guardrails — project identity`**, **`## Missing MVP / gaps`**, **`## CANON INGESTION PIPELINE — LOCKED`**, **`## Validation checklist (before merge / release)`**, **`## OPERATIONAL STATE — CURRENT NEXT STEP`**; checkpoints → **`EMPYRRIA_MASTER.md`** → **Checkpoints & rollback (active summary)**.
 
-- **Implementer** — **`## Locked implementation progress`** (chronicle table), then the execution section you need by **exact `##` title** (e.g. **`## TEXT RENDERING & DISPLAY ERGONOMICS — PHASE 1`**, **`## EDITORIAL FIELD EVOLUTION — PHASE 1`**, **`## PATH A GOVERNANCE FIELD HIDING — PHASE 1`**, **`## PATH A EDITORIAL ERGONOMICS — PHASE 2A`**, **`## PATH A EDITORIAL SURFACE REFINEMENT — PHASE 2B`**, **`## SIGIL READABILITY & VISUAL HIERARCHY — PHASE 1A`**, **`## REGISTRY LAYER HIERARCHY REFINEMENT — PHASE 1B.5`**, **`## HERO METADATA HIERARCHY REFINEMENT — PHASE 1B.6`**, **`## SIGIL DETAIL MAIN IMAGE WINDOW — PHASE 1`**, **`## CLOUDFLARE PAGES MIGRATION — VALIDATED`**); **`EMPYRRIA_MASTER.md`** carries the paired **summary locks** under the **same** `##` titles.
+- **Implementer** — **`## Locked implementation progress`** (chronicle table), then the execution section you need by **exact `##` title** (e.g. **`## TEXT RENDERING & DISPLAY ERGONOMICS — PHASE 1`**, **`## EDITORIAL FIELD EVOLUTION — PHASE 1`**, **`## PATH A GOVERNANCE FIELD HIDING — PHASE 1`**, **`## PATH A EDITORIAL ERGONOMICS — PHASE 2A`**, **`## PATH A EDITORIAL SURFACE REFINEMENT — PHASE 2B`**, **`## SIGIL READABILITY & VISUAL HIERARCHY — PHASE 1A`**, **`## REGISTRY LAYER HIERARCHY REFINEMENT — PHASE 1B.5`**, **`## HERO METADATA HIERARCHY REFINEMENT — PHASE 1B.6`**, **`## SIGIL DETAIL MAIN IMAGE WINDOW — PHASE 1`**, **`## SIGIL DUAL IMAGE SYSTEM — PHASE 1`**, **`## CLOUDFLARE PAGES MIGRATION — VALIDATED`**); **`EMPYRRIA_MASTER.md`** carries the paired **summary locks** under the **same** `##` titles.
 
 - **Governance Auditor** — **`## CANONICAL DOCUMENT STRUCTURE — STABLE`**, **`## AUTHORITATIVE POLICY ROOTS — STABLE`**, **`## CONTENT GOVERNANCE MATURITY — PHASE 1`**, **`## CANON TRANSITION GOVERNANCE — PHASE 1`**, **`## CANON EVIDENCE & REVIEW GOVERNANCE — PHASE 1`**, **`## CANON ANNOTATION & COMMENTARY GOVERNANCE — PHASE 1`**, **`## CANON ENTITY RELATIONSHIP GOVERNANCE — PHASE 1`**, **`## GOVERNANCE EVOLUTION & AMENDMENT GOVERNANCE — PHASE 1`**, **`## GOVERNANCE CONSOLIDATION & CONSTITUTIONAL INDEX — PHASE 1`**, **`## DOCUMENTATION DISCIPLINE — LOCKED`**, **`## SELECTIVE MATURATION PAUSE + OBSERVATIONAL STABILITY WINDOW`**.
 
@@ -40,7 +40,7 @@ This master file is maintained in seven governance bands:
 1. **PROJECT IDENTITY** — purpose, archive philosophy, ceremonial doctrine/atmosphere constraints.
 2. **GOVERNANCE LAYER** — documentation discipline, canon governance, editorial governance, **content lifecycle vocabulary** (**CONTENT GOVERNANCE MATURITY — PHASE 1**), **canon transition process** (**CANON TRANSITION GOVERNANCE — PHASE 1**), **canon evidence & review epistemology** (**CANON EVIDENCE & REVIEW GOVERNANCE — PHASE 1**), **canon annotation & commentary** (**CANON ANNOTATION & COMMENTARY GOVERNANCE — PHASE 1**), **canon entity relationships** (**CANON ENTITY RELATIONSHIP GOVERNANCE — PHASE 1**), **governance evolution & amendment** (**GOVERNANCE EVOLUTION & AMENDMENT GOVERNANCE — PHASE 1**), **governance consolidation & constitutional index** (**GOVERNANCE CONSOLIDATION & CONSTITUTIONAL INDEX — PHASE 1**), **selective maturation pause + observational stability** (**SELECTIVE MATURATION PAUSE + OBSERVATIONAL STABILITY WINDOW**), **operational editorial pressure logging** (**ZIEROTA EDITORIAL PRESSURE LOG — PHASE 1**), rollout rules.
 3. **CORE ARCHITECTURE** — entity/dossier/template RFCs, mapping plans, visibility-tier model, adapter philosophy.
-4. **IMPLEMENTATION LAYER** — Top-Iron Phase A system, layout/wireframe/atmosphere/detail governance, **full entry prototype planning** (**FULL ENTRY PROTOTYPE — PHASE 1**), **full entry visual mockup governance** (**FULL ENTRY VISUAL MOCKUP — PHASE 1**), **specimen entry wireframe governance** (**SPECIMEN ENTRY WIREFRAME — PHASE 1**), **text rendering + display headline ergonomics** (**TEXT RENDERING & DISPLAY ERGONOMICS — PHASE 1**), **editorial field evolution (PATH A + schema additive)** (**EDITORIAL FIELD EVOLUTION — PHASE 1**), **PATH A governance field hiding (Pages CMS `hidden` only)** (**PATH A GOVERNANCE FIELD HIDING — PHASE 1**), **PATH A editorial ergonomics (Pages CMS field order only)** (**PATH A EDITORIAL ERGONOMICS — PHASE 2A**), **PATH A editorial surface refinement (additional Pages CMS `hidden` only)** (**PATH A EDITORIAL SURFACE REFINEMENT — PHASE 2B**), **sigil detail main image window (public detail Astro only)** (**SIGIL DETAIL MAIN IMAGE WINDOW — PHASE 1**).
+4. **IMPLEMENTATION LAYER** — Top-Iron Phase A system, layout/wireframe/atmosphere/detail governance, **full entry prototype planning** (**FULL ENTRY PROTOTYPE — PHASE 1**), **full entry visual mockup governance** (**FULL ENTRY VISUAL MOCKUP — PHASE 1**), **specimen entry wireframe governance** (**SPECIMEN ENTRY WIREFRAME — PHASE 1**), **text rendering + display headline ergonomics** (**TEXT RENDERING & DISPLAY ERGONOMICS — PHASE 1**), **editorial field evolution (PATH A + schema additive)** (**EDITORIAL FIELD EVOLUTION — PHASE 1**), **PATH A governance field hiding (Pages CMS `hidden` only)** (**PATH A GOVERNANCE FIELD HIDING — PHASE 1**), **PATH A editorial ergonomics (Pages CMS field order only)** (**PATH A EDITORIAL ERGONOMICS — PHASE 2A**), **PATH A editorial surface refinement (additional Pages CMS `hidden` only)** (**PATH A EDITORIAL SURFACE REFINEMENT — PHASE 2B**), **sigil detail main image window (public detail Astro only)** (**SIGIL DETAIL MAIN IMAGE WINDOW — PHASE 1**), **sigil dual image system (`image` + optional `mainImage`, validator + CMS)** (**SIGIL DUAL IMAGE SYSTEM — PHASE 1**).
 5. **EDITORIAL EXECUTIONS** — selective enrichment passes (IAH-VEA, Soulflame, Top-Clear-Mind).
 6. **FUTURE / DEFERRED SYSTEMS** — Phase B, structured entity model, graph-level and advanced CMS expansions.
 7. **OPERATIONAL STATE** — current next step, active priorities, release/validation guardrails, warnings.
@@ -185,6 +185,7 @@ Editorial maturation proceeds sigil-by-sigil, reviewable, rollback-simple, and s
 | **REGISTRY LAYER HIERARCHY REFINEMENT — PHASE 1B.5** | **Locked (2026-05-15)** — **`src/pages/sigils/[slug].astro`** only: strengthens lower **registry** hierarchy (**Function within Empyrria**, **Classification**, **Geometry** / **Category** label–value rhythm, footer cadence before **← All sigils**). **Presentation-only** — **no** **Doctrine**, **hero**, **editorial** band, **relationship** list architecture, **Underlay**, **schema**, **JSON**, **CMS**, **routing**, or **validator** changes. **Rollback:** revert this commit. Full section **REGISTRY LAYER HIERARCHY REFINEMENT — PHASE 1B.5** below. |
 | **HERO METADATA HIERARCHY REFINEMENT — PHASE 1B.6** | **Locked (2026-05-16)** — **`src/pages/sigils/[slug].astro`** only: **registry-name subtitle** + **archival facets** taxonomy line (**`SigilMeta`** **`variant="archival"`**) gain **quiet codex authority** via **Tailwind** on **`[slug].astro`** (including **`[&>p]:`** overrides); **`SigilMeta.astro`** **unchanged**. **No** **`h1`**, **Doctrine**, **editorial**/**registry**/**Underlay**/**relationship** blocks, **image** layout, **schema**, **JSON**, **CMS**, or **routing**. **Rollback:** revert this commit. Full section **HERO METADATA HIERARCHY REFINEMENT — PHASE 1B.6** below. |
 | **SIGIL DETAIL MAIN IMAGE WINDOW — PHASE 1** | **Locked (2026-05-14)** — **`src/pages/sigils/[slug].astro`** only: **large framed main** **`sigil.image`** window **after** **`h1`**, subtitle, and **archival** **`SigilMeta`** band, **before** optional meaning/layer lead and **Doctrine** — **cinematic** dark frame, subtle border, responsive **`max-h-[min(62vh,26rem)]`** viewport; **removed** the **small** duplicate thumbnail **above** **`h1`**. **`SigilCard`** / **`/sigils`** browse thumbnails **unchanged**. **No** **`sigils.json`**, **schema**, **`.pages.yml`**, **Decap**, **validator**, **routing**, new image fields, **Doctrine** typography, editorial band, or registry sections. **User feedback (Zierota):** small images on overview; **large** mark on detail. **Rollback:** revert this commit. Full section **SIGIL DETAIL MAIN IMAGE WINDOW — PHASE 1** below. |
+| **SIGIL DUAL IMAGE SYSTEM — PHASE 1** | **Locked (2026-05-14)** — **Additive:** optional **`mainImage`** in **`sigils.schema.json`**, **`Sigil`** type, **`scripts/validate-content.mjs`** (shared path/file checks for **`image`** + **`mainImage`**), **`.pages.yml`** (**`image`** + **`mainImage`** editable **`type: image`** near **`title`**), **`public/admin/config.yml`** (two image widgets). **`src/pages/sigils/[slug].astro`**: detail plate **`src`** = **`trim(mainImage) || trim(image)`**; **`SigilCard`**, **`/sigils`**, **`/showcase`** stay on **`image`**. **`sigils.json`**: **no** required bulk migration. **Backward compatible** when **`mainImage`** omitted. **Rollback:** revert commit. Full section **SIGIL DUAL IMAGE SYSTEM — PHASE 1** below. |
 | **CONTENT GOVERNANCE MATURITY — PHASE 1** | **Locked (2026-05-11)** — **Lifecycle + governance-definition phase only** (**no** **`sigils.json`**, schema, routes, search/filter, CMS, admin, package, migration, or archive moves). Formal **taxonomy** of content **states** and **canon stability tiers**; **review / maturation** flow concepts; **archive** and **deprecation** philosophy (**preserve**, not erase); **public vs internal** separation intent; **editorial responsibility** layers tied to **PATH A**; **governance principles**; **platform-independent** model (tooling may change; rules survive). Full section **CONTENT GOVERNANCE MATURITY — PHASE 1** below. |
 | **CANON TRANSITION GOVERNANCE — PHASE 1** | **Locked (2026-05-11)** — **Transition mechanics + authority + process only** (**no** data edits, **no** status remapping, **no** visibility/discoverability changes, **no** CMS/schema/deploy, **no** workflow automation). Builds on **CONTENT GOVERNANCE MATURITY — PHASE 1** (definitions). **Authority matrix** (who proposes vs approves); **allowed** lifecycle moves; **promotion** and **locked-canon** gates; **deprecation/archive** procedure expectations; **contradiction** handling; **escalation** ladder; **traceability**; **future tooling** must not replace governance authority. Full section **CANON TRANSITION GOVERNANCE — PHASE 1** below. |
 | **CANON EVIDENCE & REVIEW GOVERNANCE — PHASE 1** | **Locked (2026-05-11)** — **Evidence standards + review epistemology only** (**no** **`sigils.json`**, schema, **status**, visibility, discoverability, CMS, deploy, automation). Defines **what counts as evidence**, **sufficient review**, **canon confidence**, **declaration vs interpretation**, **conflicting evidence**; **review confidence levels**; **historical** evidence philosophy; **stability epistemology** (visibility ≠ certainty); **review traceability**; **future** tooling may **surface** evidence but **not** **determine** canon. Full section **CANON EVIDENCE & REVIEW GOVERNANCE — PHASE 1** below. |
@@ -3929,13 +3930,13 @@ The **subtitle** and **taxonomy** line sat **too low-contrast** against the page
 ### 1. User feedback (Zierota)
 
 - **Browse / overview:** keep **small** sigil thumbnails on the scroll grid (**unchanged** — still **`SigilCard`**).  
-- **Detail:** on **`/sigils/[slug]`**, show the **same** **`sigil.image`** as a **large**, **primary** visual **under** the title and hero metadata, so opening a sigil feels like **entering** the mark rather than only reading metadata beside a postage-stamp icon.
+- **Detail:** on **`/sigils/[slug]`**, show a **large**, **primary** visual **under** the title and hero metadata, so opening a sigil feels like **entering** the mark rather than only reading metadata beside a postage-stamp icon. (**`src`** = **`mainImage` ?? `image`** per **SIGIL DUAL IMAGE SYSTEM — PHASE 1**.)
 
 ---
 
 ### 2. Solution (hierarchy + frame)
 
-- **Order:** **`Sigil`** label → **`h1`** (display headline) → optional **registry-name** subtitle → **archival taxonomy** **`SigilMeta`** band → **optional** **`<figure class="sigil-detail-main-figure">`** (only when **`sigil.image`** is set) → optional **meaning/layer** lead → **Doctrine** and rest **unchanged**.  
+- **Order:** **`Sigil`** label → **`h1`** (display headline) → optional **registry-name** subtitle → **archival taxonomy** **`SigilMeta`** band → **optional** **`<figure class="sigil-detail-main-figure">`** when **`mainImage` ?? `image`** resolves to a non-empty URL → optional **meaning/layer** lead → **Doctrine** and rest **unchanged**.  
 - **Removed:** the **small** square thumbnail **above** **`h1`** (avoid **duplicate** tiny + large).  
 - **Frame:** dark **gradient** panel, **rounded-xl**, **neutral** border, **inset** hairline highlight — **codex plate** tone, **no** SaaS card chrome, **no** heavy glow.  
 - **Sizing:** inner flex viewport **`min-h-[12rem]`** **`max-h-[min(62vh,26rem)]`** with **`object-contain`** so SVG/raster scales on **mobile** without horizontal **overflow**.
@@ -3959,6 +3960,63 @@ The **subtitle** and **taxonomy** line sat **too low-contrast** against the page
 ### 5. Rollback plan
 
 **Revert this commit** (masters + **`[slug].astro`** if combined).
+
+---
+
+## SIGIL DUAL IMAGE SYSTEM — PHASE 1
+
+**Status:** **LOCKED (2026-05-14)** — **Optional second image field** + **shared validator** + **PATH A + Decap exposure** + **detail `src` resolution**. **`image`** = **small** overview / **`SigilCard`** / **`/showcase`**; **`mainImage`** = optional **large** detail plate on **`/sigils/[slug]`**; detail uses **`trim(mainImage) || trim(image)`**. **Does not** change **`SigilCard.astro`**, **`/sigils/index`**, **`showcase.astro`** image sources (all **`image`** / **`toSigilDisplayItem.image`**). **Does not** add routes, change **Doctrine**/**editorial**/**registry** typography, or remove **Decap**.
+
+**MASTER summary:** **`EMPYRRIA_MASTER.md`** → **SIGIL DUAL IMAGE SYSTEM — PHASE 1**.
+
+---
+
+### 1. Field contract
+
+| Key | Role |
+| --- | ---- |
+| **`image`** | **Small** sigil graphic — browse grid, **`SigilCard`**, **`/showcase`** (via **`toSigilDisplayItem`**). |
+| **`mainImage`** | **Optional** large asset for the **detail** main figure; when **absent** or empty, detail **falls back** to **`image`**. |
+
+---
+
+### 2. Schema, types, validation
+
+- **`src/data/sigils.schema.json`**: **`mainImage`** optional string under **`$defs.sigil.properties`**; **`image`** description updated to **small** role.  
+- **`src/types/sigil.ts`**: **`mainImage?: string`**.  
+- **`scripts/validate-content.mjs`**: **`SIGIL_IMAGE_PATH_FIELDS`** + **`validateSigilImageField`** — same **`/media/sigils/`** prefix and **`public/media/sigils/`** file-existence rules for **both** keys.
+
+---
+
+### 3. CMS (PATH A + Decap)
+
+- **`.pages.yml`**: **`image`** and **`mainImage`** as **`type: image`**, **editable** ( **`readonly` removed** from **`image`** ), **not** **`hidden`**, placed after **`title`** with distinct **labels** and **descriptions**.  
+- **`public/admin/config.yml`**: **`image`** + **`mainImage`** **`widget: image`** with **hints** matching the two roles.
+
+---
+
+### 4. Detail rendering
+
+- **`src/pages/sigils/[slug].astro`**: **`detailImageSrc`** = **`nonEmptyTrimmed(sigil.mainImage) ?? nonEmptyTrimmed(sigil.image)`**; existing **SIGIL DETAIL MAIN IMAGE WINDOW — Phase 1** frame unchanged, **`src`** bound to **`detailImageSrc`**.
+
+---
+
+### 5. JSON migration
+
+- **No** bulk **`mainImage`** backfill required — existing rows **valid**; detail behavior **unchanged** until **`mainImage`** is set per sigil.
+
+---
+
+### 6. Validation
+
+- **`npm run build`** + **`npx astro check`**.  
+- Manual: **`/sigils`**, **`/showcase`** use **small** **`image`**; **`/sigils/<slug>`** uses **`mainImage`** when present in JSON else **`image`**; **Pages** + **Decap** show **two** image pickers.
+
+---
+
+### 7. Rollback plan
+
+**Revert** this commit (schema, types, validator, **`.pages.yml`**, Decap, **`[slug].astro`**, masters). Optional: remove **`mainImage`** keys from **`sigils.json`** if any were added after rollout.
 
 ---
 

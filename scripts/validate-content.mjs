@@ -24,6 +24,48 @@ async function fileExists(targetPath) {
   }
 }
 
+/** Optional sigil media fields: same path + on-disk rules as each other. */
+const SIGIL_IMAGE_PATH_FIELDS = ["image", "mainImage"];
+
+/**
+ * If value is a non-empty string, require `media/sigils/…` prefix and existing file under `public/media/sigils/`.
+ * @param {unknown} rawValue
+ */
+async function validateSigilImageField(errors, entity, fieldName, rawValue) {
+  if (typeof rawValue !== "string" || rawValue.trim().length === 0) {
+    return;
+  }
+  const normalized = rawValue.replace(/^\/+/, "");
+  const expectedPrefix = "media/sigils/";
+  if (!normalized.startsWith(expectedPrefix)) {
+    errors.push(
+      makeError(
+        errors.length + 1,
+        "IMAGE_PATH_INVALID",
+        entity,
+        fieldName,
+        `${fieldName} path must start with /media/sigils/ or media/sigils/`,
+        `set ${fieldName} to /media/sigils/<filename>`
+      )
+    );
+    return;
+  }
+  const relativePath = normalized.slice(expectedPrefix.length);
+  const filePath = path.join(ROOT, "public", "media", "sigils", relativePath);
+  if (!(await fileExists(filePath))) {
+    errors.push(
+      makeError(
+        errors.length + 1,
+        "IMAGE_MISSING_FILE",
+        entity,
+        fieldName,
+        `file not found: public/media/sigils/${relativePath}`,
+        `add the file under public/media/sigils/ or remove ${fieldName}`
+      )
+    );
+  }
+}
+
 function toNonEmptyString(value) {
   return typeof value === "string" && value.trim().length > 0;
 }
@@ -355,17 +397,19 @@ async function validate() {
       );
     }
 
-    if ("image" in sigil && typeof sigil.image !== "string") {
-      errors.push(
-        makeError(
-          errors.length + 1,
-          "FIELD_TYPE_INVALID",
-          entity,
-          "image",
-          "image must be a string when present",
-          "set image to a string path or remove it"
-        )
-      );
+    for (const fieldName of SIGIL_IMAGE_PATH_FIELDS) {
+      if (fieldName in sigil && typeof sigil[fieldName] !== "string") {
+        errors.push(
+          makeError(
+            errors.length + 1,
+            "FIELD_TYPE_INVALID",
+            entity,
+            fieldName,
+            `${fieldName} must be a string when present`,
+            `set ${fieldName} to a string path or remove it`
+          )
+        );
+      }
     }
 
     if (typeof sigil.slug === "string") {
@@ -400,36 +444,8 @@ async function validate() {
       }
     }
 
-    if (typeof sigil.image === "string" && sigil.image.trim().length > 0) {
-      const normalized = sigil.image.replace(/^\/+/, "");
-      const expectedPrefix = "media/sigils/";
-      if (!normalized.startsWith(expectedPrefix)) {
-        errors.push(
-          makeError(
-            errors.length + 1,
-            "IMAGE_PATH_INVALID",
-            entity,
-            "image",
-            "image path must start with /media/sigils/ or media/sigils/",
-            "set image to /media/sigils/<filename>"
-          )
-        );
-      } else {
-        const relativePath = normalized.slice(expectedPrefix.length);
-        const filePath = path.join(ROOT, "public", "media", "sigils", relativePath);
-        if (!(await fileExists(filePath))) {
-          errors.push(
-            makeError(
-              errors.length + 1,
-              "IMAGE_MISSING_FILE",
-              entity,
-              "image",
-              `file not found: public/media/sigils/${relativePath}`,
-              "add the image file or remove the image field"
-            )
-          );
-        }
-      }
+    for (const fieldName of SIGIL_IMAGE_PATH_FIELDS) {
+      await validateSigilImageField(errors, entity, fieldName, sigil[fieldName]);
     }
   }
 

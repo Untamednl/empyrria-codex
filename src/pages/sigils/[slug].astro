@@ -131,6 +131,9 @@ const headline = displayHeadline(sigil as SigilRecord);
 const registryName = sigil.name.trim();
 const showRegistryNameSubtitle = registryName.length > 0 && headline !== registryName;
 const showDoctrineLead = explicitMeaning !== undefined || explicitLayer !== undefined;
+
+/** Detail main plate: optional large asset, else small overview image (SIGIL DUAL IMAGE SYSTEM — Phase 1). */
+const detailImageSrc = nonEmptyTrimmed(sigil.mainImage) ?? nonEmptyTrimmed(sigil.image);
 ---
 
 <Layout title={`${headline} · Empyrria Sigil Codex`} currentPath={Astro.url.pathname}>
@@ -157,7 +160,7 @@ const showDoctrineLead = explicitMeaning !== undefined || explicitLayer !== unde
 		</div>
 
 		{
-			sigil.image && (
+			detailImageSrc && (
 				<figure
 					class="sigil-detail-main-figure mt-9 w-full overflow-hidden rounded-xl border border-neutral-800/78 bg-gradient-to-b from-neutral-950/92 via-neutral-950/78 to-black/60 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.035)] md:mt-10"
 					aria-label={`${sigil.name} sigil mark`}
@@ -166,7 +169,7 @@ const showDoctrineLead = explicitMeaning !== undefined || explicitLayer !== unde
 						class="flex min-h-[12rem] max-h-[min(62vh,26rem)] w-full items-center justify-center px-5 py-7 sm:px-6 sm:py-8 md:px-8 md:py-10"
 					>
 						<img
-							src={sigil.image}
+							src={detailImageSrc}
 							alt={`${sigil.name} sigil`}
 							class="max-h-full max-w-full object-contain"
 							loading="eager"

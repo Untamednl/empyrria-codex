@@ -48,11 +48,16 @@ content:
             description: "Optional display override; omit when unused."
 
           - name: image
-            label: Image
+            label: Small sigil image (overview / card)
             type: image
             required: false
-            readonly: true
-            description: "Public path under /media/sigils/…"
+            description: "Browse / SigilCard / showcase thumbnail. Public path under /media/sigils/…"
+
+          - name: mainImage
+            label: Main sigil image (detail page)
+            type: image
+            required: false
+            description: "Large plate on /sigils/[slug]. If empty, the detail page uses the small image above."
 
           - name: meaning
             label: Meaning
