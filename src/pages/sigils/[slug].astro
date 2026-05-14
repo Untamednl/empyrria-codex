@@ -105,6 +105,17 @@ const classificationSectionTop =
 const editorialFieldHeadingClass =
 	'border-b border-neutral-700/35 pb-4 text-[0.8125rem] font-bold uppercase tracking-[0.16em] text-neutral-200/90 md:text-[0.875rem]';
 
+/** Registry layer (Phase 1B.5): Function + Classification chapter headings — institutional codex tone, still below Doctrine. */
+const registryBandHeadingClass =
+	'border-b border-neutral-700/45 pb-5 text-[0.78rem] font-bold uppercase tracking-[0.15em] text-neutral-200/90 md:text-[0.8125rem]';
+
+/** Geometry / Category: archival label markers vs interpreted values (Phase 1B.5). */
+const registryFieldLabelClass =
+	'text-[0.63rem] font-semibold uppercase tracking-[0.17em] text-neutral-400/95 md:text-[0.65rem]';
+
+const registryFieldValueClass =
+	'mt-3 max-w-prose whitespace-pre-wrap break-words text-[0.9375rem] leading-[1.8] text-neutral-200/90 md:mt-3.5 md:text-[1rem] md:leading-[1.82]';
+
 const display = toSigilDisplayItem(sigil as SigilRecord);
 const explicitMeaning = nonEmptyTrimmed(sigil.meaning);
 const explicitLayer = nonEmptyTrimmed(sigil.layer);
@@ -289,13 +300,12 @@ const showDoctrineLead = explicitMeaning !== undefined || explicitLayer !== unde
 		{
 			showFunctionStrip && usage && (
 				<section class={functionSectionTop} aria-labelledby="function-heading">
-					<h2
-						id="function-heading"
-						class="border-b border-neutral-800/30 pb-5 text-[0.7rem] font-bold uppercase tracking-[0.14em] text-neutral-400/92 md:text-[0.75rem]"
-					>
+					<h2 id="function-heading" class={registryBandHeadingClass}>
 						Function within Empyrria
 					</h2>
-					<p class="mt-6 whitespace-pre-wrap break-words text-sm leading-[1.75] text-neutral-300/82 md:text-[0.9375rem]">
+					<p
+						class="mt-7 max-w-prose whitespace-pre-wrap break-words text-[0.9375rem] leading-[1.8] text-neutral-200/88 md:text-[1rem] md:leading-[1.82]"
+					>
 						{usage}
 					</p>
 				</section>
@@ -305,34 +315,23 @@ const showDoctrineLead = explicitMeaning !== undefined || explicitLayer !== unde
 		{
 			showClassification && (
 				<section class={classificationSectionTop} aria-labelledby="classification-heading">
-					<h2
-						id="classification-heading"
-						class="border-b border-neutral-800/28 pb-4 text-[0.7rem] font-semibold uppercase tracking-[0.16em] text-neutral-400/88 md:text-[0.72rem]"
-					>
+					<h2 id="classification-heading" class={registryBandHeadingClass}>
 						Classification
 					</h2>
-					<dl class="mt-7 space-y-7">
+					<dl class="mt-8 space-y-8 md:space-y-9">
 						{
 							classificationGeometry && (
 								<div>
-									<dt class="text-[0.62rem] font-medium uppercase tracking-[0.2em] text-neutral-500/78">
-										Geometry
-									</dt>
-									<dd class="mt-2.5 whitespace-pre-wrap break-words text-sm leading-[1.72] text-neutral-300/86">
-										{classificationGeometry}
-									</dd>
+									<dt class={registryFieldLabelClass}>Geometry</dt>
+									<dd class={registryFieldValueClass}>{classificationGeometry}</dd>
 								</div>
 							)
 						}
 						{
 							category && (
 								<div>
-									<dt class="text-[0.62rem] font-medium uppercase tracking-[0.2em] text-neutral-500/78">
-										Category
-									</dt>
-									<dd class="mt-2.5 whitespace-pre-wrap break-words text-sm leading-[1.72] text-neutral-300/86">
-										{category}
-									</dd>
+									<dt class={registryFieldLabelClass}>Category</dt>
+									<dd class={registryFieldValueClass}>{category}</dd>
 								</div>
 							)
 						}
@@ -399,7 +398,7 @@ const showDoctrineLead = explicitMeaning !== undefined || explicitLayer !== unde
 			)
 		}
 
-		<p class="mt-20 border-t border-neutral-800/60 pt-10">
+		<p class="mt-24 border-t border-neutral-800/55 pt-12 md:mt-28 md:pt-14">
 			<a
 				href="/sigils"
 				class="text-sm text-neutral-400 underline-offset-4 transition-colors hover:text-cyan-400/80 hover:underline"
