@@ -3,7 +3,8 @@
   "version": "11",
   "sigils": [
     {
-      "title": "Soul Flame · Core of Being",
+      "title": "Soul Flame",
+      "image": "/media/sigils/soulflame.svg",
       "meaning": "Soul Flame represents the inner fire that proves someone still has meaning, identity, and the will to exist.\n\nIt is not ordinary fire. It is the living signature of the self: the part of a person that cannot be copied, owned, or erased without consequence.\n\nWithin Empyrria / The Underlay, the Soul Flame means:\n\nThe truth of who you are.\nThe warmth that remains when everything else becomes cold.\nThe inner light that keeps choosing life, direction, and meaning.\n\nSoul Flame is not loud power, ego, or destruction. It is presence. It can burn gently, fiercely, or almost invisibly, but as long as it remains, the self is not lost.\n\n\nIn short:\n\nSoul Flame = identity as living fire.\nNot rage, not magic, but the deep inner proof that someone still belongs to themselves.",
       "facets": [
         "Core / Energy"
@@ -12,10 +13,10 @@
         "Soul Flame"
       ],
       "characterLink": "Zierota",
+      "placeOfOrigin": "The Obelisk Warden",
       "sigilRelationships": [
         "Flame Heart"
       ],
-      "placeOfOrigin": "The Obelisk Warden",
       "slug": "soulflame-sigil",
       "name": "Soulflame Sigil",
       "layer": "Core · Layer 1",
@@ -24,12 +25,12 @@
       "usage": "Character codification, identity pages, Underlay cues where foundational self—not passing mood—is the operative referent.",
       "geometry": "Continuity-bearing symbolic form; inward settlement rather than kinetic command geometry or ornamental outward thrust.",
       "color": "Bound to portrayed identity—not interchangeable or purely ornamental palette.",
-      "image": "/media/sigils/soulflame.svg",
       "status": "provisional",
       "visibility": "marked_public",
       "lastCanonReview": "2026-05-13"
     },
     {
+      "image": "/media/sigils/top-clear-mind.svg",
       "facets": [
         "State Sigil"
       ],
@@ -44,7 +45,6 @@
       "usage": "State designation; narrative moments of precise perception, reduced misread, and sustained discriminative judgment—not wellness framing, productivity-plot conceits, nor didactic coaching rhythm.",
       "geometry": "Radial symmetry; structural balance read as stable cognitive reference—clarity embodied as ordered form, not restful mood or ornamental softness.",
       "color": "Contrast and separation tuned for legible distinction—clear seeing without sentimental wash or decorative blur.",
-      "image": "/media/sigils/top-clear-mind.svg",
       "status": "provisional",
       "visibility": "marked_public",
       "lastCanonReview": "2026-05-13"
@@ -73,6 +73,7 @@
     },
     {
       "title": "Zenga Zellia · Reciprocal Resonance",
+      "image": "/media/sigils/zenga-zellia.svg",
       "meaning": "Aligned recognition in mirrored relation—proximity without fusion.",
       "facets": [
         "Relational Sigil"
@@ -89,13 +90,13 @@
       "usage": "Relational alignment scenes: reciprocal attunement, reduced misread, and stable mutual orientation between beings—without social-drama framing.",
       "geometry": "Dual mirrored structure with reciprocal orientation; relational tension carried by balanced opposition rather than merged symmetry.",
       "color": "Magenta-led contrast as relational signal; quiet magnetic distinction without sentimental wash.",
-      "image": "/media/sigils/zenga-zellia.svg",
       "status": "provisional",
       "visibility": "marked_public",
       "lastCanonReview": "2026-05-13"
     },
     {
       "title": "IAH-VEA · Declared Structure",
+      "image": "/media/sigils/iah-vea.svg",
       "meaning": "Doctrine at rest as legible form—witness, not cultivation.",
       "facets": [
         "Doctrine Sigil"
@@ -111,13 +112,13 @@
       "usage": "Publication and fixation of doctrine—marking what is formally held true and witnessing declared order. Operates as record and designation; not channel, enhancement, nor force projection.",
       "geometry": "Vertical pillar read as primary bearer of declared order; doctrinal spacing and inscriptional rhythm (steady interval, ruled bands); frontal seal- or tablet-surface posture—declarative layout, shallow subordinate top lintel only (thin inset stroke; not a full fascia or baseline), minimal lateral flourish.",
       "color": "Stone, ash, inscribed metal on neutral ground; restrained contrast; archival, not ceremonial saturation.",
-      "image": "/media/sigils/iah-vea.svg",
       "status": "provisional",
       "visibility": "marked_public",
       "lastCanonReview": "2026-05-13"
     },
     {
       "title": "Top-Iron-Endurance · Bearing Under Load",
+      "image": "/media/sigils/top-iron-endurance.svg",
       "meaning": "Presence under weight—continuance without dissolution into relief or spectacle.",
       "facets": [
         "State Sigil"
@@ -134,7 +135,6 @@
       "usage": "Marks sustained effort through difficulty—identity held under consequence. Teaching and narrative framing; not packaged as activation choreography.",
       "geometry": "Vertical bearer resting on grounded cross-footing; restrained proportion; dashed interior suggesting sustained span held—load-bearing symbolism without ornament.",
       "color": "Iron and muted cool neutral—low saturation, patient weight.",
-      "image": "/media/sigils/top-iron-endurance.svg",
       "status": "provisional",
       "visibility": "marked_public",
       "lastCanonReview": "2026-05-13",
