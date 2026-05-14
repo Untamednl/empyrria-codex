@@ -25,7 +25,7 @@ Operational implementation companion for the **Empyrria Sigil & Doctrine Library
 
 - **Operator** — **`## OPERATIONAL STATE — CURRENT LIVE CODEX`**, **`## Library MVP — requirements`**, **`## Current data structure`**, **`## Current routes (pages)`**, **`## Key components / scripts`**, **`## Guardrails — project identity`**, **`## Missing MVP / gaps`**, **`## CANON INGESTION PIPELINE — LOCKED`**, **`## Validation checklist (before merge / release)`**, **`## OPERATIONAL STATE — CURRENT NEXT STEP`**; checkpoints → **`EMPYRRIA_MASTER.md`** → **Checkpoints & rollback (active summary)**.
 
-- **Implementer** — **`## Locked implementation progress`** (chronicle table), then the execution section you need by **exact `##` title** (e.g. **`## TEXT RENDERING & DISPLAY ERGONOMICS — PHASE 1`**, **`## EDITORIAL FIELD EVOLUTION — PHASE 1`**, **`## PATH A GOVERNANCE FIELD HIDING — PHASE 1`**, **`## PATH A EDITORIAL ERGONOMICS — PHASE 2A`**, **`## CLOUDFLARE PAGES MIGRATION — VALIDATED`**); **`EMPYRRIA_MASTER.md`** carries the paired **summary locks** under the **same** `##` titles.
+- **Implementer** — **`## Locked implementation progress`** (chronicle table), then the execution section you need by **exact `##` title** (e.g. **`## TEXT RENDERING & DISPLAY ERGONOMICS — PHASE 1`**, **`## EDITORIAL FIELD EVOLUTION — PHASE 1`**, **`## PATH A GOVERNANCE FIELD HIDING — PHASE 1`**, **`## PATH A EDITORIAL ERGONOMICS — PHASE 2A`**, **`## SIGIL READABILITY & VISUAL HIERARCHY — PHASE 1A`**, **`## CLOUDFLARE PAGES MIGRATION — VALIDATED`**); **`EMPYRRIA_MASTER.md`** carries the paired **summary locks** under the **same** `##` titles.
 
 - **Governance Auditor** — **`## CANONICAL DOCUMENT STRUCTURE — STABLE`**, **`## AUTHORITATIVE POLICY ROOTS — STABLE`**, **`## CONTENT GOVERNANCE MATURITY — PHASE 1`**, **`## CANON TRANSITION GOVERNANCE — PHASE 1`**, **`## CANON EVIDENCE & REVIEW GOVERNANCE — PHASE 1`**, **`## CANON ANNOTATION & COMMENTARY GOVERNANCE — PHASE 1`**, **`## CANON ENTITY RELATIONSHIP GOVERNANCE — PHASE 1`**, **`## GOVERNANCE EVOLUTION & AMENDMENT GOVERNANCE — PHASE 1`**, **`## GOVERNANCE CONSOLIDATION & CONSTITUTIONAL INDEX — PHASE 1`**, **`## DOCUMENTATION DISCIPLINE — LOCKED`**, **`## SELECTIVE MATURATION PAUSE + OBSERVATIONAL STABILITY WINDOW`**.
 
@@ -180,6 +180,7 @@ Editorial maturation proceeds sigil-by-sigil, reviewable, rollback-simple, and s
 | **EDITORIAL FIELD EVOLUTION — PHASE 1** | **Locked (2026-05-14)** — **Additive optional JSON fields** + **PATH A** / **Decap** exposure + **public display** cleanup (**no** data deletion, **no** routing/visibility/canon-transition changes, **no** graph engine, **no** image upload, **no** new-sigil creation, **no** doctrine **PATH A** expansion). New keys: **`characterLink`**, **`loreContext`**, **`sigilRelationships`** (string array), **`placeOfOrigin`**. Public detail: new sections when populated; **hide** **`reviewReference`**, **`deprecatedReason`**, **`archivedReason`**, **Colour logic**, **Associated terms** from public surfaces (data retained; governance fields were never public; classification colour/terms removed). **`toSigilDisplayItem`**: **`tags`** = **facets only**. Corpus **`version`** **11**. **`npm run build`** / **`npx astro check`** gate. Full section **EDITORIAL FIELD EVOLUTION — PHASE 1** below. |
 | **PATH A GOVERNANCE FIELD HIDING — PHASE 1** | **Locked (2026-05-14)** — **`.pages.yml` only:** **`hidden: true`** on **`terms`**, **`color`**, **`reviewReference`**, **`deprecatedReason`**, **`archivedReason`** under **`content.codex.fields.sigils.fields`** (definitions retained; **no** name/type/readonly/options/pattern/description changes). **No** **`sigils.json`**, **schema**, **Decap**, **validator**, **Astro**/public UI, routing, or visibility edits in the hiding commit. **Purpose:** reduce **PATH A** editor clutter; preserve keys in JSON and **Decap**/**git** paths. **Required validation:** **`npm run build`**; **LIVE ROUND-TRIP VALIDATED PASS** (**2026-05-14**): first Pages save after **`657ec94`** = commit **`2b699cf`**; hidden keys preserved (**CODEX** §8). **Rollback:** revert **`.pages.yml`**. Full section **PATH A GOVERNANCE FIELD HIDING — PHASE 1** below. |
 | **PATH A EDITORIAL ERGONOMICS — PHASE 2A** | **Locked (2026-05-14)** — **`.pages.yml` only:** reorder **`content.codex.fields.sigils.fields`** per **Zierota** feedback — **`image`** immediately after **`title`**; **`placeOfOrigin`** above **`loreContext`**. **No** field deletions; **no** changes to **`name`**, **`type`**, **`readonly`**, **`hidden`**, **`options`**, **`pattern`**, **`list`**, **`required`**, or per-field **`description`** text. **No** **`sigils.json`**, **schema**, **Decap**, **validator**, **Astro**/public UI, routing, or visibility. **Preserves** hidden-field chain documented at **`657ec94`** / **`2b699cf`** / **`1034c3b`**. **Rollback:** revert this **`.pages.yml`** reorder commit. Full section **PATH A EDITORIAL ERGONOMICS — PHASE 2A** below. |
+| **SIGIL READABILITY & VISUAL HIERARCHY — PHASE 1A** | **Locked (2026-05-14)** — **`src/pages/sigils/[slug].astro`** only: restrained **Tailwind** typography + spacing for optional editorial middle band (**Lore Context**, **Character Link**, **Place of Origin**, **Sigil Relationships**) to reduce **homogenization** vs **Doctrine** and system sections; **grouped** editorial band + clearer separation before **Function / Classification**. **No** **`sigils.json`**, **schema**, **`.pages.yml`**, **Decap**, **validator**, **routing**, **CMS** config, **relationship** engine, or rich-text pipeline changes. **Rollback:** revert this commit. Full section **SIGIL READABILITY & VISUAL HIERARCHY — PHASE 1A** below. |
 | **CONTENT GOVERNANCE MATURITY — PHASE 1** | **Locked (2026-05-11)** — **Lifecycle + governance-definition phase only** (**no** **`sigils.json`**, schema, routes, search/filter, CMS, admin, package, migration, or archive moves). Formal **taxonomy** of content **states** and **canon stability tiers**; **review / maturation** flow concepts; **archive** and **deprecation** philosophy (**preserve**, not erase); **public vs internal** separation intent; **editorial responsibility** layers tied to **PATH A**; **governance principles**; **platform-independent** model (tooling may change; rules survive). Full section **CONTENT GOVERNANCE MATURITY — PHASE 1** below. |
 | **CANON TRANSITION GOVERNANCE — PHASE 1** | **Locked (2026-05-11)** — **Transition mechanics + authority + process only** (**no** data edits, **no** status remapping, **no** visibility/discoverability changes, **no** CMS/schema/deploy, **no** workflow automation). Builds on **CONTENT GOVERNANCE MATURITY — PHASE 1** (definitions). **Authority matrix** (who proposes vs approves); **allowed** lifecycle moves; **promotion** and **locked-canon** gates; **deprecation/archive** procedure expectations; **contradiction** handling; **escalation** ladder; **traceability**; **future tooling** must not replace governance authority. Full section **CANON TRANSITION GOVERNANCE — PHASE 1** below. |
 | **CANON EVIDENCE & REVIEW GOVERNANCE — PHASE 1** | **Locked (2026-05-11)** — **Evidence standards + review epistemology only** (**no** **`sigils.json`**, schema, **status**, visibility, discoverability, CMS, deploy, automation). Defines **what counts as evidence**, **sufficient review**, **canon confidence**, **declaration vs interpretation**, **conflicting evidence**; **review confidence levels**; **historical** evidence philosophy; **stability epistemology** (visibility ≠ certainty); **review traceability**; **future** tooling may **surface** evidence but **not** **determine** canon. Full section **CANON EVIDENCE & REVIEW GOVERNANCE — PHASE 1** below. |
@@ -3718,6 +3719,62 @@ This phase **preserves** the **PATH A** hidden-field posture and documentation c
 ### 7. Rollback plan
 
 **Revert this commit** (the **`.pages.yml`** reorder + master pointers). **Decap** field order is **unchanged**; **JSON** shape is **unchanged**.
+
+---
+
+## SIGIL READABILITY & VISUAL HIERARCHY — PHASE 1A
+
+**Status:** **LOCKED (2026-05-14)** — **`src/pages/sigils/[slug].astro`** **presentation and spacing only** (**Tailwind** utility classes). **Does not** change **`src/data/sigils.json`**, **`sigils.schema.json`**, **`.pages.yml`**, **`public/admin/config.yml`**, **`scripts/validate-content.mjs`**, **slug routing**, **CMS** authority surface, **relationship** engine semantics, or **markdown / rich-text** plumbing.
+
+**MASTER summary:** **`EMPYRRIA_MASTER.md`** → **SIGIL READABILITY & VISUAL HIERARCHY — PHASE 1A**.
+
+---
+
+### 1. Problem
+
+Optional **editorial** middle fields (**`loreContext`**, **`characterLink`**, **`placeOfOrigin`**, **`sigilRelationships`**) rendered with **small neutral headings** visually similar to **Classification** / **Function** labels, causing **middle-band homogenization**: readers had to work harder to see **Doctrine** as the apex chapter and to separate **editorial annotation** from **system reference** blocks.
+
+---
+
+### 2. Solution (typography + spacing cadence)
+
+- **Doctrine** block: **unchanged** hierarchy (serif body, amber chapter heading, existing vertical rhythm).  
+- **Editorial quartet:** when **any** of the four fields is present, wrap them in a **single editorial band** with one **top rule** and **`space-y`** between inner sections (grouped cadence, no per-field full-width rules).  
+- **Headings:** slightly **larger / brighter / heavier** neutral treatment for the four **H2** labels (**Title Case** on public copy) — still **clearly subordinate** to **Doctrine** (no amber/cyan competition at chapter scale).  
+- **Body copy:** same readable neutrals as before (meaning unchanged; emphasis is heading/band structure).  
+- **Sigil relationships:** remain **atmospheric annotations** — list + left rule only; **no** pills, **no** chip grid, **no** graph chrome; subtle list spacing and border tone adjustment only.
+
+---
+
+### 3. Separation before reference/system sections
+
+The first block **after** the optional editorial band (**Lore (underlay)** prototype, **Function within Empyrria**, or **Classification**) uses a **stronger top border + padding** when the editorial band exists, so **Function / Classification** read as a **distinct** band from grouped editorial context.
+
+---
+
+### 4. Design constraints honored
+
+- **Preserve** dark codex atmosphere; **no** SaaS dashboard look, **no** neon overload, **no** new accent families, **no** animation redesign.  
+- **Preserve** amber (**Doctrine**) and cyan (**Underlay**) authority accents where already established.
+
+---
+
+### 5. Files touched
+
+- **`src/pages/sigils/[slug].astro`** — sole runtime-visible change surface for this phase.
+
+---
+
+### 6. Required validation
+
+- **`npm run build`** (repo gate).  
+- **`npx astro check`** (Astro + TS).
+
+---
+
+### 7. Rollback plan
+
+**Revert this commit** (masters + **`[slug].astro`** together if landed in one change).
 
 ---
 
