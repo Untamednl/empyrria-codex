@@ -112,6 +112,7 @@ content:
             type: string
             required: true
             readonly: true
+            hidden: true
 
           - name: layer
             label: Layer
@@ -142,6 +143,7 @@ content:
             type: text
             required: false
             readonly: true
+            hidden: true
 
           - name: color
             label: Color Logic
@@ -155,6 +157,7 @@ content:
             type: select
             required: false
             readonly: true
+            hidden: true
             options:
               values:
                 - name: draft
