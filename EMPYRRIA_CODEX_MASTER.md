@@ -25,7 +25,7 @@ Operational implementation companion for the **Empyrria Sigil & Doctrine Library
 
 - **Operator** — **`## OPERATIONAL STATE — CURRENT LIVE CODEX`**, **`## Library MVP — requirements`**, **`## Current data structure`**, **`## Current routes (pages)`**, **`## Key components / scripts`**, **`## Guardrails — project identity`**, **`## Missing MVP / gaps`**, **`## CANON INGESTION PIPELINE — LOCKED`**, **`## Validation checklist (before merge / release)`**, **`## OPERATIONAL STATE — CURRENT NEXT STEP`**; checkpoints → **`EMPYRRIA_MASTER.md`** → **Checkpoints & rollback (active summary)**.
 
-- **Implementer** — **`## Locked implementation progress`** (chronicle table), then the execution section you need by **exact `##` title** (e.g. **`## TEXT RENDERING & DISPLAY ERGONOMICS — PHASE 1`**, **`## EDITORIAL FIELD EVOLUTION — PHASE 1`**, **`## PATH A GOVERNANCE FIELD HIDING — PHASE 1`**, **`## PATH A EDITORIAL ERGONOMICS — PHASE 2A`**, **`## SIGIL READABILITY & VISUAL HIERARCHY — PHASE 1A`**, **`## REGISTRY LAYER HIERARCHY REFINEMENT — PHASE 1B.5`**, **`## CLOUDFLARE PAGES MIGRATION — VALIDATED`**); **`EMPYRRIA_MASTER.md`** carries the paired **summary locks** under the **same** `##` titles.
+- **Implementer** — **`## Locked implementation progress`** (chronicle table), then the execution section you need by **exact `##` title** (e.g. **`## TEXT RENDERING & DISPLAY ERGONOMICS — PHASE 1`**, **`## EDITORIAL FIELD EVOLUTION — PHASE 1`**, **`## PATH A GOVERNANCE FIELD HIDING — PHASE 1`**, **`## PATH A EDITORIAL ERGONOMICS — PHASE 2A`**, **`## SIGIL READABILITY & VISUAL HIERARCHY — PHASE 1A`**, **`## REGISTRY LAYER HIERARCHY REFINEMENT — PHASE 1B.5`**, **`## HERO METADATA HIERARCHY REFINEMENT — PHASE 1B.6`**, **`## CLOUDFLARE PAGES MIGRATION — VALIDATED`**); **`EMPYRRIA_MASTER.md`** carries the paired **summary locks** under the **same** `##` titles.
 
 - **Governance Auditor** — **`## CANONICAL DOCUMENT STRUCTURE — STABLE`**, **`## AUTHORITATIVE POLICY ROOTS — STABLE`**, **`## CONTENT GOVERNANCE MATURITY — PHASE 1`**, **`## CANON TRANSITION GOVERNANCE — PHASE 1`**, **`## CANON EVIDENCE & REVIEW GOVERNANCE — PHASE 1`**, **`## CANON ANNOTATION & COMMENTARY GOVERNANCE — PHASE 1`**, **`## CANON ENTITY RELATIONSHIP GOVERNANCE — PHASE 1`**, **`## GOVERNANCE EVOLUTION & AMENDMENT GOVERNANCE — PHASE 1`**, **`## GOVERNANCE CONSOLIDATION & CONSTITUTIONAL INDEX — PHASE 1`**, **`## DOCUMENTATION DISCIPLINE — LOCKED`**, **`## SELECTIVE MATURATION PAUSE + OBSERVATIONAL STABILITY WINDOW`**.
 
@@ -182,6 +182,7 @@ Editorial maturation proceeds sigil-by-sigil, reviewable, rollback-simple, and s
 | **PATH A EDITORIAL ERGONOMICS — PHASE 2A** | **Locked (2026-05-14)** — **`.pages.yml` only:** reorder **`content.codex.fields.sigils.fields`** per **Zierota** feedback — **`image`** immediately after **`title`**; **`placeOfOrigin`** above **`loreContext`**. **No** field deletions; **no** changes to **`name`**, **`type`**, **`readonly`**, **`hidden`**, **`options`**, **`pattern`**, **`list`**, **`required`**, or per-field **`description`** text. **No** **`sigils.json`**, **schema**, **Decap**, **validator**, **Astro**/public UI, routing, or visibility. **Preserves** hidden-field chain documented at **`657ec94`** / **`2b699cf`** / **`1034c3b`**. **Rollback:** revert this **`.pages.yml`** reorder commit. Full section **PATH A EDITORIAL ERGONOMICS — PHASE 2A** below. |
 | **SIGIL READABILITY & VISUAL HIERARCHY — PHASE 1A** | **Locked (2026-05-14)** — **`src/pages/sigils/[slug].astro`** only: restrained **Tailwind** typography + spacing for optional editorial middle band (**Lore Context**, **Character Link**, **Place of Origin**, **Sigil Relationships**) to reduce **homogenization** vs **Doctrine** and system sections; **grouped** editorial band + clearer separation before **Function / Classification**. **No** **`sigils.json`**, **schema**, **`.pages.yml`**, **Decap**, **validator**, **routing**, **CMS** config, **relationship** engine, or rich-text pipeline changes. **Rollback:** revert this commit. Full section **SIGIL READABILITY & VISUAL HIERARCHY — PHASE 1A** below. |
 | **REGISTRY LAYER HIERARCHY REFINEMENT — PHASE 1B.5** | **Locked (2026-05-15)** — **`src/pages/sigils/[slug].astro`** only: strengthens lower **registry** hierarchy (**Function within Empyrria**, **Classification**, **Geometry** / **Category** label–value rhythm, footer cadence before **← All sigils**). **Presentation-only** — **no** **Doctrine**, **hero**, **editorial** band, **relationship** list architecture, **Underlay**, **schema**, **JSON**, **CMS**, **routing**, or **validator** changes. **Rollback:** revert this commit. Full section **REGISTRY LAYER HIERARCHY REFINEMENT — PHASE 1B.5** below. |
+| **HERO METADATA HIERARCHY REFINEMENT — PHASE 1B.6** | **Locked (2026-05-16)** — **`src/pages/sigils/[slug].astro`** only: **registry-name subtitle** + **archival facets** taxonomy line (**`SigilMeta`** **`variant="archival"`**) gain **quiet codex authority** via **Tailwind** on **`[slug].astro`** (including **`[&>p]:`** overrides); **`SigilMeta.astro`** **unchanged**. **No** **`h1`**, **Doctrine**, **editorial**/**registry**/**Underlay**/**relationship** blocks, **image** layout, **schema**, **JSON**, **CMS**, or **routing**. **Rollback:** revert this commit. Full section **HERO METADATA HIERARCHY REFINEMENT — PHASE 1B.6** below. |
 | **CONTENT GOVERNANCE MATURITY — PHASE 1** | **Locked (2026-05-11)** — **Lifecycle + governance-definition phase only** (**no** **`sigils.json`**, schema, routes, search/filter, CMS, admin, package, migration, or archive moves). Formal **taxonomy** of content **states** and **canon stability tiers**; **review / maturation** flow concepts; **archive** and **deprecation** philosophy (**preserve**, not erase); **public vs internal** separation intent; **editorial responsibility** layers tied to **PATH A**; **governance principles**; **platform-independent** model (tooling may change; rules survive). Full section **CONTENT GOVERNANCE MATURITY — PHASE 1** below. |
 | **CANON TRANSITION GOVERNANCE — PHASE 1** | **Locked (2026-05-11)** — **Transition mechanics + authority + process only** (**no** data edits, **no** status remapping, **no** visibility/discoverability changes, **no** CMS/schema/deploy, **no** workflow automation). Builds on **CONTENT GOVERNANCE MATURITY — PHASE 1** (definitions). **Authority matrix** (who proposes vs approves); **allowed** lifecycle moves; **promotion** and **locked-canon** gates; **deprecation/archive** procedure expectations; **contradiction** handling; **escalation** ladder; **traceability**; **future tooling** must not replace governance authority. Full section **CANON TRANSITION GOVERNANCE — PHASE 1** below. |
 | **CANON EVIDENCE & REVIEW GOVERNANCE — PHASE 1** | **Locked (2026-05-11)** — **Evidence standards + review epistemology only** (**no** **`sigils.json`**, schema, **status**, visibility, discoverability, CMS, deploy, automation). Defines **what counts as evidence**, **sufficient review**, **canon confidence**, **declaration vs interpretation**, **conflicting evidence**; **review confidence levels**; **historical** evidence philosophy; **stability epistemology** (visibility ≠ certainty); **review traceability**; **future** tooling may **surface** evidence but **not** **determine** canon. Full section **CANON EVIDENCE & REVIEW GOVERNANCE — PHASE 1** below. |
@@ -3818,6 +3819,52 @@ After **Phase 1A**, the **middle editorial** band was clarified, but **Function*
 ---
 
 ### 5. Rollback plan
+
+**Revert this commit** (masters + **`[slug].astro`** if combined).
+
+---
+
+## HERO METADATA HIERARCHY REFINEMENT — PHASE 1B.6
+
+**Status:** **LOCKED (2026-05-16)** — **`src/pages/sigils/[slug].astro`** **presentation only**. Improves **visual authority** and **readability** of hero metadata directly under the display **`h1`**: **registry `name` subtitle** (when it differs from the headline) and the **archival facets** line rendered by **`SigilMeta`** **`variant="archival"`**. Styling is applied via **shared Tailwind strings** and a **wrapper** using **`[&>p]:`** descendant utilities so **`SigilMeta.astro`** requires **no** edit. **Does not** change **`h1`**, **Doctrine**, **editorial** band, **registry** sections, **Underlay**, **relationship** list presentation, **image** chrome, **`sigils.json`**, **schema**, **CMS**, **routing**, or **validator**.
+
+**MASTER summary:** **`EMPYRRIA_MASTER.md`** → **HERO METADATA HIERARCHY REFINEMENT — PHASE 1B.6**.
+
+---
+
+### 1. Problem
+
+The **subtitle** and **taxonomy** line sat **too low-contrast** against the page field and **collapsed** under the strong **`h1`**, reading as accidental UI chrome rather than **codex designation**.
+
+---
+
+### 2. Solution (typography + spacing only)
+
+- **Subtitle (`registryName`):** brighter neutral (**`neutral-300/92`**), **`text-[0.9375rem]`** on all breakpoints, **`tracking-[0.02em]`** / **`md:tracking-normal`**, **`mt-3.5` / `md:mt-4`** for clearer cadence from **`h1`**.  
+- **Taxonomy band:** wrapper keeps **`mt-5`**; direct-child **`p`** from archival **`SigilMeta`** gets **`font-semibold`**, **`tracking-[0.18em]`** (**`md:tracking-[0.17em]`**), **`text-neutral-400/90`** (**`md:…/95`**), stable **`text-[0.6875rem]`** stepping to **`md:[0.7rem]`** — **designation seal** energy **without** brightness that competes with **Doctrine**.
+
+---
+
+### 3. Hierarchy preserved
+
+**`h1` > Doctrine > editorial / registry > metadata** — metadata is **legible** and **intentional**, still **clearly tertiary** to headline and doctrine.
+
+---
+
+### 4. Explicit non-goals
+
+- **No** pills, chips, cards, glow, new accent families, or **`SigilMeta`** structural changes.
+
+---
+
+### 5. Validation targets
+
+- **`npm run build`** + **`npx astro check`**.  
+- Visual: **Soulflame**, **IAH-VEA**, one sigil with **weaker** / minimal metadata, one with **strong** **facet** strings — **desktop** and **~400px**.
+
+---
+
+### 6. Rollback plan
 
 **Revert this commit** (masters + **`[slug].astro`** if combined).
 

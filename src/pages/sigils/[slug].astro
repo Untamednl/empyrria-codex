@@ -116,6 +116,14 @@ const registryFieldLabelClass =
 const registryFieldValueClass =
 	'mt-3 max-w-prose whitespace-pre-wrap break-words text-[0.9375rem] leading-[1.8] text-neutral-200/90 md:mt-3.5 md:text-[1rem] md:leading-[1.82]';
 
+/** Hero metadata beneath H1 (Phase 1B.6): registry subtitle + archival taxonomy line only. */
+const heroRegistrySubtitleClass =
+	'mt-3.5 max-w-prose text-[0.9375rem] leading-snug tracking-[0.02em] text-neutral-300/92 md:mt-4 md:text-[0.96875rem] md:tracking-normal';
+
+/** Targets SigilMeta archival `<p>` only via direct child selector — no SigilMeta source edit. */
+const heroTaxonomyBandClass =
+	'mt-5 [&>p]:max-w-prose [&>p]:text-[0.6875rem] [&>p]:font-semibold [&>p]:uppercase [&>p]:tracking-[0.18em] [&>p]:text-neutral-400/90 md:[&>p]:text-[0.7rem] md:[&>p]:tracking-[0.17em] md:[&>p]:text-neutral-400/95';
+
 const display = toSigilDisplayItem(sigil as SigilRecord);
 const explicitMeaning = nonEmptyTrimmed(sigil.meaning);
 const explicitLayer = nonEmptyTrimmed(sigil.layer);
@@ -152,13 +160,13 @@ const showDoctrineLead = explicitMeaning !== undefined || explicitLayer !== unde
 		</h1>
 		{
 			showRegistryNameSubtitle && (
-				<p class="mt-3 max-w-prose text-sm leading-snug text-neutral-500/90 md:text-[0.9375rem]">
+				<p class={heroRegistrySubtitleClass}>
 					{registryName}
 				</p>
 			)
 		}
 
-		<div class="mt-5">
+		<div class={heroTaxonomyBandClass}>
 			<SigilMeta sigil={sigil} compact variant="archival" />
 		</div>
 
