@@ -9,6 +9,30 @@ Operational implementation companion for the **Empyrria Sigil & Doctrine Library
 
 ---
 
+## Navigation — reader paths (Phase 1B)
+
+**Additive only:** section **order** and **titles** below are unchanged — use **search** for the exact **`##`** strings listed.
+
+### Document vocabulary (navigation only)
+
+| Label | Use it for |
+| ----- | ---------- |
+| **ACTIVE OPS** | Day-to-day execution: build gates, routes, data shape, components, gaps, ingestion pipeline, validation checklist, operational summaries. |
+| **ACTIVE LAW** | Binding **LOCKED** / **PHASE** governance and **AUTHORITATIVE POLICY ROOTS** — still “active” law even when not the week’s coding task. |
+| **CHRONICLE** | Dated phases, RFC narratives, enrichment passes, audits, and meta documentation of the file itself — read **downward in existing order**. |
+
+### Reader paths (search this file for each `##` heading)
+
+- **Operator** — **`## OPERATIONAL STATE — CURRENT LIVE CODEX`**, **`## Library MVP — requirements`**, **`## Current data structure`**, **`## Current routes (pages)`**, **`## Key components / scripts`**, **`## Guardrails — project identity`**, **`## Missing MVP / gaps`**, **`## CANON INGESTION PIPELINE — LOCKED`**, **`## Validation checklist (before merge / release)`**, **`## OPERATIONAL STATE — CURRENT NEXT STEP`**; checkpoints → **`EMPYRRIA_MASTER.md`** → **Checkpoints & rollback (active summary)**.
+
+- **Implementer** — **`## Locked implementation progress`** (chronicle table), then the execution section you need by **exact `##` title** (e.g. **`## TEXT RENDERING & DISPLAY ERGONOMICS — PHASE 1`**, **`## EDITORIAL FIELD EVOLUTION — PHASE 1`**, **`## PATH A GOVERNANCE FIELD HIDING — PHASE 1`**, **`## PATH A EDITORIAL ERGONOMICS — PHASE 2A`**, **`## CLOUDFLARE PAGES MIGRATION — VALIDATED`**); **`EMPYRRIA_MASTER.md`** carries the paired **summary locks** under the **same** `##` titles.
+
+- **Governance Auditor** — **`## CANONICAL DOCUMENT STRUCTURE — STABLE`**, **`## AUTHORITATIVE POLICY ROOTS — STABLE`**, **`## CONTENT GOVERNANCE MATURITY — PHASE 1`**, **`## CANON TRANSITION GOVERNANCE — PHASE 1`**, **`## CANON EVIDENCE & REVIEW GOVERNANCE — PHASE 1`**, **`## CANON ANNOTATION & COMMENTARY GOVERNANCE — PHASE 1`**, **`## CANON ENTITY RELATIONSHIP GOVERNANCE — PHASE 1`**, **`## GOVERNANCE EVOLUTION & AMENDMENT GOVERNANCE — PHASE 1`**, **`## GOVERNANCE CONSOLIDATION & CONSTITUTIONAL INDEX — PHASE 1`**, **`## DOCUMENTATION DISCIPLINE — LOCKED`**, **`## SELECTIVE MATURATION PAUSE + OBSERVATIONAL STABILITY WINDOW`**.
+
+- **Historian** — **`## Locked implementation progress`**, **`## MASTER DOCUMENT CLEANUP PASS`**, **`## AUTHORITATIVE POLICY ROOTS CONSOLIDATION PASS`**, and **`EMPYRRIA_PHILOSOPHY_ARCHIVE.md`** for pre-SIMPLIFY bodies and long checkpoints.
+
+---
+
 ## CANONICAL DOCUMENT STRUCTURE — STABLE
 
 This master file is maintained in seven governance bands:
