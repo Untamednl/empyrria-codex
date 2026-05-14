@@ -47,6 +47,13 @@ content:
             required: false
             description: "Optional display override; omit when unused."
 
+          - name: image
+            label: Image
+            type: image
+            required: false
+            readonly: true
+            description: "Public path under /media/sigils/…"
+
           - name: meaning
             label: Meaning
             type: text
@@ -71,6 +78,12 @@ content:
             required: false
             description: "Optional editorial — character or persona association (plain text)."
 
+          - name: placeOfOrigin
+            label: Place of Origin
+            type: string
+            required: false
+            description: "Optional symbolic or narrative origin."
+
           - name: loreContext
             label: Lore Context
             type: text
@@ -83,12 +96,6 @@ content:
             list: true
             required: false
             description: "Declared relationship labels only (strings). No automatic links."
-
-          - name: placeOfOrigin
-            label: Place of Origin
-            type: string
-            required: false
-            description: "Optional symbolic or narrative origin."
 
           # --- Readonly (canon + identity + governance) ---
           - name: slug
@@ -142,13 +149,6 @@ content:
             required: false
             readonly: true
             hidden: true
-
-          - name: image
-            label: Image
-            type: image
-            required: false
-            readonly: true
-            description: "Public path under /media/sigils/…"
 
           - name: status
             label: Status

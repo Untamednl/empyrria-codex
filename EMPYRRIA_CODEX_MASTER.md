@@ -16,7 +16,7 @@ This master file is maintained in seven governance bands:
 1. **PROJECT IDENTITY** — purpose, archive philosophy, ceremonial doctrine/atmosphere constraints.
 2. **GOVERNANCE LAYER** — documentation discipline, canon governance, editorial governance, **content lifecycle vocabulary** (**CONTENT GOVERNANCE MATURITY — PHASE 1**), **canon transition process** (**CANON TRANSITION GOVERNANCE — PHASE 1**), **canon evidence & review epistemology** (**CANON EVIDENCE & REVIEW GOVERNANCE — PHASE 1**), **canon annotation & commentary** (**CANON ANNOTATION & COMMENTARY GOVERNANCE — PHASE 1**), **canon entity relationships** (**CANON ENTITY RELATIONSHIP GOVERNANCE — PHASE 1**), **governance evolution & amendment** (**GOVERNANCE EVOLUTION & AMENDMENT GOVERNANCE — PHASE 1**), **governance consolidation & constitutional index** (**GOVERNANCE CONSOLIDATION & CONSTITUTIONAL INDEX — PHASE 1**), **selective maturation pause + observational stability** (**SELECTIVE MATURATION PAUSE + OBSERVATIONAL STABILITY WINDOW**), **operational editorial pressure logging** (**ZIEROTA EDITORIAL PRESSURE LOG — PHASE 1**), rollout rules.
 3. **CORE ARCHITECTURE** — entity/dossier/template RFCs, mapping plans, visibility-tier model, adapter philosophy.
-4. **IMPLEMENTATION LAYER** — Top-Iron Phase A system, layout/wireframe/atmosphere/detail governance, **full entry prototype planning** (**FULL ENTRY PROTOTYPE — PHASE 1**), **full entry visual mockup governance** (**FULL ENTRY VISUAL MOCKUP — PHASE 1**), **specimen entry wireframe governance** (**SPECIMEN ENTRY WIREFRAME — PHASE 1**), **text rendering + display headline ergonomics** (**TEXT RENDERING & DISPLAY ERGONOMICS — PHASE 1**), **editorial field evolution (PATH A + schema additive)** (**EDITORIAL FIELD EVOLUTION — PHASE 1**), **PATH A governance field hiding (Pages CMS `hidden` only)** (**PATH A GOVERNANCE FIELD HIDING — PHASE 1**).
+4. **IMPLEMENTATION LAYER** — Top-Iron Phase A system, layout/wireframe/atmosphere/detail governance, **full entry prototype planning** (**FULL ENTRY PROTOTYPE — PHASE 1**), **full entry visual mockup governance** (**FULL ENTRY VISUAL MOCKUP — PHASE 1**), **specimen entry wireframe governance** (**SPECIMEN ENTRY WIREFRAME — PHASE 1**), **text rendering + display headline ergonomics** (**TEXT RENDERING & DISPLAY ERGONOMICS — PHASE 1**), **editorial field evolution (PATH A + schema additive)** (**EDITORIAL FIELD EVOLUTION — PHASE 1**), **PATH A governance field hiding (Pages CMS `hidden` only)** (**PATH A GOVERNANCE FIELD HIDING — PHASE 1**), **PATH A editorial ergonomics (Pages CMS field order only)** (**PATH A EDITORIAL ERGONOMICS — PHASE 2A**).
 5. **EDITORIAL EXECUTIONS** — selective enrichment passes (IAH-VEA, Soulflame, Top-Clear-Mind).
 6. **FUTURE / DEFERRED SYSTEMS** — Phase B, structured entity model, graph-level and advanced CMS expansions.
 7. **OPERATIONAL STATE** — current next step, active priorities, release/validation guardrails, warnings.
@@ -155,6 +155,7 @@ Editorial maturation proceeds sigil-by-sigil, reviewable, rollback-simple, and s
 | **TEXT RENDERING & DISPLAY ERGONOMICS — PHASE 1** | **Locked (2026-05-14)** — **Scoped Astro presentation execution** (**no** **`sigils.json`** / Type schema edits, **no** **`.pages.yml`**, **no** routing, **no** **`getPubliclyDiscoverableSigils`** / visibility, **no** field removals, **no** relationship/image/new-sigil/CMS authority expansion). **`displayHeadline`**: **`title`** → **`name`** → **`slug`** for detail **`<h1>`**, document **`<title>`**, **`SigilCard`**, and **`toSigilDisplayItem`**; optional muted **registry `name`** when it differs from headline. Long prose: Tailwind **`whitespace-pre-wrap break-words`** on detail + showcase hero; browse/showcase doctrine previews collapse whitespace to one line. **`npm run build`** / **`npx astro check`** gate. Full section **TEXT RENDERING & DISPLAY ERGONOMICS — PHASE 1** below. |
 | **EDITORIAL FIELD EVOLUTION — PHASE 1** | **Locked (2026-05-14)** — **Additive optional JSON fields** + **PATH A** / **Decap** exposure + **public display** cleanup (**no** data deletion, **no** routing/visibility/canon-transition changes, **no** graph engine, **no** image upload, **no** new-sigil creation, **no** doctrine **PATH A** expansion). New keys: **`characterLink`**, **`loreContext`**, **`sigilRelationships`** (string array), **`placeOfOrigin`**. Public detail: new sections when populated; **hide** **`reviewReference`**, **`deprecatedReason`**, **`archivedReason`**, **Colour logic**, **Associated terms** from public surfaces (data retained; governance fields were never public; classification colour/terms removed). **`toSigilDisplayItem`**: **`tags`** = **facets only**. Corpus **`version`** **11**. **`npm run build`** / **`npx astro check`** gate. Full section **EDITORIAL FIELD EVOLUTION — PHASE 1** below. |
 | **PATH A GOVERNANCE FIELD HIDING — PHASE 1** | **Locked (2026-05-14)** — **`.pages.yml` only:** **`hidden: true`** on **`terms`**, **`color`**, **`reviewReference`**, **`deprecatedReason`**, **`archivedReason`** under **`content.codex.fields.sigils.fields`** (definitions retained; **no** name/type/readonly/options/pattern/description changes). **No** **`sigils.json`**, **schema**, **Decap**, **validator**, **Astro**/public UI, routing, or visibility edits in the hiding commit. **Purpose:** reduce **PATH A** editor clutter; preserve keys in JSON and **Decap**/**git** paths. **Required validation:** **`npm run build`**; **LIVE ROUND-TRIP VALIDATED PASS** (**2026-05-14**): first Pages save after **`657ec94`** = commit **`2b699cf`**; hidden keys preserved (**CODEX** §8). **Rollback:** revert **`.pages.yml`**. Full section **PATH A GOVERNANCE FIELD HIDING — PHASE 1** below. |
+| **PATH A EDITORIAL ERGONOMICS — PHASE 2A** | **Locked (2026-05-14)** — **`.pages.yml` only:** reorder **`content.codex.fields.sigils.fields`** per **Zierota** feedback — **`image`** immediately after **`title`**; **`placeOfOrigin`** above **`loreContext`**. **No** field deletions; **no** changes to **`name`**, **`type`**, **`readonly`**, **`hidden`**, **`options`**, **`pattern`**, **`list`**, **`required`**, or per-field **`description`** text. **No** **`sigils.json`**, **schema**, **Decap**, **validator**, **Astro**/public UI, routing, or visibility. **Preserves** hidden-field chain documented at **`657ec94`** / **`2b699cf`** / **`1034c3b`**. **Rollback:** revert this **`.pages.yml`** reorder commit. Full section **PATH A EDITORIAL ERGONOMICS — PHASE 2A** below. |
 | **CONTENT GOVERNANCE MATURITY — PHASE 1** | **Locked (2026-05-11)** — **Lifecycle + governance-definition phase only** (**no** **`sigils.json`**, schema, routes, search/filter, CMS, admin, package, migration, or archive moves). Formal **taxonomy** of content **states** and **canon stability tiers**; **review / maturation** flow concepts; **archive** and **deprecation** philosophy (**preserve**, not erase); **public vs internal** separation intent; **editorial responsibility** layers tied to **PATH A**; **governance principles**; **platform-independent** model (tooling may change; rules survive). Full section **CONTENT GOVERNANCE MATURITY — PHASE 1** below. |
 | **CANON TRANSITION GOVERNANCE — PHASE 1** | **Locked (2026-05-11)** — **Transition mechanics + authority + process only** (**no** data edits, **no** status remapping, **no** visibility/discoverability changes, **no** CMS/schema/deploy, **no** workflow automation). Builds on **CONTENT GOVERNANCE MATURITY — PHASE 1** (definitions). **Authority matrix** (who proposes vs approves); **allowed** lifecycle moves; **promotion** and **locked-canon** gates; **deprecation/archive** procedure expectations; **contradiction** handling; **escalation** ladder; **traceability**; **future tooling** must not replace governance authority. Full section **CANON TRANSITION GOVERNANCE — PHASE 1** below. |
 | **CANON EVIDENCE & REVIEW GOVERNANCE — PHASE 1** | **Locked (2026-05-11)** — **Evidence standards + review epistemology only** (**no** **`sigils.json`**, schema, **status**, visibility, discoverability, CMS, deploy, automation). Defines **what counts as evidence**, **sufficient review**, **canon confidence**, **declaration vs interpretation**, **conflicting evidence**; **review confidence levels**; **historical** evidence philosophy; **stability epistemology** (visibility ≠ certainty); **review traceability**; **future** tooling may **surface** evidence but **not** **determine** canon. Full section **CANON EVIDENCE & REVIEW GOVERNANCE — PHASE 1** below. |
@@ -3629,6 +3630,70 @@ Revert the commit that adds **`hidden: true`** to **`.pages.yml`** (and master d
 **Future rule:** On future **Pages CMS** commits that touch **`sigils.json`**, **skim the diff** (or PR) for unexpected loss or mutation of the five hidden keys (and other governance keys).
 
 **Failure rule:** If hidden fields are **ever** stripped or corrupted by a Pages round-trip, **do not** patch **`sigils.json`** manually in panic; **revert or fix** **`.pages.yml`** (remove **`hidden`** / escalate with Pages CMS product) and **restore** **`sigils.json`** from **git** history; treat as **CMS round-trip** incident per **§6 Rollback**.
+
+---
+
+## PATH A EDITORIAL ERGONOMICS — PHASE 2A
+
+**Status:** **LOCKED (2026-05-14)** — **Pages CMS configuration only** (**`.pages.yml`**). **Builds on** **PATH A GOVERNANCE FIELD HIDING — PHASE 1** ( **`hidden: true`** unchanged on the five keys); **does not** alter **`sigils.json`**, **JSON Schema**, **`public/admin/config.yml`**, **`scripts/validate-content.mjs`**, public **Astro** surfaces, **routing**, or **visibility** logic.
+
+**MASTER summary:** **`EMPYRRIA_MASTER.md`** → **PATH A EDITORIAL ERGONOMICS — PHASE 2A**.
+
+---
+
+### 1. Goal
+
+Improve **Zierota** **PATH A** (Pages CMS) **editor scan order** by reordering **`sigils`** nested fields **only** — **no** semantic or authority change to any field.
+
+---
+
+### 2. Source feedback (Zierota)
+
+- **“PlaceofOrigin mag boven LoreContext”** — **`placeOfOrigin`** must appear **before** **`loreContext`** in the editor.  
+- **“Image bij titel”** — **`image`** must appear **directly after** **`title`** (preview context next to the display headline field).
+
+---
+
+### 3. Exact reorder (under `content` → `codex` → `fields` → `sigils` → `fields`)
+
+**Zierota-facing band (PATH A presentation order):**
+
+1. **`title`**  
+2. **`image`** — same definition as before (**`readonly: true`** preserved); **moved** from the former position after **`color`**.  
+3. **`meaning`**  
+4. **`facets`**  
+5. **`terms`** — **`hidden: true`** unchanged (**PATH A GOVERNANCE FIELD HIDING — PHASE 1**).  
+6. **`characterLink`**  
+7. **`placeOfOrigin`** — **moved above** **`loreContext`**.  
+8. **`loreContext`**  
+9. **`sigilRelationships`**
+
+**Then** the **readonly** canon / governance band (**unchanged relative order** among those entries): **`slug`**, **`name`**, **`layer`**, **`category`**, **`doctrine`**, **`usage`**, **`geometry`**, **`color`** (**`hidden: true`**), **`status`**, **`visibility`**, **`reviewReference`** (**`hidden: true`**), **`deprecatedReason`** (**`hidden: true`**), **`archivedReason`** (**`hidden: true`**), **`lastCanonReview`**, **`underlay`**.
+
+---
+
+### 4. What was not changed
+
+- **Field definitions** — every **`name`**, **`type`**, **`label`**, **`readonly`**, **`hidden`**, **`required`**, **`list`**, **`options`**, **`pattern`**, and field-level **`description`** string is **identical** to the pre-reorder blocks; **only YAML sibling order** changed.  
+- **`src/data/sigils.json`**, **`src/data/sigils.schema.json`**, **`public/admin/config.yml`**, **`scripts/validate-content.mjs`**, **`src/pages/`**, **`src/components/`**, **`src/lib/`**, layouts, **slug** routing, **`getPubliclyDiscoverableSigils`**, **`internal-test-fixture`**.
+
+---
+
+### 5. Continuity with validated hidden-field work
+
+This phase **preserves** the **PATH A** hidden-field posture and documentation chain from **`657ec94`** (hide in **`.pages.yml`**), **`2b699cf`** (live Pages save; hidden keys preserved), and **`1034c3b`** (masters validation lock). **No** **`hidden:`** lines were added, removed, or toggled.
+
+---
+
+### 6. Required validation
+
+- **`npm run build`** (repo gate).
+
+---
+
+### 7. Rollback plan
+
+**Revert this commit** (the **`.pages.yml`** reorder + master pointers). **Decap** field order is **unchanged**; **JSON** shape is **unchanged**.
 
 ---
 
