@@ -161,23 +161,30 @@ const detailImageSrc = nonEmptyTrimmed(sigil.mainImage) ?? nonEmptyTrimmed(sigil
 
 		{
 			detailImageSrc && (
-				<figure
-					class="sigil-detail-main-figure relative left-1/2 z-0 mt-9 w-[min(96dvw,calc(100dvw-1.25rem))] max-w-[min(96dvw,calc(100dvw-1.25rem))] -translate-x-1/2 overflow-hidden rounded-xl border border-neutral-800/78 bg-gradient-to-b from-neutral-950/92 via-neutral-950/78 to-black/60 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.035)] md:mt-10"
-					aria-label={`${sigil.name} sigil mark`}
+				<a
+					href={detailImageSrc}
+					target="_blank"
+					rel="noopener noreferrer"
+					class="group mt-9 block cursor-pointer rounded-xl outline-none focus-visible:ring-2 focus-visible:ring-amber-500/40 focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-950 md:mt-10"
+					aria-label={`Open full-size ${sigil.name} mark in a new tab`}
 				>
-					<div
-						class="flex min-h-[min(16dvh,8.5rem)] h-[min(86dvh,min(90vw,94svmin))] w-full min-w-0 items-center justify-center px-2 py-3 sm:px-3 sm:py-4 md:px-4 md:py-5"
+					<figure
+						class="sigil-detail-main-figure m-0 w-full overflow-hidden rounded-xl border border-neutral-800/78 bg-gradient-to-b from-neutral-950/92 via-neutral-950/78 to-black/60 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.035)] transition-colors group-hover:border-neutral-700/75"
 					>
-						<img
-							src={detailImageSrc}
-							alt={`${sigil.name} sigil`}
-							class="h-full w-full max-h-full max-w-full object-contain"
-							loading="eager"
-							decoding="async"
-							fetchpriority="high"
-						/>
-					</div>
-				</figure>
+						<div
+							class="flex h-[min(62dvh,26rem)] w-full min-w-0 items-center justify-center px-3 py-4 sm:h-[min(58dvh,28rem)] sm:px-4 sm:py-5 md:h-[min(56dvh,30rem)] md:px-5 md:py-6"
+						>
+							<img
+								src={detailImageSrc}
+								alt={`${sigil.name} sigil`}
+								class="h-full w-full max-h-full max-w-full object-contain"
+								loading="eager"
+								decoding="async"
+								fetchpriority="high"
+							/>
+						</div>
+					</figure>
+				</a>
 			)
 		}
 
